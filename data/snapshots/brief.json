@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-15T02:35:11",
+ "generated_at": "2026-11-15T02:57:11",
  "window_from": "2026-10-16",
  "window_to": "2026-11-15",
  "prices_as_of": "2026-11-13",
@@ -94,7 +94,7 @@
     {
      "part": "numbers",
      "points": 18.0,
-     "note": "Revenue +30% YoY vs its usual +10% over the last 8 quarters (+2.7\u03c3)"
+     "note": "Revenue +30% YoY vs its usual +10% over the last 8 quarters (+2.7\u03c3, sets the points); PAT +34% vs usual +9.3% (+0.9\u03c3)"
     },
     {
      "part": "guidance",
@@ -286,7 +286,7 @@
     {
      "part": "numbers",
      "points": 18.0,
-     "note": "PAT \u221245% YoY vs its usual +140% over the last 8 quarters (-1.5\u03c3); PAT \u221245% YoY"
+     "note": "PAT \u221245% YoY vs its usual +140% over the last 8 quarters (-1.5\u03c3, sets the points); Revenue +47% vs usual +65% (-0.3\u03c3); PAT \u221245% YoY"
     },
     {
      "part": "guidance",
@@ -478,7 +478,7 @@
     {
      "part": "numbers",
      "points": 10.0,
-     "note": "PAT +27% YoY vs its usual +11% over the last 8 quarters (+1.6\u03c3)"
+     "note": "PAT +27% YoY vs its usual +11% over the last 8 quarters (+1.6\u03c3, sets the points); Revenue +16% vs usual +13% (+0.6\u03c3)"
     },
     {
      "part": "guidance",
@@ -680,7 +680,7 @@
     {
      "part": "numbers",
      "points": 25.0,
-     "note": "Revenue +26% YoY vs its usual \u22120.1% over the last 8 quarters (+3.8\u03c3)"
+     "note": "Revenue +26% YoY vs its usual \u22120.1% over the last 8 quarters (+3.8\u03c3, sets the points); Adjusted PAT (company figure) +22% vs usual +10% (+1.8\u03c3)"
     },
     {
      "part": "guidance",
@@ -883,7 +883,7 @@
     {
      "part": "numbers",
      "points": 18.0,
-     "note": "PAT \u221236% YoY vs its usual +9.2% over the last 8 quarters (-2.5\u03c3)"
+     "note": "PAT \u221236% YoY vs its usual +9.2% over the last 8 quarters (-2.5\u03c3, sets the points); Revenue +12% vs usual +10% (+0.3\u03c3)"
     },
     {
      "part": "guidance",
@@ -1085,7 +1085,7 @@
     {
      "part": "numbers",
      "points": 18.0,
-     "note": "Revenue +21% YoY vs its usual +11% over the last 8 quarters (+2.0\u03c3)"
+     "note": "Revenue +21% YoY vs its usual +11% over the last 8 quarters (+2.0\u03c3, sets the points); PAT +7.0% vs usual +22% (-1.2\u03c3)"
     },
     {
      "part": "guidance",
@@ -1287,7 +1287,7 @@
     {
      "part": "numbers",
      "points": 0.0,
-     "note": "PAT +25% YoY vs its usual +13% over the last 8 quarters (+0.4\u03c3)"
+     "note": "PAT +25% YoY vs its usual +13% over the last 8 quarters (+0.4\u03c3, sets the points); Revenue +22% vs usual +24% (-0.2\u03c3)"
     },
     {
      "part": "guidance",
@@ -1463,7 +1463,7 @@
     {
      "part": "numbers",
      "points": 18.0,
-     "note": "Revenue +5.1% YoY vs its usual +40% over the last 8 quarters (-2.5\u03c3)"
+     "note": "Revenue +5.1% YoY vs its usual +40% over the last 8 quarters (-2.5\u03c3, sets the points); PAT \u221267% vs usual +37% (-2.4\u03c3)"
     },
     {
      "part": "guidance",
@@ -1658,7 +1658,7 @@
     {
      "part": "numbers",
      "points": 0.0,
-     "note": "PAT +24% YoY vs its usual +1.0% over the last 8 quarters (+0.9\u03c3)"
+     "note": "PAT +24% YoY vs its usual +1.0% over the last 8 quarters (+0.9\u03c3, sets the points); Revenue +24% vs usual +15% (+0.5\u03c3)"
     },
     {
      "part": "guidance",
@@ -1860,7 +1860,7 @@
     {
      "part": "numbers",
      "points": 5.0,
-     "note": "PAT +29% YoY vs its usual +17% over the last 8 quarters (+1.2\u03c3)"
+     "note": "PAT +29% YoY vs its usual +17% over the last 8 quarters (+1.2\u03c3, sets the points); NII +23% vs usual +21% (+0.4\u03c3)"
     },
     {
      "part": "guidance",
@@ -2044,7 +2044,7 @@
     {
      "part": "numbers",
      "points": 5.0,
-     "note": "Revenue +15% YoY vs its usual +7.8% over the last 8 quarters (+1.0\u03c3)"
+     "note": "Revenue +15% YoY vs its usual +7.8% over the last 8 quarters (+1.0\u03c3, sets the points); PAT +16% vs usual +11% (+0.5\u03c3)"
     },
     {
      "part": "guidance",
@@ -2236,7 +2236,7 @@
     {
      "part": "numbers",
      "points": 5.0,
-     "note": "Revenue +10% YoY vs its usual +33% over the last 8 quarters (-1.2\u03c3)"
+     "note": "Revenue +10% YoY vs its usual +33% over the last 8 quarters (-1.2\u03c3, sets the points); Adjusted PAT (company figure) +54% vs usual +33% (+0.7\u03c3)"
     },
     {
      "part": "guidance",
@@ -2564,7 +2564,7 @@
     {
      "part": "numbers",
      "points": 0.0,
-     "note": "Revenue +78% YoY vs its usual +129% over the last 8 quarters (-0.8\u03c3)"
+     "note": "Revenue +78% YoY vs its usual +129% over the last 8 quarters (-0.8\u03c3, sets the points); PAT +92% vs usual +98% (-0.0\u03c3)"
     },
     {
      "part": "guidance",
@@ -2970,7 +2970,7 @@
     {
      "part": "numbers",
      "points": 0.0,
-     "note": "Revenue +11% YoY vs its usual +9.1% over the last 8 quarters (+0.3\u03c3)"
+     "note": "Revenue +11% YoY vs its usual +9.1% over the last 8 quarters (+0.3\u03c3, sets the points); PAT +6.3% vs usual +7.2% (-0.1\u03c3)"
     },
     {
      "part": "guidance",
@@ -3162,7 +3162,7 @@
     {
      "part": "numbers",
      "points": 0.0,
-     "note": "PAT +5.8% YoY vs its usual +8.5% over the last 8 quarters (-0.5\u03c3)"
+     "note": "PAT +5.8% YoY vs its usual +8.5% over the last 8 quarters (-0.5\u03c3, sets the points); NII +10% vs usual +8.6% (+0.4\u03c3)"
     },
     {
      "part": "guidance",
@@ -14464,5 +14464,427 @@
   "summaries_rejected": 0,
   "summaries_failed": 0
  },
- "llm_usage": "26 calls, 26 cached, 0 via fallback, $0.0000 est."
+ "llm_usage": "26 calls, 26 cached, 0 via fallback, $0.0000 est.",
+ "moves": [
+  {
+   "symbol": "PIDILITIND",
+   "session": "2026-11-13",
+   "close": 1525.7,
+   "ret": -0.03418,
+   "abn_ret": -0.02806,
+   "z": -2.14,
+   "vol_x": 0.93,
+   "event_id": null,
+   "spark": [
+    1465.1,
+    1464.0,
+    1487.7,
+    1520.5,
+    1488.5,
+    1460.1,
+    1482.0,
+    1477.7,
+    1497.6,
+    1499.5,
+    1505.0,
+    1502.8,
+    1482.6,
+    1484.9,
+    1481.2,
+    1487.7,
+    1478.0,
+    1450.0,
+    1389.6,
+    1422.0,
+    1461.6,
+    1488.0,
+    1510.9,
+    1510.2,
+    1553.6,
+    1579.0,
+    1587.5,
+    1574.4,
+    1579.7,
+    1525.7
+   ]
+  },
+  {
+   "symbol": "BAJFINANCE",
+   "session": "2026-11-12",
+   "close": 1115.0,
+   "ret": 0.03356,
+   "abn_ret": 0.0318,
+   "z": 2.17,
+   "vol_x": 1.21,
+   "event_id": "BAJFINANCE-202611111713-106855359",
+   "spark": [
+    973.8,
+    959.4,
+    948.3,
+    970.0,
+    963.1,
+    963.85,
+    955.95,
+    960.0,
+    957.25,
+    982.75,
+    957.0,
+    965.25,
+    982.1,
+    957.35,
+    926.0,
+    942.1,
+    928.95,
+    918.7,
+    912.0,
+    917.25,
+    938.9,
+    939.1,
+    959.4,
+    970.0,
+    994.0,
+    1070.0,
+    1087.75,
+    1064.85,
+    1078.8,
+    1115.0
+   ]
+  },
+  {
+   "symbol": "CDSL",
+   "session": "2026-11-12",
+   "close": 1455.0,
+   "ret": 0.03412,
+   "abn_ret": 0.03236,
+   "z": 1.98,
+   "vol_x": 3.27,
+   "event_id": null,
+   "spark": [
+    1261.9,
+    1264.0,
+    1242.5,
+    1250.0,
+    1263.4,
+    1275.0,
+    1258.0,
+    1260.0,
+    1266.0,
+    1292.0,
+    1284.0,
+    1293.0,
+    1286.9,
+    1270.0,
+    1237.2,
+    1225.0,
+    1188.5,
+    1196.0,
+    1222.0,
+    1232.0,
+    1282.0,
+    1263.0,
+    1252.0,
+    1320.0,
+    1323.8,
+    1334.0,
+    1331.4,
+    1356.0,
+    1407.0,
+    1455.0
+   ]
+  },
+  {
+   "symbol": "HAL",
+   "session": "2026-11-12",
+   "close": 4843.4,
+   "ret": -0.02134,
+   "abn_ret": -0.02309,
+   "z": -1.48,
+   "vol_x": 3.26,
+   "event_id": "HAL-202611121330-106856505",
+   "spark": [
+    4549.3,
+    4668.0,
+    4601.0,
+    4680.0,
+    4816.0,
+    4746.3,
+    4647.4,
+    4655.6,
+    4760.0,
+    4869.0,
+    4933.0,
+    4910.0,
+    4989.0,
+    4959.0,
+    4854.4,
+    4875.0,
+    4725.0,
+    4775.0,
+    4855.0,
+    4850.0,
+    4869.9,
+    4853.7,
+    4855.0,
+    4958.6,
+    5079.1,
+    5043.0,
+    4980.0,
+    4999.0,
+    4949.0,
+    4843.4
+   ]
+  },
+  {
+   "symbol": "TATAPOWER",
+   "session": "2026-11-12",
+   "close": 357.0,
+   "ret": -0.00833,
+   "abn_ret": -0.01009,
+   "z": -0.67,
+   "vol_x": 3.73,
+   "event_id": "TATAPOWER-202611111720-106855371",
+   "spark": [
+    359.0,
+    359.0,
+    350.15,
+    351.5,
+    351.65,
+    345.15,
+    335.65,
+    342.15,
+    343.7,
+    345.0,
+    353.0,
+    349.8,
+    353.85,
+    352.25,
+    352.0,
+    353.5,
+    348.1,
+    338.5,
+    339.1,
+    335.0,
+    344.55,
+    345.05,
+    355.9,
+    356.55,
+    360.0,
+    364.55,
+    352.5,
+    360.0,
+    360.0,
+    357.0
+   ]
+  },
+  {
+   "symbol": "CDSL",
+   "session": "2026-11-11",
+   "close": 1407.0,
+   "ret": 0.03761,
+   "abn_ret": 0.02921,
+   "z": 1.84,
+   "vol_x": 3.28,
+   "event_id": null,
+   "spark": [
+    1289.0,
+    1261.9,
+    1264.0,
+    1242.5,
+    1250.0,
+    1263.4,
+    1275.0,
+    1258.0,
+    1260.0,
+    1266.0,
+    1292.0,
+    1284.0,
+    1293.0,
+    1286.9,
+    1270.0,
+    1237.2,
+    1225.0,
+    1188.5,
+    1196.0,
+    1222.0,
+    1232.0,
+    1282.0,
+    1263.0,
+    1252.0,
+    1320.0,
+    1323.8,
+    1334.0,
+    1331.4,
+    1356.0,
+    1407.0
+   ]
+  },
+  {
+   "symbol": "SUNPHARMA",
+   "session": "2026-11-09",
+   "close": 1904.5,
+   "ret": 0.02392,
+   "abn_ret": 0.02335,
+   "z": 2.12,
+   "vol_x": 1.48,
+   "event_id": null,
+   "spark": [
+    1852.2,
+    1838.0,
+    1865.0,
+    1816.6,
+    1801.0,
+    1779.7,
+    1804.1,
+    1781.0,
+    1759.8,
+    1760.0,
+    1760.0,
+    1770.7,
+    1746.4,
+    1764.0,
+    1758.8,
+    1743.0,
+    1745.1,
+    1758.0,
+    1748.0,
+    1740.0,
+    1751.2,
+    1757.5,
+    1761.0,
+    1777.7,
+    1770.0,
+    1769.9,
+    1773.4,
+    1829.0,
+    1860.0,
+    1904.5
+   ]
+  },
+  {
+   "symbol": "TATAPOWER",
+   "session": "2026-11-06",
+   "close": 352.5,
+   "ret": -0.03305,
+   "abn_ret": -0.05318,
+   "z": -4.0,
+   "vol_x": 2.33,
+   "event_id": null,
+   "spark": [
+    363.45,
+    367.5,
+    361.9,
+    359.0,
+    359.0,
+    350.15,
+    351.5,
+    351.65,
+    345.15,
+    335.65,
+    342.15,
+    343.7,
+    345.0,
+    353.0,
+    349.8,
+    353.85,
+    352.25,
+    352.0,
+    353.5,
+    348.1,
+    338.5,
+    339.1,
+    335.0,
+    344.55,
+    345.05,
+    355.9,
+    356.55,
+    360.0,
+    364.55,
+    352.5
+   ]
+  },
+  {
+   "symbol": "HAL",
+   "session": "2026-11-06",
+   "close": 4980.0,
+   "ret": -0.01249,
+   "abn_ret": -0.03262,
+   "z": -2.17,
+   "vol_x": 1.6,
+   "event_id": null,
+   "spark": [
+    4774.2,
+    4800.0,
+    4738.0,
+    4549.3,
+    4668.0,
+    4601.0,
+    4680.0,
+    4816.0,
+    4746.3,
+    4647.4,
+    4655.6,
+    4760.0,
+    4869.0,
+    4933.0,
+    4910.0,
+    4989.0,
+    4959.0,
+    4854.4,
+    4875.0,
+    4725.0,
+    4775.0,
+    4855.0,
+    4850.0,
+    4869.9,
+    4853.7,
+    4855.0,
+    4958.6,
+    5079.1,
+    5043.0,
+    4980.0
+   ]
+  },
+  {
+   "symbol": "TITAN",
+   "session": "2026-11-06",
+   "close": 5000.0,
+   "ret": 0.03421,
+   "abn_ret": 0.01409,
+   "z": 1.3,
+   "vol_x": 5.55,
+   "event_id": "TITAN-202611051650-106847532",
+   "spark": [
+    4832.5,
+    4884.0,
+    4819.5,
+    4675.0,
+    4587.0,
+    4515.7,
+    4580.0,
+    4550.0,
+    4377.0,
+    4359.5,
+    4410.0,
+    4400.0,
+    4487.0,
+    4444.0,
+    4455.8,
+    4444.8,
+    4424.2,
+    4380.9,
+    4350.0,
+    4299.7,
+    4323.0,
+    4365.9,
+    4337.9,
+    4434.0,
+    4436.5,
+    4476.3,
+    4562.0,
+    4754.4,
+    4834.6,
+    5000.0
+   ]
+  }
+ ]
 }

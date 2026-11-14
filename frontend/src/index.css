@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Swiss ledger. Pure white paper, near-black ink, one signal colour (vermilion, only
+   for "needs you"), green/red strictly for up/down. Dark mode is the same system
+   inverted: every colour is a token, nothing is hand-tuned per component. */
+:root {
+  --paper: 255 255 255;
+  --ink: 17 17 17;
+  --sub: 88 88 92;
+  --faint: 140 140 146;
+  --rule: 228 228 231;
+  --wash: 246 246 247;
+  --signal: 226 61 30;
+  --up: 0 128 72;
+  --down: 204 32 39;
+  color-scheme: light;
+}
+.dark {
+  --paper: 11 11 12;
+  --ink: 238 238 240;
+  --sub: 165 165 172;
+  --faint: 112 112 120;
+  --rule: 40 40 44;
+  --wash: 22 22 25;
+  --signal: 255 94 64;
+  --up: 64 201 128;
+  --down: 255 102 102;
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: rgb(var(--paper));
+  color: rgb(var(--ink));
+}
+body {
+  font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  font-feature-settings: "ss01", "cv11";
+}
+
+@layer utilities {
+  /* every number: tabular mono, so columns align on the decimal */
+  .num {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum", "zero" 0;
+    letter-spacing: -0.01em;
+  }
+  .hair {
+    border-color: rgb(var(--rule));
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .kicker {
+    font-size: 10.5px;
+    line-height: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+  }
+}

@@ -10,7 +10,7 @@ from pathlib import Path
 from .. import config
 from ..classify.classifier import classify
 from ..http import Fetcher
-from ..models import (BriefSnapshot, Event, FilingRef, FilingsSnapshot, LadderStats, PricesSnapshot,
+from ..models import (BriefSnapshot, Event, FilingRef, FilingsSnapshot, LadderStats, Move, PricesSnapshot,
                       ResultsFilingRef)
 from .events import fold
 from .. import llm
@@ -18,7 +18,7 @@ from ..cards import mgmt as mgmt_cards
 from ..cards.oneoffs import detect as detect_oneoffs
 from ..cards.results import apply_one_offs, build_card, surprise
 from ..cards.summaries import summarise
-from .score import guidance_part, numbers_part, score, tier_for, ttm_revenue
+from .score import guidance_part, numbers_part, reaction, score, tier_for, ttm_revenue
 
 log = logging.getLogger("finn.brief")
 TIER_ORDER = {"needs_you": 0, "glance": 1, "set_aside": 2}
@@ -135,6 +135,24 @@ def build(use_llm: bool = True) -> BriefSnapshot:
     # still order by how much evidence each has.
     events.sort(key=lambda e: (TIER_ORDER[e.tier], -sum(p.points for p in e.breakdown), -e.occurred_at.timestamp()))
 
+    # Unusual moves in the last 5 sessions, whether or not a filing explains them.
+    owners = {(e.symbol, e.reaction.session): e.id for e in events if e.reaction and
+              any(p.part == "reaction" and p.points for p in e.breakdown)}
+    moves: list[Move] = []
+    for sym in filings.symbols:
+        ps = series.get(sym)
+        if not ps or len(ps.close) < 70:
+            continue
+        for i in range(len(ps.close) - 5, len(ps.close)):
+            r, _ = reaction(ps, nifty, datetime.combine(ps.dates[i], datetime.min.time()))
+            if not r or r.session != ps.dates[i]:
+                continue
+            if (r.z is not None and abs(r.z) >= 2) or (r.vol_x or 0) >= 2.5:
+                moves.append(Move(symbol=sym, session=r.session, close=round(ps.close[i], 2), ret=r.ret,
+                                  abn_ret=r.abn_ret, z=r.z, vol_x=r.vol_x, event_id=owners.get((sym, r.session)),
+                                  spark=[round(c, 2) for c in ps.close[max(0, i - 29):i + 1]]))
+    moves.sort(key=lambda m: (m.session, abs(m.z or 0)), reverse=True)
+
     n = len(classified)
     untouched = sum(1 for c in classified if c.classified_by != "llm")
     tiers = {t: sum(1 for e in events if e.tier == t) for t in TIER_ORDER}
@@ -154,7 +172,7 @@ def build(use_llm: bool = True) -> BriefSnapshot:
                "mgmt": sum(1 for e in events if e.mgmt_card),
                "mgmt_llm": sum(1 for e in events if e.mgmt_card and e.mgmt_card.extracted_by.startswith(("gemini", "groq"))),
                **{f"summaries_{k}": v for k, v in sstats.items()}},
-        llm_usage=llm.USAGE.line(),
+        llm_usage=llm.USAGE.line(), moves=moves,
     )
 
 

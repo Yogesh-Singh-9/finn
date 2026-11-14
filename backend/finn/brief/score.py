@@ -77,10 +77,15 @@ def numbers_part(card: ResultsCard | None, surprises: list[tuple[str, float, flo
         return ScorePart(part="numbers", points=0, note="no results card (numbers not available)")
     if not surprises:
         return ScorePart(part="numbers", points=0, note=f"{card.headline}; too little history to judge")
-    label, yoy, z, mean, _sd = max(surprises, key=lambda t: abs(t[2]))
+    ranked = sorted(surprises, key=lambda t: -abs(t[2]))
+    label, yoy, z, mean, _sd = ranked[0]
     az = abs(z)
     pts = 25 if az >= 3 else 18 if az >= 2 else 10 if az >= 1.5 else 5 if az >= 1 else 0
-    note = f"{label} {_pct(yoy)} YoY vs its usual {_pct(mean)} over the last 8 quarters ({z:+.1f}σ)"
+    # Name the metric that set the points, then the others, so an adjusted PAT
+    # (company figure) is always visible even when revenue was the bigger surprise.
+    note = f"{label} {_pct(yoy)} YoY vs its usual {_pct(mean)} over the last 8 quarters ({z:+.1f}σ, sets the points)"
+    for l2, y2, z2, m2, _ in ranked[1:]:
+        note += f"; {l2} {_pct(y2)} vs usual {_pct(m2)} ({z2:+.1f}σ)"
     pat = next((m for m in card.metrics if m.key == "pat"), None)
     if pat and pat.value is not None and pat.prev_y is not None and pat.prev_y > 0 > pat.value:
         pts, note = 25, note + "; swung to a loss"

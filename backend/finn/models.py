@@ -333,6 +333,19 @@ class LadderStats(BaseModel):
     llm_status: str
 
 
+class Move(BaseModel):
+    """An unusual EOD session for a holding: |abnormal z| >= 2 or volume >= 2.5x."""
+    symbol: str
+    session: date
+    close: float
+    ret: float                    # fraction
+    abn_ret: float                # vs NIFTY
+    z: float | None
+    vol_x: float | None
+    event_id: str | None = None   # the filing event that owns this session, if any
+    spark: list[float] = Field(default_factory=list)   # last 30 closes
+
+
 class BriefSnapshot(BaseModel):
     generated_at: datetime
     window_from: date
@@ -344,3 +357,4 @@ class BriefSnapshot(BaseModel):
     ladder: LadderStats
     cards: dict[str, int] = Field(default_factory=dict)   # results / mgmt cards, summaries
     llm_usage: str | None = None                          # "6 calls, 4 cached, ... $0.00x est."
+    moves: list[Move] = Field(default_factory=list)       # unusual sessions, last 5, newest first
