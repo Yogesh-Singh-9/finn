@@ -151,7 +151,7 @@ Tier = Literal["needs_you", "glance", "set_aside"]
 
 
 class ScorePart(BaseModel):
-    part: Literal["category", "subtype", "uncertain", "amount", "reaction", "thesis"]
+    part: Literal["category", "subtype", "uncertain", "amount", "numbers", "guidance", "reaction", "thesis"]
     points: float
     note: str
 
@@ -181,6 +181,124 @@ class FilingRef(BaseModel):
     url: str | None
 
 
+# ---------------------------------------------------------------- cards (phase 3)
+class Metric(BaseModel):
+    """One P&L line on a results card. Growth is None when there is no comparable base,
+    and `note` says why (n/a for lenders, loss base, mixed sources, ...)."""
+    key: str                      # revenue | ebitda | pbt | pat | nii | ppop
+    label: str                    # "EBITDA (screener)"
+    value: float | None           # INR crore
+    prev_q: float | None = None
+    prev_y: float | None = None
+    qoq: float | None = None      # fraction
+    yoy: float | None = None
+    source: str | None = None     # "screener" | "NSE XBRL"
+    note: str | None = None
+
+
+class Margin(BaseModel):
+    key: str                      # ebitda_margin | pat_margin | nii_margin
+    label: str
+    value: float | None           # fraction
+    prev_q: float | None = None
+    prev_y: float | None = None
+    qoq_bps: float | None = None
+    yoy_bps: float | None = None
+
+
+class Check(BaseModel):
+    """Arithmetic identity on the reported numbers, e.g. PBT - tax = PAT."""
+    name: str
+    expected: float
+    actual: float
+    tolerance: float
+    ok: bool
+
+
+class GuidedDelivered(BaseModel):
+    """Phase 6: 'guided X last call -> delivered Y'. Graded in Python."""
+    metric: str
+    guided: str                   # as said on the call
+    delivered: str
+    grade: Literal["exceeded", "met", "missed", "revised", "pending"]
+    source: dict[str, str] = Field(default_factory=dict)   # doc_id, page|section, quote
+
+
+class OneOff(BaseModel):
+    """A one-off the filing itself names (exceptional line, or 'excluding ... ₹X crore')."""
+    description: str
+    amount_cr: float
+    affects: Literal["profit", "revenue", "both", "unclear"] = "unclear"
+    effect: Literal["gain", "charge", "unclear"] = "unclear"   # gain = lifts reported profit
+    quote: str
+    source: str                   # filing URL, or "NSE XBRL"
+    verified: bool                # quote + amount found verbatim in the source
+
+
+class AdjustedMetric(BaseModel):
+    """A figure the company itself states excluding one-offs. Growth computed in Python."""
+    key: str                      # pbt | pat | ebitda | revenue
+    label: str
+    value: float
+    prev_y: float | None
+    prev_y_source: Literal["company", "screener"]
+    yoy: float | None
+    quote: str
+    source: str
+
+
+class ResultsCard(BaseModel):
+    symbol: str
+    period_key: str               # FY27Q2
+    period_label: str             # Q2 FY27
+    basis: Literal["consolidated", "standalone"]
+    layout: Literal["standard", "bank"]
+    source: Literal["screener", "NSE XBRL"]
+    source_note: str
+    headline: str                 # built in code from the numbers
+    metrics: list[Metric]
+    margins: list[Margin]
+    checks: list[Check]
+    verified: bool
+    status: str                   # "verified" | "unverified, open filing"
+    filing_url: str | None = None
+    xbrl_url: str | None = None
+    guidance: list[GuidedDelivered] = Field(default_factory=list)
+    guidance_note: str = "guided vs delivered from the last call: phase 6"
+    one_offs: list[OneOff] = Field(default_factory=list)
+    adjusted: list[AdjustedMetric] = Field(default_factory=list)
+    reported_headline: str | None = None  # the as-reported sentence when a one-off changed the headline
+    one_offs_by: str | None = None
+
+
+class PriorRole(BaseModel):
+    org: str
+    role: str | None = None
+    quote: str                    # sentence from the filing it came from
+
+
+class PersonChange(BaseModel):
+    name: str
+    role: str | None
+    change: Literal["appointed", "resigned", "retired", "ceased", "re-appointed", "redesignated", "other"]
+    effective: str | None         # as written in the filing
+    reason: str | None = None
+    background: str | None = None # one line from the profile, verbatim-checked
+    prior_roles: list[PriorRole] = Field(default_factory=list)
+    dropped: list[str] = Field(default_factory=list)   # employers the model offered but the text lacks
+    linkedin_search: str
+    source: dict[str, str] = Field(default_factory=dict)
+
+
+class MgmtCard(BaseModel):
+    symbol: str
+    headline: str
+    people: list[PersonChange]
+    short: str | None = None      # phone form: "Chairman: Noel Tata → Bahram Vakil"
+    extracted_by: str             # "gemini:gemini-3.5-flash-lite" | "regex (LLM unavailable)"
+    filing_urls: list[str]
+
+
 class Event(BaseModel):
     id: str
     symbol: str
@@ -198,6 +316,10 @@ class Event(BaseModel):
     score: float
     breakdown: list[ScorePart]
     tier: Tier
+    summary: str | None = None            # one line for raw cover-letter titles (flash-lite)
+    summary_by: str | None = None
+    results_card: ResultsCard | None = None
+    mgmt_card: MgmtCard | None = None
 
 
 class LadderStats(BaseModel):
@@ -220,3 +342,5 @@ class BriefSnapshot(BaseModel):
     events: list[Event]
     tiers: dict[str, int]
     ladder: LadderStats
+    cards: dict[str, int] = Field(default_factory=dict)   # results / mgmt cards, summaries
+    llm_usage: str | None = None                          # "6 calls, 4 cached, ... $0.00x est."

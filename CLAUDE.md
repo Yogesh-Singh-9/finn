@@ -27,15 +27,14 @@ data/
 6. **Secrets live only in `backend/.env`**, never in the frontend bundle or in git.
 
 ## Model routing (free tiers)
-| Step | Model |
-|---|---|
-| Classify filings, rank | **Rules / regex first**; the LLM only gets what rules can't place |
-| Bulk extraction (leftover classification, results tables if XBRL fails, bios, guidance statements from transcripts) | `gemini-flash-lite` |
-| Reasoning (qualitative promise judgments, bull/bear, concall questions, Morning Call script) | `gemini-flash` |
-| Fallback when Gemini rate-limits or errors | Groq |
-
+Two tiers, each an ordered fallback chain set in `backend/.env` (swap models without code; `finn/llm.py`):
+- `FINN_LLM_CHEAP=gemini-3.5-flash-lite,groq:llama-3.3-70b-versatile`: rules-leftover classification, mgmt-card extraction, one-line summaries, transcript guidance extraction.
+- `FINN_LLM_STRONG=gemini-3.8-flash,gemini-3.6-flash,gemini-3.5-flash,groq:llama-3.3-70b-versatile`: qualitative promise judgments, bull/bear, concall questions, Morning Call script.
+- The 2.5 models return 404 for new keys. The strong models often time out or 503 ("high demand"), which is why the chain exists.
+- Each link gets `FINN_LLM_TIMEOUT_S` (45s) plus one backoff retry on 429/5xx. A link that fails twice is skipped for the rest of the process (circuit breaker). Links without a key are skipped.
+- Rules / regex always run first; the LLM only gets what rules can't place.
+- **Honest cache:** the key is `sha256(provider:model | prompt_version | system | user)` of the model that *actually answered*. A link's cache is read only after every link above it has failed live (or is breaker-open), so a fallback answer is never served as the primary's. Failed or invalid answers are never written. Bump `PROMPT_VERSION` when a prompt changes.
 - Use structured JSON output with a schema for every extraction call, and validate it with Pydantic.
-- Cache key: `sha256(model + prompt_version + input)` stored in `data/llm_cache/`. Never call the same thing twice.
 - Log every call (model, tokens in/out, cached?, est. cost). Research output carries a cost line ("6 calls, 4 cached, $0.00x").
 - Chunk documents before they reach a model. Send relevant sections (MD&A, guidance Q&A), never whole PDFs.
 
@@ -74,7 +73,7 @@ data/
 - **Management subtypes:** read the role from the "as <role>" phrase, cut bios/annexures, and don't split sentences on "Mr." or on initials. A business-unit "CEO (Helicopter Complex)" is senior management. A Deputy MD is an executive director. A list of KMPs "authorised to determine materiality" is routine compliance, not a change.
 - **Order-size bands** (L&T style "(Major*)" plus a "Value in ₹ Cr" footnote table) → the band's lower bound, labelled as such.
 - **Folding** (`brief/events.py`):
-  - exact duplicates
+  - duplicates: same text in the same minute, or the same attachment (byte size) filed twice the same day under two subjects; keep the better-classified copy (management filings are exempt, the minute fold handles them)
   - **results day:** the outcome plus same-day deck, results press release, call notice and dividend, on symbol + date
   - **management:** same symbol + same minute; the dominant subtype goes by `MGMT_RANK`
   - **storylines:** same symbol + category + subtype within 7 days (QIP, IPO, NCLAT case); untyped pieces join the nearest chain
@@ -83,14 +82,38 @@ data/
   - subtype adjustment
   - uncertain +25
   - ₹ amount ÷ TTM revenue (screener)
+  - **numbers** (results only): YoY revenue/NII and PAT growth vs the company's own last 8 YoY growths, in σ (σ floored at 5pp). ≥3σ +25, ≥2σ +18, ≥1.5σ +10, ≥1σ +5. A PAT fall of ≥20% gets at least +18, and a swing to a loss gets +25.
+  - **guidance** (results only): 0 until phase 6 (miss vs last call's guidance)
   - next-session reaction: abnormal return vs NIFTY in σ of 60 sessions, plus volume vs the 20-day average
   - thesis hook (0 until phase 7)
 - **Score rules:**
   - **One price move, one owner:** when events share a reaction session, results own it, otherwise the most material event does, and the others carry a note.
   - The reaction isn't credited to routine paperwork.
-  - Tiers: needs_you ≥ 60, glance ≥ 20, set_aside below that.
+  - Tiers: needs_you ≥ 60, glance ≥ 20, set_aside below that. The displayed score caps at 100; ranking uses the uncapped sum.
 - `brief.json` carries every event's `breakdown` and a `ladder` block (counts per step, PDFs read, LLM calls, **filings that never touched a model**).
 - Regression case: TRENT 29 Oct 16:32. Four filings → one event "Chairman exit: Noel N Tata · +3 more board changes". The chairman retirement outranks the two director appointments, and the results own the session reaction.
+
+## Cards (phase 3): `finn/cards/`
+- **Results card** (`results.py`), on every results event:
+  - Revenue, EBITDA (screener), PBT and PAT, each with QoQ/YoY, plus margins in bps. All arithmetic is in Python.
+  - Screener when it has the quarter. NSE XBRL fills the current column only when screener lags; then EBITDA/PBT carry no growth (definitions differ), and revenue/PAT growth is labelled "current from NSE XBRL, bases from screener".
+  - Checks: sales − expenses = EBITDA; EBITDA + OI − interest − dep = PBT; PBT × (1 − tax%) = PAT (XBRL: income − expenses = PBT; PBT − tax + JV + discontinued = PAT). Any failure → status "unverified, open filing".
+  - Banks/NBFCs: NII = interest earned − interest expended. PPOP comes only from the bank XBRL (current quarter, no base), else n/a with the reason. EBITDA is n/a.
+  - The headline is built in code ("Revenue +10% YoY, EBITDA margin +446 bps, PAT +114%"). `guidance` stays empty until phase 6.
+- **One-offs** (`oneoffs.py`), on every results card:
+  - Sources: the XBRL `ExceptionalItemsBeforeTax` line, plus "excluding / non-operational / one-time … ₹X crore" passages in the outcome PDF, press release and deck.
+  - Rules pick out the passages and flash-lite names each one-off (amount, gain/charge, quote). Python checks the quote and amount verbatim (OCR-tolerant) and drops duty, price and tax effects.
+  - **The company's adjusted figure is found by rules:** a number on a PBT/PAT line of the company's own text that equals reported − one-off (tolerance: the tighter of 1.5% and 30% of the one-off).
+  - When one is found, the headline and the numbers score use it, labelled "company figure", with the reported figure shown beside it. Otherwise the headline says "(incl. ₹X cr one-off gain/charge)".
+  - Test case: TITAN Q2 FY27. The ₹671 cr Ind-AS credit; adjusted PAT 1,722 vs 1,120 is +54% (reported +114%).
+- **Management card** (`mgmt.py`):
+  - `short` is the phone headline, built in code. A succession reads "Chairman: Noel Tata → Bahram Vakil · +2 more"; otherwise it shows the most senior change.
+  - Reads the filing PDF(s), ≤8 pages including the Reg 30 annexure/profiles. flash-lite extracts person, role, change, effective date, reason, background and prior roles.
+  - Python keeps only what appears verbatim in the text. Missing employers go to `dropped`, and a paraphrased quote is replaced by the real sentence.
+  - If the model finds nobody (a correction letter), the card says "no change of position" instead of guessing.
+  - LinkedIn people-search link only.
+- **Summaries** (`summaries.py`): one line, flash-lite, batched 20, for needs_you/glance events whose title is a raw cover-letter line. Results and management are excluded; management uses the card headline. A summary carrying a number not found in its source is rejected.
+- Snapshots are written as UTF-8 **and** ASCII-escaped, so they load under any reader encoding. Every file read/write passes `encoding="utf-8"`, and scripts reconfigure stdout.
 
 ## Running the data refresh
 From `backend/`: `.venv/Scripts/python scripts/refresh.py` (all sources, ~1 min). Add `--only nse|prices|screener` or `--symbols A,B` for partial runs. A partial run merges into the existing files, and a source that fails keeps the last good data. Output goes to `data/processed/` (filings.json, prices.json, calendar.json, results/<SYM>.json, fundamentals/<SYM>.json, manifest.json with every source status and any redirect seen).

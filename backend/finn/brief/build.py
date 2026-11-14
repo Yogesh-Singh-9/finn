@@ -13,7 +13,12 @@ from ..http import Fetcher
 from ..models import (BriefSnapshot, Event, FilingRef, FilingsSnapshot, LadderStats, PricesSnapshot,
                       ResultsFilingRef)
 from .events import fold
-from .score import score, tier_for, ttm_revenue
+from .. import llm
+from ..cards import mgmt as mgmt_cards
+from ..cards.oneoffs import detect as detect_oneoffs
+from ..cards.results import apply_one_offs, build_card, surprise
+from ..cards.summaries import summarise
+from .score import guidance_part, numbers_part, score, tier_for, ttm_revenue
 
 log = logging.getLogger("finn.brief")
 TIER_ORDER = {"needs_you": 0, "glance": 1, "set_aside": 2}
@@ -27,6 +32,7 @@ def _load(path: Path):
 
 
 def build(use_llm: bool = True) -> BriefSnapshot:
+    llm.reset_usage()
     P = config.PROCESSED_DIR
     filings = FilingsSnapshot.model_validate_json((P / "filings.json").read_text(encoding="utf-8"))
     prices_raw = _load(P / "prices.json")
@@ -35,17 +41,45 @@ def build(use_llm: bool = True) -> BriefSnapshot:
     nifty = series.get(config.BENCHMARK)
 
     refs: dict[str, list[ResultsFilingRef]] = {}
+    xbrl: dict[str, dict] = {}
     for sym in filings.symbols:
         r = _load(P / "results" / f"{sym}.json")
         if r:
             refs[sym] = [ResultsFilingRef.model_validate(x) for x in r.get("filings", [])]
-    revenue = {sym: ttm_revenue(_load(P / "fundamentals" / f"{sym}.json")) for sym in filings.symbols}
+            if r.get("latest_xbrl"):
+                xbrl[sym] = r["latest_xbrl"]
+    fund = {sym: _load(P / "fundamentals" / f"{sym}.json") for sym in filings.symbols}
+    revenue = {sym: ttm_revenue(fund[sym]) for sym in filings.symbols}
 
     with Fetcher() as f:
         classified, cstats = classify(filings.filings, f, use_llm=use_llm)
 
     drafts = fold(classified, refs)
-    scored = [(d, *score(d, revenue.get(d.symbol), series.get(d.symbol), nifty)) for d in drafts]
+    cards = {}
+    for i, d in enumerate(drafts):
+        if (d.category, d.subtype) == ("results", "outcome") and d.results_ref and d.results_ref.period_key:
+            outcome = next((x for x in d.filings if (x.category, x.subtype) == ("results", "outcome")), d.filings[0])
+            c = build_card(d.symbol, d.results_ref.period_key, fund.get(d.symbol), xbrl.get(d.symbol),
+                           filing_url=outcome.attachment_url)
+            if c:
+                # One-offs: the outcome PDF + same-day press release / deck / letter.
+                urls = [x.attachment_url for x in d.filings if x.attachment_url and x.category in
+                        ("results", "investor_meetings")]
+                xq = (xbrl.get(d.symbol) or {})
+                with Fetcher() as f:
+                    o, adj, by = detect_oneoffs(
+                        urls, xq.get("quarter") if xq.get("period_key") == c.period_key else None,
+                        {m.key: m.value for m in c.metrics}, {m.key: m.prev_y for m in c.metrics}, f,
+                        use_llm=use_llm)
+                c = apply_one_offs(c, o, adj, by)
+            cards[i] = c
+    scored = []
+    for i, d in enumerate(drafts):
+        extra = None
+        if (d.category, d.subtype) == ("results", "outcome"):
+            c = cards.get(i)
+            extra = [numbers_part(c, surprise(c, fund.get(d.symbol)) if c else []), guidance_part()]
+        scored.append((d, *score(d, revenue.get(d.symbol), series.get(d.symbol), nifty, results_parts=extra)))
 
     # One price move, one owner: when several events of a symbol share a reaction
     # session, only the most material one (category + subtype points) is credited.
@@ -72,7 +106,7 @@ def build(use_llm: bool = True) -> BriefSnapshot:
             scored[i] = (d, max(0.0, min(100.0, sum(p.points for p in parts))), parts, react, pending)
 
     events: list[Event] = []
-    for d, total, parts, react, pending in scored:
+    for i, (d, total, parts, react, pending) in enumerate(scored):
         amount, _ = d.amount
         events.append(Event(
             id=f"{d.symbol}-{d.occurred_at:%Y%m%d%H%M}-{d.filings[0].id}",
@@ -84,8 +118,22 @@ def build(use_llm: bool = True) -> BriefSnapshot:
             people=d.people, amount_cr=amount, reaction=react, reaction_pending=pending,
             results_ref=d.results_ref, score=round(total, 1), breakdown=parts,
             tier=tier_for(total),  # type: ignore[arg-type]
+            results_card=cards.get(i),
         ))
-    events.sort(key=lambda e: (TIER_ORDER[e.tier], -e.score, -e.occurred_at.timestamp()))
+    # Cards and summaries don't change the score; they're what the feed shows.
+    with Fetcher() as f:
+        for e in events:
+            if e.category == "management_change":
+                e.mgmt_card = mgmt_cards.build_card(e.symbol, e.company, [(x.url, x.subtype) for x in e.filings],
+                                                    e.people, f, use_llm=use_llm)
+                if e.mgmt_card:
+                    e.mgmt_card.short = mgmt_cards.short_headline(e.mgmt_card)
+                    e.summary, e.summary_by = e.mgmt_card.headline, f"mgmt card ({e.mgmt_card.extracted_by})"
+        sstats = summarise(events, f, use_llm=use_llm)
+
+    # Displayed score caps at 100; ranking uses the uncapped sum so two capped events
+    # still order by how much evidence each has.
+    events.sort(key=lambda e: (TIER_ORDER[e.tier], -sum(p.points for p in e.breakdown), -e.occurred_at.timestamp()))
 
     n = len(classified)
     untouched = sum(1 for c in classified if c.classified_by != "llm")
@@ -100,11 +148,20 @@ def build(use_llm: bool = True) -> BriefSnapshot:
                            never_touched_model=untouched,
                            never_touched_model_pct=round(untouched / n, 4) if n else 1.0,
                            llm_status=cstats.llm_status),
+        cards={"results": sum(1 for e in events if e.results_card),
+               "results_unverified": sum(1 for e in events if e.results_card and not e.results_card.verified),
+               "results_one_offs": sum(1 for e in events if e.results_card and e.results_card.one_offs),
+               "mgmt": sum(1 for e in events if e.mgmt_card),
+               "mgmt_llm": sum(1 for e in events if e.mgmt_card and e.mgmt_card.extracted_by.startswith(("gemini", "groq"))),
+               **{f"summaries_{k}": v for k, v in sstats.items()}},
+        llm_usage=llm.USAGE.line(),
     )
 
 
 def write(snapshot: BriefSnapshot) -> Path:
     out = config.SNAPSHOT_DIR / "brief.json"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(snapshot.model_dump_json(indent=1), encoding="utf-8")
+    # UTF-8 on disk, and ASCII-escaped (₹ -> ₹) so the file loads even in a reader
+    # that ignores the encoding (Windows' cp1252 default).
+    out.write_text(json.dumps(snapshot.model_dump(mode="json"), indent=1, ensure_ascii=True), encoding="utf-8")
     return out

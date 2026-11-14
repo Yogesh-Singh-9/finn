@@ -25,7 +25,7 @@ from .taxonomy import (CATEGORIES, GENERIC_SUBJECTS, NEEDS_AMOUNT, NEEDS_AMOUNT_
                        OVERRIDES, RULES, SUBJECT_MAP, mgmt_detail, people_in, subtype_for)
 
 log = logging.getLogger("finn.classify")
-PROMPT_VERSION = "cls-v1"
+PROMPT_VERSION = "cls-v2"
 BATCH = 20
 
 _BOILER = re.compile(
@@ -92,6 +92,8 @@ _SYSTEM = (
     "Categories: results, M&A, fund_raise, management_change, litigation, insider_trading, earnings_call, "
     "investor_meetings, credit_rating, dividend, bonus_split, capex, press_release, postal_ballot, agm_egm, "
     "pledging, unclassified (routine paperwork). subtype: a short snake_case label or null. "
+    "Committee outcomes approving an issue, allotment, floor price or debt securities are fund_raise. "
+    "Appointment or exit of directors, KMPs or senior management personnel is management_change. "
     "material=false only if you are confident it is routine paperwork; if unsure, material=true. "
     "Return {\"items\": [...]} with one item per input id."
 )
@@ -198,7 +200,7 @@ def classify(filings: list[Filing], fetcher: Fetcher, use_llm: bool = True) -> t
                 chunk = leftovers[i:i + BATCH]
                 user = "\n".join(f"id={out[idx].id} :: {txt[:900]}" for idx, txt in chunk)
                 try:
-                    items = llm.json_call(tier="lite", purpose="classify_leftovers", prompt_version=PROMPT_VERSION,
+                    items = llm.json_call(tier="cheap", purpose="classify_leftovers", prompt_version=PROMPT_VERSION,
                                           system=_SYSTEM, user=user, schema=_SCHEMA,
                                           result_type=list[_LLMItem], unwrap="items")
                     batches += 1

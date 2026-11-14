@@ -45,6 +45,8 @@ def first_pages_text(f: Fetcher, url: str | None, pages: int = 2, max_chars: int
         log.info("pdf parse failed %s: %s", url, e)
         return None
     text = re.sub(r"[ \t]+", " ", text).strip()
+    text = re.sub(r"‹\s?(?=\d)", "₹", text)  # rupee glyph mis-mapped by some PDF fonts
+    text = re.sub(r"'[{f](?=[\d,])|\bf(?=\d[\d,]*\s*crores?)", "₹", text)  # OCR'd rupee: '{671, 'f536
     return text[:max_chars] or None  # scanned PDFs yield "" -> None
 
 

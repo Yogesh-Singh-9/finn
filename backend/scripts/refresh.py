@@ -122,6 +122,7 @@ def refresh_screener(f: Fetcher, symbols: list[str], status: list[SourceStatus])
 
 
 def main() -> int:
+    sys.stdout.reconfigure(encoding="utf-8")  # Windows consoles default to cp1252
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=int, default=config.SNAPSHOT_DAYS)
     ap.add_argument("--symbols", help="comma list; default = portfolio")

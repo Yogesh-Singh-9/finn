@@ -106,13 +106,15 @@ RULES: list[tuple[str, str | None, re.Pattern[str]]] = [
     ("unclassified", "compliance", _R(r"determine materiality|regulation 30\s*\(5\)")),
     # management: an action word near a role, or NSE's own phrasing. Bare "Board of
     # Directors" must not match (it appears in almost every outcome letter).
-    ("management_change", None, _R(r"(appoint|re-?appoint|resign|retire|cessation|ceas)\w*.{0,80}(director|chair|\bceo\b|\bcfo\b|officer|\bkmp\b|\bsmp\b|secretary|president)"
+    ("management_change", None, _R(r"(appoint|re-?appoint|resign|retire|cessation|ceas)\w*.{0,80}(director|chair|\bceo\b|\bcfo\b|officer|\bkmp\b|\bsmp\b|secretary|president|senior management)"
                                    r"|(director|chair\w*|\bceo\b|\bcfo\b|officer|\bkmp\b|\bsmp\b)\W.{0,60}(appoint|resign|retire|cessation)"
                                    r"|change in (senior )?management|change in director")),
     # money in / out
     ("fund_raise", "qip", _R(r"qualified institution\w* placement|\bqip\b")),
     ("fund_raise", "preferential", _R(r"preferential (issue|allotment)|\bpi 20\d\d\b")),
-    ("fund_raise", "rights", _R(r"rights issue")),
+    # QIP pricing steps ("floor price for the Issue ... ICDR") without the word QIP
+    ("fund_raise", "qip", _R(r"floor price.{0,120}(issue|icdr)|issue price.{0,80}qualified")),
+("fund_raise", "rights", _R(r"rights issue")),
     ("fund_raise", "buyback", _R(r"buy-?back")),
     ("fund_raise", "debt_routine", _R(r"commercial paper|non[- ]convertible|\bncds?\b|debentures?")),
     ("unclassified", "esop", _R(r"\besops?\b|\besps\b|employee stock|grant of [\d,]+ options|allotment of [\d,]+ shares\.?$")),

@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 BACKEND_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BACKEND_DIR / ".env")
 
-DATA_DIR = Path(os.getenv("FINN_DATA_DIR", BACKEND_DIR.parent / "data")).resolve()
+DATA_DIR = (BACKEND_DIR / os.getenv("FINN_DATA_DIR", "../data")).resolve()  # relative paths are from backend/, not the cwd
 RAW_DIR = DATA_DIR / "raw"
 PROCESSED_DIR = DATA_DIR / "processed"
 SNAPSHOT_DIR = DATA_DIR / "snapshots"

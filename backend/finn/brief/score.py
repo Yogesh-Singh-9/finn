@@ -2,7 +2,8 @@
 comes from a visible part, and each event carries its breakdown.
 
     category base + subtype adjustment + uncertainty floor
-    + rupee amount vs TTM revenue + next-session price/volume reaction + thesis hook
+    + rupee amount vs TTM revenue + (results) how unusual the numbers are
+    + (results, phase 6) miss vs guidance + next-session price/volume reaction + thesis hook
 
 Tiers: needs_you >= 60, glance >= 20, else set_aside.
 """
@@ -12,7 +13,8 @@ import statistics
 from bisect import bisect_right
 from datetime import date, datetime, time
 
-from ..models import PriceSeries, Reaction, ScorePart
+from ..models import PriceSeries, Reaction, ResultsCard, ScorePart
+from ..cards.results import _pct
 from .events import EventDraft
 
 NEEDS_YOU, GLANCE = 60, 20
@@ -65,6 +67,32 @@ def _amount_part(ev: EventDraft, ttm_revenue: float | None) -> ScorePart | None:
     extra = f" ({note})" if note else ""
     return ScorePart(part="amount", points=pts,
                      note=f"₹{amount:,.0f} cr = {ratio:.1%} of TTM revenue ₹{ttm_revenue:,.0f} cr{extra}")
+
+
+def numbers_part(card: ResultsCard | None, surprises: list[tuple[str, float, float, float, float]]) -> ScorePart:
+    """How far this quarter's YoY revenue/PAT growth sits from the company's own last 8
+    quarters, in standard deviations. A results day is news because of the numbers, not
+    only because the stock moved: PAT -30% on a flat stock must still surface."""
+    if card is None:
+        return ScorePart(part="numbers", points=0, note="no results card (numbers not available)")
+    if not surprises:
+        return ScorePart(part="numbers", points=0, note=f"{card.headline}; too little history to judge")
+    label, yoy, z, mean, _sd = max(surprises, key=lambda t: abs(t[2]))
+    az = abs(z)
+    pts = 25 if az >= 3 else 18 if az >= 2 else 10 if az >= 1.5 else 5 if az >= 1 else 0
+    note = f"{label} {_pct(yoy)} YoY vs its usual {_pct(mean)} over the last 8 quarters ({z:+.1f}σ)"
+    pat = next((m for m in card.metrics if m.key == "pat"), None)
+    if pat and pat.value is not None and pat.prev_y is not None and pat.prev_y > 0 > pat.value:
+        pts, note = 25, note + "; swung to a loss"
+    elif pat and pat.yoy is not None and pat.yoy <= -0.20 and pts < 18:
+        pts, note = 18, note + f"; PAT {_pct(pat.yoy)} YoY"
+    if not card.verified:
+        note += "; card unverified, open filing"
+    return ScorePart(part="numbers", points=pts, note=note)
+
+
+def guidance_part() -> ScorePart:
+    return ScorePart(part="guidance", points=0, note="miss vs guidance from the last call: phase 6")
 
 
 def _session_index(ps: PriceSeries, filed: datetime) -> int | None:
@@ -121,7 +149,8 @@ def _reaction_part(r: Reaction | None, pending: bool, routine: bool) -> ScorePar
 
 
 def score(ev: EventDraft, ttm_revenue: float | None, ps: PriceSeries | None,
-          nifty: PriceSeries | None) -> tuple[float, list[ScorePart], Reaction | None, bool]:
+          nifty: PriceSeries | None, results_parts: list[ScorePart] | None = None,
+          ) -> tuple[float, list[ScorePart], Reaction | None, bool]:
     parts: list[ScorePart] = []
     base = CATEGORY_BASE.get(ev.category, 0)
     parts.append(ScorePart(part="category", points=base, note=ev.category.replace("_", " ")))
@@ -134,6 +163,8 @@ def score(ev: EventDraft, ttm_revenue: float | None, ps: PriceSeries | None,
     a = _amount_part(ev, ttm_revenue)
     if a:
         parts.append(a)
+    if results_parts:
+        parts.extend(results_parts)
     r, pending = reaction(ps, nifty, ev.occurred_at)
     parts.append(_reaction_part(r, pending, routine=(base + adj) < 10 and not ev.uncertain))
     parts.append(ScorePart(part="thesis", points=0, note="thesis hook not set yet"))

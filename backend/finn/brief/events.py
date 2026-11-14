@@ -89,16 +89,29 @@ def _match_results_ref(refs: list[ResultsFilingRef], day: date) -> ResultsRef | 
 def fold(filings: list[ClassifiedFiling], results_refs: dict[str, list[ResultsFilingRef]]) -> list[EventDraft]:
     filings = sorted(filings, key=lambda f: f.filed_at)
 
-    # 1. exact duplicates
+    # 1. duplicates: same text in the same minute, or the same attachment (identical byte
+    #    size) filed twice the same day under two subjects. Keep the better-classified copy.
     seen: dict[tuple, int] = {}
     uniq: list[ClassifiedFiling] = []
     dup_count: dict[str, int] = defaultdict(int)
+    rank = {"default": 3, "llm": 2}
     for f in filings:
-        key = (f.symbol, f.nse_subject, f.text.strip().lower(), f.filed_at.replace(second=0))
-        if key in seen:
-            dup_count[uniq[seen[key]].id] += 1
+        keys = [(f.symbol, f.nse_subject, f.text.strip().lower(), f.filed_at.replace(second=0))]
+        if f.attachment_bytes and f.attachment_bytes > 20_000 and f.category != "management_change":
+            keys.append((f.symbol, "attachment", f.attachment_bytes, f.filed_at.date()))
+        hit = next((seen[k] for k in keys if k in seen), None)
+        if hit is not None:
+            kept = uniq[hit]
+            if rank.get(f.classified_by, 0) < rank.get(kept.classified_by, 0):
+                uniq[hit] = f
+                dup_count[f.id] += dup_count.pop(kept.id, 0) + 1
+            else:
+                dup_count[kept.id] += 1
+            for k in keys:
+                seen[k] = hit
             continue
-        seen[key] = len(uniq)
+        for k in keys:
+            seen[k] = len(uniq)
         uniq.append(f)
 
     used: set[str] = set()
