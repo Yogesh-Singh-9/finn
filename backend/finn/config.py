@@ -20,6 +20,8 @@ PORTFOLIO: list[str] = [
     "SUNPHARMA", "PIDILITIND", "TATAPOWER", "ETERNAL", "CDSL",
 ]
 RESEARCH_DEMO: list[str] = ["KPITTECH", "ASTRAL", "DEEPAKNTR", "CAMS"]
+# Promise Ledger showcase (need concall transcripts; TRENT has none).
+LEDGER_DEMO: list[str] = ["TITAN", "POLYCAB", "INFY"]
 BENCHMARK = "^NSEI"
 
 # The brief snapshot covers this many days; the frontend filters 24h/7d/30d from it.

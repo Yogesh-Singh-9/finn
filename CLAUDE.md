@@ -49,16 +49,48 @@ data/
   - **Results filings come from `integrated-filing-results?index=equities&symbol=X&type=Integrated%20Filing-%20Financials`** (SEBI Integrated Filing, Q3 FY25 onward). The legacy `corporates-financial-results` **stops at Dec 2024**, so don't use it. Rows carry `qe_Date`, `consolidated`, `broadcast_Date` and an `xbrl` URL. Sort by period end, and prefer consolidated.
   - **The XBRL holds only the current quarter (`OneD`) and year-to-date (`FourD`)**, with values in rupees (÷1e7 → crore). Tag prefixes vary (`in-capmkt:` now, `in-bse-fin:` legacy), so match on the local name. There are no prior-quarter columns, so QoQ/YoY bases come from screener. Banks use a different taxonomy (`InterestEarned`, `InterestExpended`, …).
   - Results day doesn't appear as a "results" subject in announcements. It shows up as `Outcome of Board Meeting` (often alongside `Investor Presentation` / `Press Release`), plus the integrated filing above. Classification should join them on symbol and date.
-  - `event-calendar?index=equities` gives upcoming board meetings and results dates, which feed the "reports this week" prep.
+  - `event-calendar?index=equities` gives upcoming board meetings and results dates. It's empty for the portfolio right now (everyone has reported Q2), so **there's no "reports this week" prep screen**. Each holding gets a **"watch next quarter" line** built from its latest guidance instead.
   - `quote-equity` → 403 and the BSE announcements API → 403. Don't use them.
 - **Results numbers: one source per number.**
   - **Screener's quarterly table** is the source for every quarterly actual, including the "delivered" side of the promise store, trajectory and history.
   - **NSE XBRL is used only for the latest results card** (the quarter just filed, which screener may not have picked up yet). Don't build two sources for the same number. Concretely: if screener already has the quarter, the card uses screener for all columns. XBRL fills the current column only when screener lags (e.g. KAYNES at FY27Q2). The two sources disagree slightly on PBT/EBITDA (TRENT FY27Q2 PBT: XBRL 640 vs screener 619), so never mix them inside a single comparison without labelling it.
+  - **The card always names its source** ("screener" or "NSE XBRL"). When it's XBRL because screener hasn't caught up, it says so ("screener not updated yet; current quarter from NSE XBRL").
+  - **PBT definition (checked against TRENT's FY27Q2 PDF):** the PDF's statutory "Profit before tax" (line 6, after the share of associates/JVs) is ₹619.06 cr, which **matches screener**. XBRL `ProfitBeforeTax` is ₹640.12 cr because the Ind AS taxonomy puts `ShareOfProfitLossOfAssociatesAndJointVentures…` (−21.06) *below* tax. So screener PBT = PDF PBT. In an XBRL fallback, label PBT "before share of associates/JVs" rather than silently adding the share back (presentation varies by company).
+  - **Screener's "Operating Profit" (our EBITDA)** folds the associate/JV share into expenses (TRENT: 1,057 vs 1,078 = revenue − operating costs in the PDF). It's consistent across quarters, so QoQ/YoY stay apples to apples. Label it "EBITDA (screener)" and don't compare it with an XBRL-derived EBITDA.
   - For banks/NBFCs, EBITDA is n/a, so use NII / PPOP / PBT / PAT.
 - **EOD price/volume**: yfinance (`SYMBOL.NS`), 1y daily for the portfolio plus `^NSEI`.
 - **Fundamentals**: screener.in company page (tables plus links to annual reports and transcripts). PDFs are often BSE-hosted.
 - **Polite fetching**: a real browser UA, roughly 1 req/s per host, retry with backoff, and a disk cache in `data/raw/` keyed by URL plus date.
 - Announcement categories follow the reference PDF's taxonomy (results, M&A, fund_raise, management_change, litigation, insider_trading, earnings_call, investor_meetings, credit_rating, dividend, bonus_split, capex, press_release, postal_ballot, agm_egm, pledging, unclassified).
+
+## Brief pipeline (phase 2): classify → fold → score
+`backend/scripts/build_brief.py` turns `data/processed/` into `data/snapshots/brief.json`. Code is in `finn/classify/` and `finn/brief/`.
+- **Classification ladder** (`classify/classifier.py`, rules in `classify/taxonomy.py`):
+  1. The NSE subject maps to a category. Regex can refine it within the allowed `OVERRIDES` edges.
+  2. Ordered regex runs on the text, with NSE's "X has informed the Exchange about" prefix removed. **Rules never see the subject string**: the analyst-meet subject contains "Con. Call".
+  3. **Page 1–2 of the PDF** is read when the one-liner is useless ("General Updates", "change in Management", "Credit Rating"), when a needed subtype is missing (management role, rating direction), or when the score needs a ₹ amount. If the one-liner is useless, **the PDF result overrides it**.
+  4. flash-lite gets the leftovers, ~20 per call.
+  5. With no model, leftovers become `unclassified/uncertain` and get +25 (**unsure → material**).
+- **Management subtypes:** read the role from the "as <role>" phrase, cut bios/annexures, and don't split sentences on "Mr." or on initials. A business-unit "CEO (Helicopter Complex)" is senior management. A Deputy MD is an executive director. A list of KMPs "authorised to determine materiality" is routine compliance, not a change.
+- **Order-size bands** (L&T style "(Major*)" plus a "Value in ₹ Cr" footnote table) → the band's lower bound, labelled as such.
+- **Folding** (`brief/events.py`):
+  - exact duplicates
+  - **results day:** the outcome plus same-day deck, results press release, call notice and dividend, on symbol + date
+  - **management:** same symbol + same minute; the dominant subtype goes by `MGMT_RANK`
+  - **storylines:** same symbol + category + subtype within 7 days (QIP, IPO, NCLAT case); untyped pieces join the nearest chain
+- **Score** (`brief/score.py`). No model ever produces importance. The parts are:
+  - category base
+  - subtype adjustment
+  - uncertain +25
+  - ₹ amount ÷ TTM revenue (screener)
+  - next-session reaction: abnormal return vs NIFTY in σ of 60 sessions, plus volume vs the 20-day average
+  - thesis hook (0 until phase 7)
+- **Score rules:**
+  - **One price move, one owner:** when events share a reaction session, results own it, otherwise the most material event does, and the others carry a note.
+  - The reaction isn't credited to routine paperwork.
+  - Tiers: needs_you ≥ 60, glance ≥ 20, set_aside below that.
+- `brief.json` carries every event's `breakdown` and a `ladder` block (counts per step, PDFs read, LLM calls, **filings that never touched a model**).
+- Regression case: TRENT 29 Oct 16:32. Four filings → one event "Chairman exit: Noel N Tata · +3 more board changes". The chairman retirement outranks the two director appointments, and the results own the session reaction.
 
 ## Running the data refresh
 From `backend/`: `.venv/Scripts/python scripts/refresh.py` (all sources, ~1 min). Add `--only nse|prices|screener` or `--symbols A,B` for partial runs. A partial run merges into the existing files, and a source that fails keeps the last good data. Output goes to `data/processed/` (filings.json, prices.json, calendar.json, results/<SYM>.json, fundamentals/<SYM>.json, manifest.json with every source status and any redirect seen).
@@ -66,6 +98,7 @@ From `backend/`: `.venv/Scripts/python scripts/refresh.py` (all sources, ~1 min)
 ## Portfolio
 - Holdings (18): RELIANCE, HDFCBANK, BAJFINANCE, INFY, PERSISTENT, TRENT, TITAN, DMART, DIXON, KAYNES, POLYCAB, LT, HAL, SUNPHARMA, PIDILITIND, TATAPOWER, ETERNAL, CDSL
 - Ad-hoc research demo: KPITTECH, ASTRAL, DEEPAKNTR, CAMS
+- **Promise Ledger demo:** TITAN and POLYCAB (primary, both held), INFY third. TRENT has **no concall transcripts**, so it isn't a ledger or research demo. It's the **management-change card demo** (29 Oct 2026: chairman Noel Tata's retirement plus director changes, all filed at 16:32).
 - The research engine must generalise to **any** NSE ticker. Never hard-code demo symbols into logic, only into config.
 
 ## Code conventions

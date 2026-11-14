@@ -127,3 +127,96 @@ class CalendarEvent(BaseModel):
     purpose: str
     description: str
     date: date
+
+
+# ------------------------------------------------------------ classification
+ClassifiedBy = Literal["subject", "subject+regex", "regex", "pdf", "llm", "default"]
+
+
+class ClassifiedFiling(Filing):
+    category: str
+    subtype: str | None = None
+    classified_by: ClassifiedBy
+    title: str                                  # cleaned one-liner (NSE text, or PDF 'Sub:' line)
+    pdf_subject: str | None = None              # 'Sub:' line from page 1, when read
+    amounts_cr: list[float] = Field(default_factory=list)
+    amount_note: str | None = None              # e.g. order-size band used instead of a stated amount
+    fx_mentions: list[str] = Field(default_factory=list)
+    people: list[str] = Field(default_factory=list)
+    primary_person: str | None = None          # person in the sentence that set the subtype
+
+
+# --------------------------------------------------------------------- brief
+Tier = Literal["needs_you", "glance", "set_aside"]
+
+
+class ScorePart(BaseModel):
+    part: Literal["category", "subtype", "uncertain", "amount", "reaction", "thesis"]
+    points: float
+    note: str
+
+
+class Reaction(BaseModel):
+    session: date
+    ret: float                    # fraction
+    abn_ret: float                # vs NIFTY, fraction
+    z: float | None               # abnormal return / 60-session sigma
+    vol_x: float | None           # volume / 20-session average
+
+
+class ResultsRef(BaseModel):
+    period_key: str | None
+    xbrl_url: str | None
+    consolidated: bool | None
+
+
+class FilingRef(BaseModel):
+    id: str
+    nse_subject: str
+    title: str
+    category: str
+    subtype: str | None
+    classified_by: ClassifiedBy
+    filed_at: datetime
+    url: str | None
+
+
+class Event(BaseModel):
+    id: str
+    symbol: str
+    company: str
+    category: str
+    subtype: str | None
+    title: str
+    occurred_at: datetime
+    filings: list[FilingRef]
+    people: list[str] = Field(default_factory=list)
+    amount_cr: float | None = None
+    reaction: Reaction | None = None
+    reaction_pending: bool = False
+    results_ref: ResultsRef | None = None
+    score: float
+    breakdown: list[ScorePart]
+    tier: Tier
+
+
+class LadderStats(BaseModel):
+    filings: int
+    by_step: dict[str, int]
+    pdfs_read: int
+    llm_calls: int                 # uncached calls this build
+    llm_filings: int               # filings sent to a model
+    never_touched_model: int
+    never_touched_model_pct: float
+    llm_status: str
+
+
+class BriefSnapshot(BaseModel):
+    generated_at: datetime
+    window_from: date
+    window_to: date
+    prices_as_of: date | None
+    symbols: list[str]
+    events: list[Event]
+    tiers: dict[str, int]
+    ladder: LadderStats
