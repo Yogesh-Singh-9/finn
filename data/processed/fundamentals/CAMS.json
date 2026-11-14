@@ -1,0 +1,958 @@
+{
+ "symbol": "CAMS",
+ "company": "Computer Age Management Services Ltd",
+ "basis": "consolidated",
+ "layout": "standard",
+ "fetched_at": "2026-11-15T00:35:04",
+ "source_url": "https://www.screener.in/company/CAMS/consolidated/",
+ "quarters": {
+  "columns": [
+   "FY24Q2",
+   "FY24Q3",
+   "FY24Q4",
+   "FY25Q1",
+   "FY25Q2",
+   "FY25Q3",
+   "FY25Q4",
+   "FY26Q1",
+   "FY26Q2",
+   "FY26Q3",
+   "FY26Q4",
+   "FY27Q1",
+   "FY27Q2"
+  ],
+  "column_labels": [
+   "Sep 2023",
+   "Dec 2023",
+   "Mar 2024",
+   "Jun 2024",
+   "Sep 2024",
+   "Dec 2024",
+   "Mar 2025",
+   "Jun 2025",
+   "Sep 2025",
+   "Dec 2025",
+   "Mar 2026",
+   "Jun 2026",
+   "Sep 2026"
+  ],
+  "rows": {
+   "Sales": [
+    275.0,
+    290.0,
+    310.0,
+    331.0,
+    365.0,
+    370.0,
+    356.0,
+    354.0,
+    377.0,
+    390.0,
+    395.0,
+    395.0,
+    414.0
+   ],
+   "YoY Sales growth": [
+    0.14,
+    0.19,
+    0.25,
+    0.27,
+    0.33,
+    0.28,
+    0.15,
+    0.07,
+    0.03,
+    0.06,
+    0.11,
+    0.12,
+    0.1
+   ],
+   "Expenses": [
+    153.0,
+    160.0,
+    167.0,
+    182.0,
+    195.0,
+    197.0,
+    197.0,
+    200.0,
+    209.0,
+    211.0,
+    213.0,
+    213.0,
+    224.0
+   ],
+   "Operating Profit": [
+    122.0,
+    129.0,
+    143.0,
+    150.0,
+    170.0,
+    173.0,
+    159.0,
+    154.0,
+    168.0,
+    179.0,
+    183.0,
+    182.0,
+    190.0
+   ],
+   "OPM %": [
+    0.44,
+    0.45,
+    0.46,
+    0.45,
+    0.47,
+    0.47,
+    0.45,
+    0.43,
+    0.44,
+    0.46,
+    0.46,
+    0.46,
+    0.46
+   ],
+   "Other Income": [
+    10.0,
+    10.0,
+    11.0,
+    12.0,
+    13.0,
+    15.0,
+    13.0,
+    13.0,
+    12.0,
+    13.0,
+    13.0,
+    17.0,
+    14.0
+   ],
+   "Interest": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    1.0,
+    1.0
+   ],
+   "Depreciation": [
+    17.0,
+    18.0,
+    18.0,
+    17.0,
+    18.0,
+    20.0,
+    23.0,
+    21.0,
+    25.0,
+    25.0,
+    28.0,
+    25.0,
+    28.0
+   ],
+   "Profit before tax": [
+    112.0,
+    119.0,
+    135.0,
+    142.0,
+    162.0,
+    166.0,
+    148.0,
+    144.0,
+    153.0,
+    165.0,
+    166.0,
+    173.0,
+    174.0
+   ],
+   "Tax %": [
+    0.25,
+    0.25,
+    0.23,
+    0.25,
+    0.26,
+    0.25,
+    0.24,
+    0.25,
+    0.26,
+    0.24,
+    0.24,
+    0.27,
+    0.25
+   ],
+   "Net Profit": [
+    84.0,
+    89.0,
+    103.0,
+    107.0,
+    121.0,
+    124.0,
+    113.0,
+    108.0,
+    114.0,
+    125.0,
+    125.0,
+    127.0,
+    131.0
+   ],
+   "EPS in Rs": [
+    3.44,
+    3.63,
+    4.21,
+    4.4,
+    4.97,
+    5.08,
+    4.61,
+    4.41,
+    4.64,
+    5.07,
+    5.1,
+    5.16,
+    5.29
+   ]
+  }
+ },
+ "profit_loss": {
+  "columns": [
+   "FY18",
+   "FY19",
+   "FY20",
+   "FY21",
+   "FY22",
+   "FY23",
+   "FY24",
+   "FY25",
+   "FY26",
+   "TTM"
+  ],
+  "column_labels": [
+   "Mar 2018",
+   "Mar 2019",
+   "Mar 2020",
+   "Mar 2021",
+   "Mar 2022",
+   "Mar 2023",
+   "Mar 2024",
+   "Mar 2025",
+   "Mar 2026",
+   "TTM"
+  ],
+  "rows": {
+   "Sales": [
+    659.0,
+    711.0,
+    700.0,
+    706.0,
+    910.0,
+    972.0,
+    1137.0,
+    1422.0,
+    1516.0,
+    1595.0
+   ],
+   "Sales growth": [
+    null,
+    0.08,
+    -0.02,
+    0.01,
+    0.29,
+    0.07,
+    0.17,
+    0.25,
+    0.07,
+    0.09
+   ],
+   "Expenses": [
+    383.0,
+    450.0,
+    413.0,
+    409.0,
+    486.0,
+    551.0,
+    632.0,
+    770.0,
+    833.0,
+    861.0
+   ],
+   "Operating Profit": [
+    276.0,
+    261.0,
+    287.0,
+    296.0,
+    424.0,
+    421.0,
+    505.0,
+    652.0,
+    683.0,
+    734.0
+   ],
+   "OPM %": [
+    0.42,
+    0.37,
+    0.41,
+    0.42,
+    0.47,
+    0.43,
+    0.44,
+    0.46,
+    0.45,
+    0.46
+   ],
+   "Other Income": [
+    -2.0,
+    1.0,
+    21.0,
+    30.0,
+    17.0,
+    27.0,
+    41.0,
+    53.0,
+    51.0,
+    56.0
+   ],
+   "Interest": [
+    8.0,
+    10.0,
+    10.0,
+    8.0,
+    7.0,
+    8.0,
+    8.0,
+    8.0,
+    7.0,
+    6.0
+   ],
+   "Depreciation": [
+    40.0,
+    50.0,
+    51.0,
+    43.0,
+    52.0,
+    60.0,
+    70.0,
+    78.0,
+    99.0,
+    106.0
+   ],
+   "Profit before tax": [
+    227.0,
+    201.0,
+    247.0,
+    274.0,
+    383.0,
+    380.0,
+    467.0,
+    619.0,
+    629.0,
+    678.0
+   ],
+   "Tax %": [
+    0.35,
+    0.35,
+    0.3,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    null
+   ],
+   "Net Profit": [
+    146.0,
+    131.0,
+    172.0,
+    205.0,
+    287.0,
+    285.0,
+    351.0,
+    465.0,
+    472.0,
+    508.0
+   ],
+   "EPS in Rs": [
+    5.99,
+    5.35,
+    7.05,
+    8.41,
+    11.74,
+    11.64,
+    14.39,
+    19.03,
+    19.2,
+    20.62
+   ],
+   "Dividend Payout %": [
+    0.66,
+    0.84,
+    0.35,
+    1.5,
+    0.66,
+    0.65,
+    0.65,
+    0.76,
+    0.65,
+    null
+   ]
+  }
+ },
+ "balance_sheet": {
+  "columns": [
+   "FY18",
+   "FY19",
+   "FY20",
+   "FY21",
+   "FY22",
+   "FY23",
+   "FY24",
+   "FY25",
+   "FY26",
+   "FY27"
+  ],
+  "column_labels": [
+   "Mar 2018",
+   "Mar 2019",
+   "Mar 2020",
+   "Mar 2021",
+   "Mar 2022",
+   "Mar 2023",
+   "Mar 2024",
+   "Mar 2025",
+   "Mar 2026",
+   "Sep 2026"
+  ],
+  "rows": {
+   "Equity Capital": [
+    49.0,
+    49.0,
+    49.0,
+    49.0,
+    49.0,
+    49.0,
+    49.0,
+    49.0,
+    50.0,
+    50.0
+   ],
+   "Reserves": [
+    395.0,
+    393.0,
+    500.0,
+    467.0,
+    599.0,
+    733.0,
+    865.0,
+    1069.0,
+    1271.0,
+    1392.0
+   ],
+   "Borrowings": [
+    112.0,
+    109.0,
+    0.0,
+    79.0,
+    82.0,
+    93.0,
+    96.0,
+    89.0,
+    64.0,
+    59.0
+   ],
+   "Other Liabilities": [
+    142.0,
+    186.0,
+    252.0,
+    247.0,
+    227.0,
+    221.0,
+    403.0,
+    390.0,
+    424.0,
+    384.0
+   ],
+   "Total Liabilities": [
+    698.0,
+    736.0,
+    801.0,
+    842.0,
+    957.0,
+    1096.0,
+    1413.0,
+    1597.0,
+    1809.0,
+    1885.0
+   ],
+   "Fixed Assets": [
+    324.0,
+    320.0,
+    309.0,
+    284.0,
+    314.0,
+    333.0,
+    376.0,
+    406.0,
+    405.0,
+    526.0
+   ],
+   "CWIP": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    9.0,
+    13.0,
+    44.0,
+    89.0,
+    1.0
+   ],
+   "Investments": [
+    218.0,
+    233.0,
+    306.0,
+    236.0,
+    317.0,
+    330.0,
+    407.0,
+    425.0,
+    446.0,
+    474.0
+   ],
+   "Other Assets": [
+    156.0,
+    184.0,
+    186.0,
+    322.0,
+    326.0,
+    425.0,
+    618.0,
+    723.0,
+    869.0,
+    883.0
+   ],
+   "Total Assets": [
+    698.0,
+    736.0,
+    801.0,
+    842.0,
+    957.0,
+    1096.0,
+    1413.0,
+    1597.0,
+    1809.0,
+    1885.0
+   ]
+  }
+ },
+ "cash_flow": {
+  "columns": [
+   "FY18",
+   "FY19",
+   "FY20",
+   "FY21",
+   "FY22",
+   "FY23",
+   "FY24",
+   "FY25",
+   "FY26"
+  ],
+  "column_labels": [
+   "Mar 2018",
+   "Mar 2019",
+   "Mar 2020",
+   "Mar 2021",
+   "Mar 2022",
+   "Mar 2023",
+   "Mar 2024",
+   "Mar 2025",
+   "Mar 2026"
+  ],
+  "rows": {
+   "Cash from Operating Activity": [
+    162.0,
+    187.0,
+    199.0,
+    264.0,
+    321.0,
+    318.0,
+    401.0,
+    477.0,
+    584.0
+   ],
+   "Cash from Investing Activity": [
+    -19.0,
+    -31.0,
+    -84.0,
+    2.0,
+    -131.0,
+    -102.0,
+    -188.0,
+    -132.0,
+    -270.0
+   ],
+   "Cash from Financing Activity": [
+    -138.0,
+    -158.0,
+    -97.0,
+    -272.0,
+    -204.0,
+    -205.0,
+    -224.0,
+    -338.0,
+    -316.0
+   ],
+   "Net Cash Flow": [
+    5.0,
+    -3.0,
+    18.0,
+    -6.0,
+    -13.0,
+    12.0,
+    -10.0,
+    7.0,
+    -2.0
+   ],
+   "Free Cash Flow": [
+    123.0,
+    152.0,
+    184.0,
+    238.0,
+    259.0,
+    275.0,
+    363.0,
+    359.0,
+    444.0
+   ],
+   "CFO/EBITDA Share of operating profit converting into cash: CFO (before tax) / Operating Profit": [
+    0.91,
+    1.01,
+    0.98,
+    1.12,
+    1.01,
+    0.98,
+    0.97,
+    0.96,
+    1.1
+   ]
+  }
+ },
+ "ratios": {
+  "columns": [
+   "FY18",
+   "FY19",
+   "FY20",
+   "FY21",
+   "FY22",
+   "FY23",
+   "FY24",
+   "FY25",
+   "FY26"
+  ],
+  "column_labels": [
+   "Mar 2018",
+   "Mar 2019",
+   "Mar 2020",
+   "Mar 2021",
+   "Mar 2022",
+   "Mar 2023",
+   "Mar 2024",
+   "Mar 2025",
+   "Mar 2026"
+  ],
+  "rows": {
+   "Debtor Days": [
+    12.0,
+    14.0,
+    17.0,
+    15.0,
+    10.0,
+    12.0,
+    21.0,
+    28.0,
+    14.0
+   ],
+   "Cash Conversion Cycle": [
+    12.0,
+    14.0,
+    17.0,
+    15.0,
+    10.0,
+    12.0,
+    21.0,
+    28.0,
+    14.0
+   ],
+   "Working Capital Days": [
+    10.0,
+    -0.0,
+    7.0,
+    -36.0,
+    -9.0,
+    29.0,
+    23.0,
+    26.0,
+    12.0
+   ],
+   "ROCE %": [
+    null,
+    0.38,
+    0.44,
+    0.42,
+    0.56,
+    0.46,
+    0.48,
+    0.54,
+    0.47
+   ]
+  }
+ },
+ "concalls": [
+  {
+   "period_label": "Nov 2026",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f55105f6-561d-4b8a-8ca2-bbe8d1ec3853.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ae29c181-f576-49a7-ada1-5e1da3832ae0.pdf",
+   "recording_url": "https://www.camsonline.com/assets/PDF/BSE_Intimations/10047363.mp3"
+  },
+  {
+   "period_label": "Aug 2026",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6eea256f-e30e-4035-9e58-2533d72b4a3d.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bb36cffa-352e-463d-b5c9-dc99ff304b8d.pdf",
+   "recording_url": "https://www.camsonline.com/assets/PDF/BSE_Intimations/CAMS%20Q1FY27%20Audio%20Link.mp3"
+  },
+  {
+   "period_label": "Aug 2026",
+   "transcript_url": null,
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7db97b36-dc53-4951-8ed7-5f11fc965734.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "May 2026",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a0b543eb-8316-455d-81c0-c51eae595a72.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2aad185c-60d6-4e7e-9355-daf00337ee01.pdf",
+   "recording_url": "https://youtu.be/9yHAzGtNv9Q"
+  },
+  {
+   "period_label": "Feb 2026",
+   "transcript_url": null,
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cf69b9f5-1bfb-448e-8e17-041c6447322c.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Feb 2026",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8297d698-6ef7-4df4-9df1-27bd615e7826.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=43d427c3-345f-4c55-b480-56022ccdcff8.pdf",
+   "recording_url": "https://www.camsonline.com/assets/PDF/CAMS_Q3FY26.mp3"
+  },
+  {
+   "period_label": "Jan 2026",
+   "transcript_url": null,
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=93e41f40-9b8d-464d-a745-937f5dee1568.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Jan 2026",
+   "transcript_url": null,
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f8d1f628-8827-45f4-84ec-244be462cf63.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Oct 2025",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f778e677-89fa-417f-b363-048c2329bb73.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=01edf41c-0e66-4430-a433-ef5b85e0f252.pdf",
+   "recording_url": "https://youtu.be/UE1h-KT50NA"
+  },
+  {
+   "period_label": "Aug 2025",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=aa92a203-5174-4670-8dbd-ccbb40039170.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e173f312-00c4-4e7e-8f5e-a224d12c6a9d.pdf",
+   "recording_url": "https://youtu.be/VspOo8g5sSw?si=tWphPhEE8AfE88sc"
+  },
+  {
+   "period_label": "May 2025",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=80351ba1-2a9b-43c6-9445-7a73d374eb21.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cab4f2a3-046d-4dd9-b95d-a2160640930c.pdf",
+   "recording_url": "https://www.camsonline.com/assets/Q4FY25.mp3"
+  },
+  {
+   "period_label": "Feb 2025",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=504a1e4d-e587-4c93-9424-2ea9c98e774d.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=86044960-1896-4713-9d35-bed049aef267.pdf",
+   "recording_url": "https://www.camsonline.com/assets/CAMS_-_Q3FY25_Concall_Audio.mp3"
+  },
+  {
+   "period_label": "Nov 2024",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b8cbf858-2cf8-41bf-b273-e1ed4583bc93.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a48495cc-65eb-4c38-a41b-4a743c675f0c.pdf",
+   "recording_url": "https://www.camsonline.com/assets/PDF/BSE_Intimations/CAMS_Q2FY25_Earnings_Call_Audio.mp3"
+  },
+  {
+   "period_label": "Sep 2024",
+   "transcript_url": null,
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ccd9f94f-38cf-49d2-a2bc-6f06abf037fd.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Aug 2024",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ebf6d264-537d-423c-9fdd-b904de5a044c.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8c8b5605-d760-458b-a91b-ca56ba17776c.pdf",
+   "recording_url": "https://www.camsonline.com/assets/PDF/BSE_Intimations/CAMS%20Q1FY25%20Concall%20Audio.mp3"
+  },
+  {
+   "period_label": "May 2024",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=22a96919-438c-48a8-bb60-5de3febdaffd.pdf",
+   "ppt_url": "https://digital.camsonline.com/cams/documents/analyst_meet/Investor%20Presentations.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "May 2024",
+   "transcript_url": null,
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=593da857-8626-40b7-8d5e-77ee811c0fea.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Feb 2024",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d72784f7-62a9-4908-8553-20e14a21e049.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=15c21765-333a-4717-96b0-57e4899ff5da.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Nov 2023",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=59371547-819b-4d20-979c-3d5166daa9a3.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4ba1608a-e0c1-4c83-91f5-17590cb13bed.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Aug 2023",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cd81e399-6198-46ff-b192-406b1e0057d6.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=55868386-0d10-4621-9bff-d3dbbb03bea7.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Jun 2023",
+   "transcript_url": null,
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cd7d6e71-419b-4f95-ad76-8d9b18822def.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "May 2023",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2e929733-88c9-432e-b877-af1d9dfaa066.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7b0c9e0b-2697-4b07-b302-96a705e17de2.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Feb 2023",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=55c304ab-51e9-4279-ab38-9bea3a6cac8b.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d7c5f8e6-8334-46cc-a150-a2f67015e271.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Nov 2022",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=718507f7-cbd8-40c5-b33b-c464f099e03c.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4bfc7e69-2778-4019-8de3-acb5e489f29d.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Aug 2022",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d5710aa3-b7aa-4ee3-a9b9-57c5bc33ecd8.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=33a13da9-68a5-4971-8d35-18f3090d5f6c.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "May 2022",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8271ab54-b7f2-4185-a866-16d73aa87924.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7b1a923c-cd4b-4492-8498-c9983e28a1bf.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Feb 2022",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5090504e-5b37-4aa3-ba01-30c9b9869cd1.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a33abdb3-dfcc-4e5f-b16a-d6eb34923663.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Nov 2021",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2e4be224-642e-47e6-89f4-9d128725a704.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=600e1e32-b9e0-4642-bec5-d3fcae4205db.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Nov 2021",
+   "transcript_url": null,
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2fc29fc5-d0f2-499b-8490-637c41ce326b.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Oct 2021",
+   "transcript_url": null,
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5ad6d00f-5aea-4343-9a2d-94f28096a0ef.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Aug 2021",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bc662ec7-8c50-4baf-af98-cff92fde3f76.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c4f86e93-db07-4044-9866-5f06b3df4f0e.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "May 2021",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8856b0c7-2019-4096-a3f9-68564b1673b4.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "May 2021",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=527dd6f4-07c8-406e-8f55-02cf31d01158.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=284422dd-899f-4584-bf0e-a67193296d15.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Feb 2021",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b1b91359-6e7f-4470-acab-26b534d0d396.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5bc684b0-40dd-4cd3-8cb5-2b486d0a4f00.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Nov 2020",
+   "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b4d27a0a-18b4-442c-9bc7-563d022e2dfc.pdf",
+   "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b537a7ac-2995-47a3-ad5b-f39acfc25523.pdf",
+   "recording_url": null
+  }
+ ],
+ "annual_reports": [
+  {
+   "year": 2026,
+   "url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/9404e4ec-f6f9-45bd-8933-63227dcd5f4e.pdf"
+  },
+  {
+   "year": 2025,
+   "url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/5aef7ff6-a37c-4def-8dd9-67a64f6c42bb.pdf"
+  },
+  {
+   "year": 2024,
+   "url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/4ca00883-5463-47e7-b433-59475e5d539e.pdf"
+  },
+  {
+   "year": 2023,
+   "url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/2ebec1a9-c62e-4343-a994-10bb5a9c4860.pdf"
+  },
+  {
+   "year": 2022,
+   "url": "https://www.bseindia.com/bseplus/AnnualReport/543232/73124543232.pdf"
+  },
+  {
+   "year": 2021,
+   "url": "https://www.bseindia.com/bseplus/AnnualReport/543232/68748543232.pdf"
+  },
+  {
+   "year": 2021,
+   "url": "https://www.camsonline.com/assets/PDF/Annual_Report/CAMSAnnualReport_2020_2021.pdf"
+  }
+ ]
+}

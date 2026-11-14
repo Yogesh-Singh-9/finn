@@ -1,0 +1,682 @@
+{
+ "generated_at": "2026-11-15T00:35:04",
+ "elapsed_s": 63.7,
+ "redirects": {
+  "www.nseindia.com": "www.nseindia.in"
+ },
+ "failures": [],
+ "status": [
+  {
+   "source": "nse.announcements",
+   "symbol": "RELIANCE",
+   "ok": true,
+   "error": null,
+   "detail": "18 filings"
+  },
+  {
+   "source": "nse.results",
+   "symbol": "RELIANCE",
+   "ok": true,
+   "error": null,
+   "detail": "14 filings"
+  },
+  {
+   "source": "nse.xbrl",
+   "symbol": "RELIANCE",
+   "ok": true,
+   "error": null,
+   "detail": "FY27Q2 45 facts"
+  },
+  {
+   "source": "nse.announcements",
+   "symbol": "HDFCBANK",
+   "ok": true,
+   "error": null,
+   "detail": "18 filings"
+  },
+  {
+   "source": "nse.results",
+   "symbol": "HDFCBANK",
+   "ok": true,
+   "error": null,
+   "detail": "14 filings"
+  },
+  {
+   "source": "nse.xbrl",
+   "symbol": "HDFCBANK",
+   "ok": true,
+   "error": null,
+   "detail": "FY27Q2 39 facts"
+  },
+  {
+   "source": "nse.announcements",
+   "symbol": "BAJFINANCE",
+   "ok": true,
+   "error": null,
+   "detail": "17 filings"
+  },
+  {
+   "source": "nse.results",
+   "symbol": "BAJFINANCE",
+   "ok": true,
+   "error": null,
+   "detail": "14 filings"
+  },
+  {
+   "source": "nse.xbrl",
+   "symbol": "BAJFINANCE",
+   "ok": true,
+   "error": null,
+   "detail": "FY27Q2 50 facts"
+  },
+  {
+   "source": "nse.announcements",
+   "symbol": "INFY",
+   "ok": true,
+   "error": null,
+   "detail": "15 filings"
+  },
+  {
+   "source": "nse.results",
+   "symbol": "INFY",
+   "ok": true,
+   "error": null,
+   "detail": "14 filings"
+  },
+  {
+   "source": "nse.xbrl",
+   "symbol": "INFY",
+   "ok": true,
+   "error": null,
+   "detail": "FY27Q2 45 facts"
+  },
+  {
+   "source": "nse.announcements",
+   "symbol": "PERSISTENT",
+   "ok": true,
+   "error": null,
+   "detail": "15 filings"
+  },
+  {
+   "source": "nse.results",
+   "symbol": "PERSISTENT",
+   "ok": true,
+   "error": null,
+   "detail": "14 filings"
+  },
+  {
+   "source": "nse.xbrl",
+   "symbol": "PERSISTENT",
+   "ok": true,
+   "error": null,
+   "detail": "FY27Q2 44 facts"
+  },
+  {
+   "source": "nse.announcements",
+   "symbol": "TRENT",
+   "ok": true,
+   "error": null,
+   "detail": "16 filings"
+  },
+  {
+   "source": "nse.results",
+   "symbol": "TRENT",
+   "ok": true,
+   "error": null,
+   "detail": "14 filings"
+  },
+  {
+   "source": "nse.xbrl",
+   "symbol": "TRENT",
+   "ok": true,
+   "error": null,
+   "detail": "FY27Q2 38 facts"
+  },
+  {
+   "source": "nse.announcements",
+   "symbol": "TITAN",
+   "ok": true,
+   "error": null,
+   "detail": "17 filings"
+  },
+  {
+   "source": "nse.results",
+   "symbol": "TITAN",
+   "ok": true,
+   "error": null,
+   "detail": "14 filings"
+  },
+  {
+   "source": "nse.xbrl",
+   "symbol": "TITAN",
+   "ok": true,
+   "error": null,
+   "detail": "FY27Q2 45 facts"
+  },
+  {
+   "source": "nse.announcements",
+   "symbol": "DMART",
+   "ok": true,
+   "error": null,
+   "detail": "7 filings"
+  },
+  {
+   "source": "nse.results",
+   "symbol": "DMART",
+   "ok": true,
+   "error": null,
+   "detail": "14 filings"
+  },
+  {
+   "source": "nse.xbrl",
+   "symbol": "DMART",
+   "ok": true,
+   "error": null,
+   "detail": "FY27Q2 37 facts"
+  },
+  {
+   "source": "nse.announcements",
+   "symbol": "DIXON",
+   "ok": true,
+   "error": null,
+   "detail": "11 filings"
+  },
+  {
+   "source": "nse.results",
+   "symbol": "DIXON",
+   "ok": true,
+   "error": null,
+   "detail": "16 filings"
+  },
+  {
+   "source": "nse.xbrl",
+   "symbol": "DIXON",
+   "ok": true,
+   "error": null,
+   "detail": "FY27Q2 37 facts"
+  },
+  {
+   "source": "nse.announcements",
+   "symbol": "KAYNES",
+   "ok": true,
+   "error": null,
+   "detail": "8 filings"
+  },
+  {
+   "source": "nse.results",
+   "symbol": "KAYNES",
+   "ok": true,
+   "error": null,
+   "detail": "18 filings"
+  },
+  {
+   "source": "nse.xbrl",
+   "symbol": "KAYNES",
+   "ok": true,
+   "error": null,
+   "detail": "FY27Q2 38 facts"
+  },
+  {
+   "source": "nse.announcements",
+   "symbol": "POLYCAB",
+   "ok": true,
+   "error": null,
+   "detail": "11 filings"
+  },
+  {
+   "source": "nse.results",
+   "symbol": "POLYCAB",
+   "ok": true,
+   "error": null,
+   "detail": "14 filings"
+  },
+  {
+   "source": "nse.xbrl",
+   "symbol": "POLYCAB",
+   "ok": true,
+   "error": null,
+   "detail": "FY27Q2 45 facts"
+  },
+  {
+   "source": "nse.announcements",
+   "symbol": "LT",
+   "ok": true,
+   "error": null,
+   "detail": "15 filings"
+  },
+  {
+   "source": "nse.results",
+   "symbol": "LT",
+   "ok": true,
+   "error": null,
+   "detail": "18 filings"
+  },
+  {
+   "source": "nse.xbrl",
+   "symbol": "LT",
+   "ok": true,
+   "error": null,
+   "detail": "FY27Q2 45 facts"
+  },
+  {
+   "source": "nse.announcements",
+   "symbol": "HAL",
+   "ok": true,
+   "error": null,
+   "detail": "6 filings"
+  },
+  {
+   "source": "nse.results",
+   "symbol": "HAL",
+   "ok": true,
+   "error": null,
+   "detail": "14 filings"
+  },
+  {
+   "source": "nse.xbrl",
+   "symbol": "HAL",
+   "ok": true,
+   "error": null,
+   "detail": "FY27Q2 37 facts"
+  },
+  {
+   "source": "nse.announcements",
+   "symbol": "SUNPHARMA",
+   "ok": true,
+   "error": null,
+   "detail": "14 filings"
+  },
+  {
+   "source": "nse.results",
+   "symbol": "SUNPHARMA",
+   "ok": true,
+   "error": null,
+   "detail": "14 filings"
+  },
+  {
+   "source": "nse.xbrl",
+   "symbol": "SUNPHARMA",
+   "ok": true,
+   "error": null,
+   "detail": "FY27Q2 38 facts"
+  },
+  {
+   "source": "nse.announcements",
+   "symbol": "PIDILITIND",
+   "ok": true,
+   "error": null,
+   "detail": "9 filings"
+  },
+  {
+   "source": "nse.results",
+   "symbol": "PIDILITIND",
+   "ok": true,
+   "error": null,
+   "detail": "14 filings"
+  },
+  {
+   "source": "nse.xbrl",
+   "symbol": "PIDILITIND",
+   "ok": true,
+   "error": null,
+   "detail": "FY27Q2 45 facts"
+  },
+  {
+   "source": "nse.announcements",
+   "symbol": "TATAPOWER",
+   "ok": true,
+   "error": null,
+   "detail": "16 filings"
+  },
+  {
+   "source": "nse.results",
+   "symbol": "TATAPOWER",
+   "ok": true,
+   "error": null,
+   "detail": "14 filings"
+  },
+  {
+   "source": "nse.xbrl",
+   "symbol": "TATAPOWER",
+   "ok": true,
+   "error": null,
+   "detail": "FY27Q2 45 facts"
+  },
+  {
+   "source": "nse.announcements",
+   "symbol": "ETERNAL",
+   "ok": true,
+   "error": null,
+   "detail": "5 filings"
+  },
+  {
+   "source": "nse.results",
+   "symbol": "ETERNAL",
+   "ok": true,
+   "error": null,
+   "detail": "14 filings"
+  },
+  {
+   "source": "nse.xbrl",
+   "symbol": "ETERNAL",
+   "ok": true,
+   "error": null,
+   "detail": "FY27Q2 45 facts"
+  },
+  {
+   "source": "nse.announcements",
+   "symbol": "CDSL",
+   "ok": true,
+   "error": null,
+   "detail": "15 filings"
+  },
+  {
+   "source": "nse.results",
+   "symbol": "CDSL",
+   "ok": true,
+   "error": null,
+   "detail": "16 filings"
+  },
+  {
+   "source": "nse.xbrl",
+   "symbol": "CDSL",
+   "ok": true,
+   "error": null,
+   "detail": "FY27Q2 45 facts"
+  },
+  {
+   "source": "nse.calendar",
+   "symbol": null,
+   "ok": true,
+   "error": null,
+   "detail": "0 events"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "RELIANCE",
+   "ok": true,
+   "error": null,
+   "detail": "248 days to 2026-11-13"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "HDFCBANK",
+   "ok": true,
+   "error": null,
+   "detail": "248 days to 2026-11-13"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "BAJFINANCE",
+   "ok": true,
+   "error": null,
+   "detail": "248 days to 2026-11-13"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "INFY",
+   "ok": true,
+   "error": null,
+   "detail": "248 days to 2026-11-13"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "PERSISTENT",
+   "ok": true,
+   "error": null,
+   "detail": "248 days to 2026-11-13"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "TRENT",
+   "ok": true,
+   "error": null,
+   "detail": "248 days to 2026-11-13"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "TITAN",
+   "ok": true,
+   "error": null,
+   "detail": "248 days to 2026-11-13"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "DMART",
+   "ok": true,
+   "error": null,
+   "detail": "248 days to 2026-11-13"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "DIXON",
+   "ok": true,
+   "error": null,
+   "detail": "248 days to 2026-11-13"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "KAYNES",
+   "ok": true,
+   "error": null,
+   "detail": "248 days to 2026-11-13"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "POLYCAB",
+   "ok": true,
+   "error": null,
+   "detail": "248 days to 2026-11-13"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "LT",
+   "ok": true,
+   "error": null,
+   "detail": "248 days to 2026-11-13"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "HAL",
+   "ok": true,
+   "error": null,
+   "detail": "248 days to 2026-11-13"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "SUNPHARMA",
+   "ok": true,
+   "error": null,
+   "detail": "248 days to 2026-11-13"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "PIDILITIND",
+   "ok": true,
+   "error": null,
+   "detail": "248 days to 2026-11-13"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "TATAPOWER",
+   "ok": true,
+   "error": null,
+   "detail": "248 days to 2026-11-13"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "ETERNAL",
+   "ok": true,
+   "error": null,
+   "detail": "248 days to 2026-11-13"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "CDSL",
+   "ok": true,
+   "error": null,
+   "detail": "248 days to 2026-11-13"
+  },
+  {
+   "source": "yahoo",
+   "symbol": "^NSEI",
+   "ok": true,
+   "error": null,
+   "detail": "247 days to 2026-11-13"
+  },
+  {
+   "source": "screener",
+   "symbol": "RELIANCE",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 20 transcripts, 15 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "HDFCBANK",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/bank, 13 quarters to FY27Q2, 21 transcripts, 15 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "BAJFINANCE",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/bank, 13 quarters to FY27Q2, 39 transcripts, 15 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "INFY",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 38 transcripts, 15 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "PERSISTENT",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 34 transcripts, 15 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "TRENT",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 0 transcripts, 15 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "TITAN",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 38 transcripts, 15 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "DMART",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 10 transcripts, 10 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "DIXON",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 37 transcripts, 9 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "KAYNES",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q1, 18 transcripts, 4 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "POLYCAB",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 35 transcripts, 10 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "LT",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 35 transcripts, 15 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "HAL",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 8 transcripts, 15 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "SUNPHARMA",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 27 transcripts, 15 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "PIDILITIND",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 59 transcripts, 15 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "TATAPOWER",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 41 transcripts, 15 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "ETERNAL",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 21 transcripts, 6 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "CDSL",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 29 transcripts, 10 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "KPITTECH",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 20 transcripts, 15 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "ASTRAL",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 39 transcripts, 15 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "DEEPAKNTR",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 24 transcripts, 15 ARs"
+  },
+  {
+   "source": "screener",
+   "symbol": "CAMS",
+   "ok": true,
+   "error": null,
+   "detail": "consolidated/standard, 13 quarters to FY27Q2, 26 transcripts, 7 ARs"
+  }
+ ]
+}

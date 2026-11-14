@@ -1,0 +1,9 @@
+fastapi>=0.115
+uvicorn[standard]>=0.32
+httpx>=0.27
+pydantic>=2.9
+python-dotenv>=1.0
+yfinance>=0.2.50
+beautifulsoup4>=4.12
+lxml>=5.3
+pandas>=2.2

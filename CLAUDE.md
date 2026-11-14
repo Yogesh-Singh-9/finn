@@ -13,6 +13,7 @@ frontend/   React 18 + Vite + TypeScript + Tailwind (mobile-first PWA)
 backend/    Python FastAPI + ingestion jobs (finn/ package, scripts/)
 data/
   snapshots/  committed JSON the frontend reads (brief.json, research/<SYMBOL>.json)
+  processed/  committed normalised source data (filings, prices, fundamentals), so snapshots rebuild offline
   raw/        gitignored: raw HTTP responses / PDFs, disk cache
   llm_cache/  gitignored: LLM responses keyed by content hash
 ```
@@ -39,17 +40,28 @@ data/
 - Chunk documents before they reach a model. Send relevant sections (MD&A, guidance Q&A), never whole PDFs.
 
 ## Data sources
-- **NSE corporate announcements**: JSON API. NSE reportedly blocks cloud IPs, so push ingestion runs **locally or in GitHub Actions** and writes `data/snapshots/brief.json`. The server never calls NSE at request time.
-  - Verified 15 Nov 2026 from a residential IP: the homepage returns **403** (bot wall), but `/api/*` returns 200 *without* cookies when sent a browser UA. Send `Accept-Encoding: gzip, deflate`, **not `br`**, because `requests` fails to decode NSE's brotli. Keep the warmup as best-effort and don't depend on it.
-  - `corporate-announcements?index=equities&from_date=DD-MM-YYYY&to_date=DD-MM-YYYY` returns **every** NSE filing in the window (~700/day, ~1MB/day). One call per window, then filter to the portfolio. Adding `&symbol=X` narrows it. Without a date range it returns the full history since 2004 (1–2MB), so always pass dates.
-  - `corporates-financial-results?index=equities&symbol=X&period=Quarterly` lists filings with an `xbrl` URL (nsearchives, fetchable). The list is **not sorted**, so sort by parsed `toDate` and filter `consolidated`.
+- **NSE corporate announcements**: JSON API. Push ingestion runs **locally** (the main path for now) and writes `data/snapshots/brief.json`. A scheduled GitHub Actions refresh is possible but deferred to phase 9. The server never calls NSE at request time.
+  - Verified 15 Nov 2026 from a residential IP: the homepage returns **403** (bot wall), but `/api/*` returns 200 *without* cookies when sent a browser UA. Send `Accept-Encoding: gzip, deflate`, **not `br`**, because NSE's brotli doesn't decode reliably. Keep the warmup as best-effort and don't depend on it.
+  - Verified from GitHub Actions runners (user-tested): announcements, financial results and event calendar all return 200, and the homepage is 403 there too. On runners, `www.nseindia.com/api` **redirects to `www.nseindia.in`**, and attachments come from `nsearchives.nseindia.in`. So **always follow redirects, never hardcode the `.com` host** (the base URL is config), and use attachment/XBRL URLs exactly as returned. Yahoo and screener work from runners too.
+  - `corporate-announcements?index=equities&symbol=X&from_date=DD-MM-YYYY&to_date=DD-MM-YYYY` returns one symbol's filings in the window. Without `symbol` it returns **every** NSE filing (~700/day, ~1MB/day), too heavy for 30 days, so fetch per symbol. Without a date range it returns the full history since 2004, so always pass dates.
+  - **The brief snapshot covers the last 30 days** (Q2 results season). The frontend filters 24h / 7d / 30d from that one snapshot. Don't fetch per window.
+  - On 15 Nov 2026 the **local** run was also redirected `www.nseindia.com → www.nseindia.in`. The redirect isn't runner-only.
+  - **Results filings come from `integrated-filing-results?index=equities&symbol=X&type=Integrated%20Filing-%20Financials`** (SEBI Integrated Filing, Q3 FY25 onward). The legacy `corporates-financial-results` **stops at Dec 2024**, so don't use it. Rows carry `qe_Date`, `consolidated`, `broadcast_Date` and an `xbrl` URL. Sort by period end, and prefer consolidated.
+  - **The XBRL holds only the current quarter (`OneD`) and year-to-date (`FourD`)**, with values in rupees (÷1e7 → crore). Tag prefixes vary (`in-capmkt:` now, `in-bse-fin:` legacy), so match on the local name. There are no prior-quarter columns, so QoQ/YoY bases come from screener. Banks use a different taxonomy (`InterestEarned`, `InterestExpended`, …).
+  - Results day doesn't appear as a "results" subject in announcements. It shows up as `Outcome of Board Meeting` (often alongside `Investor Presentation` / `Press Release`), plus the integrated filing above. Classification should join them on symbol and date.
   - `event-calendar?index=equities` gives upcoming board meetings and results dates, which feed the "reports this week" prep.
   - `quote-equity` → 403 and the BSE announcements API → 403. Don't use them.
-- **Results numbers**: prefer NSE XBRL over LLM-parsing PDFs. For banks/NBFCs, EBITDA is n/a, so use NII / PPOP / PBT / PAT.
+- **Results numbers: one source per number.**
+  - **Screener's quarterly table** is the source for every quarterly actual, including the "delivered" side of the promise store, trajectory and history.
+  - **NSE XBRL is used only for the latest results card** (the quarter just filed, which screener may not have picked up yet). Don't build two sources for the same number. Concretely: if screener already has the quarter, the card uses screener for all columns. XBRL fills the current column only when screener lags (e.g. KAYNES at FY27Q2). The two sources disagree slightly on PBT/EBITDA (TRENT FY27Q2 PBT: XBRL 640 vs screener 619), so never mix them inside a single comparison without labelling it.
+  - For banks/NBFCs, EBITDA is n/a, so use NII / PPOP / PBT / PAT.
 - **EOD price/volume**: yfinance (`SYMBOL.NS`), 1y daily for the portfolio plus `^NSEI`.
 - **Fundamentals**: screener.in company page (tables plus links to annual reports and transcripts). PDFs are often BSE-hosted.
 - **Polite fetching**: a real browser UA, roughly 1 req/s per host, retry with backoff, and a disk cache in `data/raw/` keyed by URL plus date.
 - Announcement categories follow the reference PDF's taxonomy (results, M&A, fund_raise, management_change, litigation, insider_trading, earnings_call, investor_meetings, credit_rating, dividend, bonus_split, capex, press_release, postal_ballot, agm_egm, pledging, unclassified).
+
+## Running the data refresh
+From `backend/`: `.venv/Scripts/python scripts/refresh.py` (all sources, ~1 min). Add `--only nse|prices|screener` or `--symbols A,B` for partial runs. A partial run merges into the existing files, and a source that fails keeps the last good data. Output goes to `data/processed/` (filings.json, prices.json, calendar.json, results/<SYM>.json, fundamentals/<SYM>.json, manifest.json with every source status and any redirect seen).
 
 ## Portfolio
 - Holdings (18): RELIANCE, HDFCBANK, BAJFINANCE, INFY, PERSISTENT, TRENT, TITAN, DMART, DIXON, KAYNES, POLYCAB, LT, HAL, SUNPHARMA, PIDILITIND, TATAPOWER, ETERNAL, CDSL

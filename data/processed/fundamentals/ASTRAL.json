@@ -1,0 +1,1177 @@
+{
+ "symbol": "ASTRAL",
+ "company": "Astral Ltd",
+ "basis": "consolidated",
+ "layout": "standard",
+ "fetched_at": "2026-11-15T00:35:02",
+ "source_url": "https://www.screener.in/company/ASTRAL/consolidated/",
+ "quarters": {
+  "columns": [
+   "FY24Q2",
+   "FY24Q3",
+   "FY24Q4",
+   "FY25Q1",
+   "FY25Q2",
+   "FY25Q3",
+   "FY25Q4",
+   "FY26Q1",
+   "FY26Q2",
+   "FY26Q3",
+   "FY26Q4",
+   "FY27Q1",
+   "FY27Q2"
+  ],
+  "column_labels": [
+   "Sep 2023",
+   "Dec 2023",
+   "Mar 2024",
+   "Jun 2024",
+   "Sep 2024",
+   "Dec 2024",
+   "Mar 2025",
+   "Jun 2025",
+   "Sep 2025",
+   "Dec 2025",
+   "Mar 2026",
+   "Jun 2026",
+   "Sep 2026"
+  ],
+  "rows": {
+   "Sales": [
+    1363.0,
+    1370.0,
+    1625.0,
+    1384.0,
+    1370.0,
+    1397.0,
+    1681.0,
+    1361.0,
+    1577.0,
+    1542.0,
+    2088.0,
+    1578.0,
+    1988.0
+   ],
+   "YoY Sales growth": [
+    0.16,
+    0.08,
+    0.08,
+    0.08,
+    0.01,
+    0.02,
+    0.03,
+    -0.02,
+    0.15,
+    0.1,
+    0.24,
+    0.16,
+    0.26
+   ],
+   "Expenses": [
+    1143.0,
+    1165.0,
+    1334.0,
+    1169.0,
+    1160.0,
+    1178.0,
+    1380.0,
+    1176.0,
+    1321.0,
+    1304.0,
+    1706.0,
+    1347.0,
+    1728.0
+   ],
+   "Operating Profit": [
+    220.0,
+    205.0,
+    291.0,
+    214.0,
+    210.0,
+    219.0,
+    302.0,
+    185.0,
+    257.0,
+    237.0,
+    383.0,
+    231.0,
+    260.0
+   ],
+   "OPM %": [
+    0.16,
+    0.15,
+    0.18,
+    0.16,
+    0.15,
+    0.16,
+    0.18,
+    0.14,
+    0.16,
+    0.15,
+    0.18,
+    0.15,
+    0.13
+   ],
+   "Other Income": [
+    13.0,
+    6.0,
+    10.0,
+    12.0,
+    9.0,
+    12.0,
+    9.0,
+    9.0,
+    11.0,
+    -7.0,
+    11.0,
+    13.0,
+    2.0
+   ],
+   "Interest": [
+    8.0,
+    8.0,
+    8.0,
+    8.0,
+    10.0,
+    14.0,
+    10.0,
+    12.0,
+    16.0,
+    13.0,
+    24.0,
+    6.0,
+    12.0
+   ],
+   "Depreciation": [
+    49.0,
+    50.0,
+    52.0,
+    56.0,
+    60.0,
+    63.0,
+    65.0,
+    72.0,
+    72.0,
+    73.0,
+    74.0,
+    75.0,
+    79.0
+   ],
+   "Profit before tax": [
+    177.0,
+    154.0,
+    241.0,
+    163.0,
+    149.0,
+    154.0,
+    236.0,
+    110.0,
+    180.0,
+    144.0,
+    297.0,
+    163.0,
+    172.0
+   ],
+   "Tax %": [
+    0.26,
+    0.26,
+    0.25,
+    0.27,
+    0.27,
+    0.27,
+    0.25,
+    0.28,
+    0.25,
+    0.25,
+    0.28,
+    0.26,
+    0.26
+   ],
+   "Net Profit": [
+    132.0,
+    113.0,
+    181.0,
+    120.0,
+    109.0,
+    113.0,
+    178.0,
+    79.0,
+    135.0,
+    108.0,
+    213.0,
+    120.0,
+    127.0
+   ],
+   "EPS in Rs": [
+    4.88,
+    4.23,
+    6.76,
+    4.48,
+    4.09,
+    4.25,
+    6.67,
+    3.02,
+    5.02,
+    4.01,
+    7.93,
+    4.47,
+    4.73
+   ]
+  }
+ },
+ "profit_loss": {
+  "columns": [
+   "FY15",
+   "FY16",
+   "FY17",
+   "FY18",
+   "FY19",
+   "FY20",
+   "FY21",
+   "FY22",
+   "FY23",
+   "FY24",
+   "FY25",
+   "FY26",
+   "TTM"
+  ],
+  "column_labels": [
+   "Mar 2015",
+   "Mar 2016",
+   "Mar 2017",
+   "Mar 2018",
+   "Mar 2019",
+   "Mar 2020",
+   "Mar 2021",
+   "Mar 2022",
+   "Mar 2023",
+   "Mar 2024",
+   "Mar 2025",
+   "Mar 2026",
+   "TTM"
+  ],
+  "rows": {
+   "Sales": [
+    1410.0,
+    1678.0,
+    1895.0,
+    2073.0,
+    2507.0,
+    2578.0,
+    3176.0,
+    4394.0,
+    5158.0,
+    5641.0,
+    5832.0,
+    6569.0,
+    7196.0
+   ],
+   "Sales growth": [
+    0.33,
+    0.19,
+    0.13,
+    0.09,
+    0.21,
+    0.03,
+    0.23,
+    0.38,
+    0.17,
+    0.09,
+    0.03,
+    0.13,
+    0.2
+   ],
+   "Expenses": [
+    1242.0,
+    1470.0,
+    1633.0,
+    1759.0,
+    2126.0,
+    2136.0,
+    2539.0,
+    3640.0,
+    4349.0,
+    4717.0,
+    4886.0,
+    5507.0,
+    6084.0
+   ],
+   "Operating Profit": [
+    168.0,
+    208.0,
+    261.0,
+    314.0,
+    382.0,
+    442.0,
+    638.0,
+    754.0,
+    810.0,
+    925.0,
+    946.0,
+    1062.0,
+    1112.0
+   ],
+   "OPM %": [
+    0.12,
+    0.12,
+    0.14,
+    0.15,
+    0.15,
+    0.17,
+    0.2,
+    0.17,
+    0.16,
+    0.16,
+    0.16,
+    0.16,
+    0.15
+   ],
+   "Other Income": [
+    3.0,
+    -4.0,
+    8.0,
+    13.0,
+    15.0,
+    11.0,
+    25.0,
+    35.0,
+    37.0,
+    36.0,
+    41.0,
+    25.0,
+    19.0
+   ],
+   "Interest": [
+    25.0,
+    30.0,
+    18.0,
+    22.0,
+    32.0,
+    39.0,
+    13.0,
+    13.0,
+    40.0,
+    29.0,
+    41.0,
+    64.0,
+    54.0
+   ],
+   "Depreciation": [
+    36.0,
+    42.0,
+    50.0,
+    57.0,
+    81.0,
+    108.0,
+    116.0,
+    127.0,
+    178.0,
+    198.0,
+    243.0,
+    292.0,
+    302.0
+   ],
+   "Profit before tax": [
+    110.0,
+    132.0,
+    201.0,
+    248.0,
+    283.0,
+    306.0,
+    533.0,
+    648.0,
+    628.0,
+    734.0,
+    702.0,
+    731.0,
+    776.0
+   ],
+   "Tax %": [
+    0.29,
+    0.22,
+    0.28,
+    0.29,
+    0.3,
+    0.18,
+    0.23,
+    0.24,
+    0.25,
+    0.26,
+    0.26,
+    0.27,
+    null
+   ],
+   "Net Profit": [
+    78.0,
+    102.0,
+    145.0,
+    176.0,
+    197.0,
+    250.0,
+    408.0,
+    490.0,
+    472.0,
+    546.0,
+    519.0,
+    535.0,
+    568.0
+   ],
+   "EPS in Rs": [
+    2.89,
+    3.79,
+    5.44,
+    6.58,
+    7.36,
+    9.25,
+    15.1,
+    18.06,
+    17.0,
+    20.33,
+    19.5,
+    19.97,
+    21.14
+   ],
+   "Dividend Payout %": [
+    0.06,
+    0.05,
+    0.05,
+    0.04,
+    0.04,
+    0.06,
+    0.1,
+    0.12,
+    0.21,
+    0.18,
+    0.19,
+    0.13,
+    null
+   ]
+  }
+ },
+ "balance_sheet": {
+  "columns": [
+   "FY15",
+   "FY16",
+   "FY17",
+   "FY18",
+   "FY19",
+   "FY20",
+   "FY21",
+   "FY22",
+   "FY23",
+   "FY24",
+   "FY25",
+   "FY26",
+   "FY27"
+  ],
+  "column_labels": [
+   "Mar 2015",
+   "Mar 2016",
+   "Mar 2017",
+   "Mar 2018",
+   "Mar 2019",
+   "Mar 2020",
+   "Mar 2021",
+   "Mar 2022",
+   "Mar 2023",
+   "Mar 2024",
+   "Mar 2025",
+   "Mar 2026",
+   "Sep 2026"
+  ],
+  "rows": {
+   "Equity Capital": [
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    15.0,
+    20.0,
+    20.0,
+    27.0,
+    27.0,
+    27.0,
+    27.0,
+    27.0
+   ],
+   "Reserves": [
+    607.0,
+    696.0,
+    835.0,
+    1006.0,
+    1266.0,
+    1488.0,
+    1876.0,
+    2316.0,
+    2684.0,
+    3161.0,
+    3590.0,
+    4031.0,
+    4212.0
+   ],
+   "Borrowings": [
+    203.0,
+    197.0,
+    229.0,
+    189.0,
+    275.0,
+    191.0,
+    80.0,
+    98.0,
+    87.0,
+    119.0,
+    233.0,
+    250.0,
+    333.0
+   ],
+   "Other Liabilities": [
+    344.0,
+    397.0,
+    386.0,
+    468.0,
+    546.0,
+    595.0,
+    697.0,
+    952.0,
+    1564.0,
+    1188.0,
+    1198.0,
+    1481.0,
+    1302.0
+   ],
+   "Total Liabilities": [
+    1165.0,
+    1301.0,
+    1462.0,
+    1675.0,
+    2099.0,
+    2289.0,
+    2673.0,
+    3387.0,
+    4362.0,
+    4496.0,
+    5048.0,
+    5789.0,
+    5875.0
+   ],
+   "Fixed Assets": [
+    557.0,
+    645.0,
+    741.0,
+    842.0,
+    1105.0,
+    1255.0,
+    1314.0,
+    1496.0,
+    1950.0,
+    2299.0,
+    2712.0,
+    2939.0,
+    3033.0
+   ],
+   "CWIP": [
+    27.0,
+    15.0,
+    25.0,
+    73.0,
+    81.0,
+    44.0,
+    57.0,
+    123.0,
+    126.0,
+    151.0,
+    116.0,
+    94.0,
+    210.0
+   ],
+   "Investments": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    7.0
+   ],
+   "Other Assets": [
+    582.0,
+    641.0,
+    695.0,
+    759.0,
+    913.0,
+    990.0,
+    1302.0,
+    1768.0,
+    2286.0,
+    2046.0,
+    2220.0,
+    2755.0,
+    2624.0
+   ],
+   "Total Assets": [
+    1165.0,
+    1301.0,
+    1462.0,
+    1675.0,
+    2099.0,
+    2289.0,
+    2673.0,
+    3387.0,
+    4362.0,
+    4496.0,
+    5048.0,
+    5789.0,
+    5875.0
+   ]
+  }
+ },
+ "cash_flow": {
+  "columns": [
+   "FY15",
+   "FY16",
+   "FY17",
+   "FY18",
+   "FY19",
+   "FY20",
+   "FY21",
+   "FY22",
+   "FY23",
+   "FY24",
+   "FY25",
+   "FY26"
+  ],
+  "column_labels": [
+   "Mar 2015",
+   "Mar 2016",
+   "Mar 2017",
+   "Mar 2018",
+   "Mar 2019",
+   "Mar 2020",
+   "Mar 2021",
+   "Mar 2022",
+   "Mar 2023",
+   "Mar 2024",
+   "Mar 2025",
+   "Mar 2026"
+  ],
+  "rows": {
+   "Cash from Operating Activity": [
+    117.0,
+    226.0,
+    114.0,
+    282.0,
+    342.0,
+    405.0,
+    664.0,
+    543.0,
+    557.0,
+    823.0,
+    630.0,
+    1117.0
+   ],
+   "Cash from Investing Activity": [
+    -343.0,
+    -203.0,
+    -158.0,
+    -185.0,
+    -291.0,
+    -318.0,
+    -454.0,
+    72.0,
+    -478.0,
+    -541.0,
+    -513.0,
+    -506.0
+   ],
+   "Cash from Financing Activity": [
+    237.0,
+    16.0,
+    12.0,
+    -71.0,
+    -5.0,
+    -163.0,
+    -153.0,
+    -44.0,
+    -191.0,
+    -202.0,
+    -118.0,
+    -328.0
+   ],
+   "Net Cash Flow": [
+    11.0,
+    38.0,
+    -32.0,
+    25.0,
+    46.0,
+    -75.0,
+    57.0,
+    571.0,
+    -112.0,
+    80.0,
+    -1.0,
+    282.0
+   ],
+   "Free Cash Flow": [
+    32.0,
+    91.0,
+    -45.0,
+    98.0,
+    122.0,
+    192.0,
+    493.0,
+    198.0,
+    247.0,
+    273.0,
+    90.0,
+    661.0
+   ],
+   "CFO/EBITDA Share of operating profit converting into cash: CFO (before tax) / Operating Profit": [
+    0.85,
+    1.23,
+    0.6,
+    1.1,
+    1.1,
+    1.1,
+    1.22,
+    0.94,
+    0.89,
+    1.08,
+    0.85,
+    1.23
+   ]
+  }
+ },
+ "ratios": {
+  "columns": [
+   "FY15",
+   "FY16",
+   "FY17",
+   "FY18",
+   "FY19",
+   "FY20",
+   "FY21",
+   "FY22",
+   "FY23",
+   "FY24",
+   "FY25",
+   "FY26"
+  ],
+  "column_labels": [
+   "Mar 2015",
+   "Mar 2016",
+   "Mar 2017",
+   "Mar 2018",
+   "Mar 2019",
+   "Mar 2020",
+   "Mar 2021",
+   "Mar 2022",
+   "Mar 2023",
+   "Mar 2024",
+   "Mar 2025",
+   "Mar 2026"
+  ],
+  "rows": {
+   "Debtor Days": [
+    60.0,
+    49.0,
+    65.0,
+    54.0,
+    49.0,
+    32.0,
+    32.0,
+    22.0,
+    25.0,
+    24.0,
+    27.0,
+    26.0
+   ],
+   "Inventory Days": [
+    92.0,
+    84.0,
+    76.0,
+    94.0,
+    88.0,
+    124.0,
+    88.0,
+    91.0,
+    96.0,
+    100.0,
+    109.0,
+    107.0
+   ],
+   "Days Payable": [
+    93.0,
+    96.0,
+    80.0,
+    92.0,
+    86.0,
+    109.0,
+    96.0,
+    93.0,
+    88.0,
+    95.0,
+    92.0,
+    110.0
+   ],
+   "Cash Conversion Cycle": [
+    60.0,
+    38.0,
+    61.0,
+    56.0,
+    51.0,
+    47.0,
+    23.0,
+    20.0,
+    33.0,
+    29.0,
+    44.0,
+    23.0
+   ],
+   "Working Capital Days": [
+    64.0,
+    30.0,
+    39.0,
+    37.0,
+    27.0,
+    42.0,
+    12.0,
+    13.0,
+    17.0,
+    16.0,
+    25.0,
+    11.0
+   ],
+   "ROCE %": [
+    0.21,
+    0.18,
+    0.22,
+    0.23,
+    0.23,
+    0.21,
+    0.29,
+    0.29,
+    0.24,
+    0.23,
+    0.2,
+    0.19
+   ]
+  }
+ },
+ "concalls": [
+  {
+   "period_label": "Nov 2026",
+   "transcript_url": "https://www.astralltd.com/wp-content/uploads/2026/11/Equirus-Astral-Nov05-2026-1.pdf",
+   "ppt_url": null,
+   "recording_url": "https://www.astralltd.com/wp-content/uploads/2026/11/10049087.mp3"
+  },
+  {
+   "period_label": "Aug 2026",
+   "transcript_url": "https://www.astralltd.com/wp-content/uploads/2026/08/Equirus-Astral-Aug12-2026-1.pdf",
+   "ppt_url": null,
+   "recording_url": "https://www.astralltd.com/wp-content/uploads/2026/08/10046362.mp3"
+  },
+  {
+   "period_label": "Jun 2026",
+   "transcript_url": null,
+   "ppt_url": null,
+   "recording_url": "https://www.astralltd.com/wp-content/uploads/2026/06/10044552.mp3"
+  },
+  {
+   "period_label": "May 2026",
+   "transcript_url": "https://www.astralltd.com/wp-content/uploads/2026/05/Analysts-Meet-2026-Transcript.pdf",
+   "ppt_url": "https://www.astralltd.com/wp-content/uploads/2026/05/Investor-Presentation-May-2026.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Feb 2026",
+   "transcript_url": "https://nsearchives.nseindia.com/corporate/ASTRAL_05022026201047_Earning_Call.pdf",
+   "ppt_url": null,
+   "recording_url": "https://youtu.be/zrza61w286M"
+  },
+  {
+   "period_label": "Nov 2025",
+   "transcript_url": "https://www.astralltd.com/wp-content/uploads/2025/11/Transcript.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Aug 2025",
+   "transcript_url": "https://www.astralltd.com/wp-content/uploads/2025/08/Transcript-of-Earning-Call-held-on-12th-August-2025.pdf",
+   "ppt_url": null,
+   "recording_url": "https://www.astralltd.com/wp-content/uploads/2025/08/10035325.mp3"
+  },
+  {
+   "period_label": "May 2025",
+   "transcript_url": "https://www.astralltd.com/wp-content/uploads/2025/05/Analyst-Meet-2025-Transcript.pdf",
+   "ppt_url": "https://www.astralltd.com/wp-content/uploads/2025/05/Astral-Analysts-Meet-PPT-R-1.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Jan 2025",
+   "transcript_url": "https://astralltd.com/wp-content/uploads/2025/02/Transcript-of-Earning-Call-held-on-30th-January-2025.pdf",
+   "ppt_url": null,
+   "recording_url": "https://astralltd.com/wp-content/uploads/2025/01/10029639.mp3"
+  },
+  {
+   "period_label": "Nov 2024",
+   "transcript_url": "https://astralltd.com/wp-content/uploads/2024/11/Transcript-of-Earning-Call-7th-November-2024.pdf",
+   "ppt_url": null,
+   "recording_url": "https://astralltd.com/wp-content/uploads/2024/11/Earning-Call-of-07th-November-2024-%E2%80%93-Audio-recording.mp3"
+  },
+  {
+   "period_label": "Aug 2024",
+   "transcript_url": "https://astralltd.com/wp-content/uploads/2024/08/HDFCSec-AstralLtd-Aug09-2024.pdf",
+   "ppt_url": null,
+   "recording_url": "https://astralltd.com/wp-content/uploads/2024/08/HDC0220240809154941.mp3"
+  },
+  {
+   "period_label": "May 2024",
+   "transcript_url": "https://astralltd.com/wp-content/uploads/2024/05/Transcript-of-Analyst-Meet-21.05.2024.pdf",
+   "ppt_url": "https://astralltd.com/wp-content/uploads/2024/Astral%20Pipes_%20PPWithout%20Video%20for%20TIL.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Feb 2024",
+   "transcript_url": "https://astralltd.com/wp-content/uploads/2024/02/Transcript-of-earning-Call-30-01-2024.pdf",
+   "ppt_url": null,
+   "recording_url": "https://astralltd.com/wp-content/uploads/2024/01/AUD-20240130-WA0017.mp3"
+  },
+  {
+   "period_label": "Oct 2023",
+   "transcript_url": "https://astralltd.com/wp-content/uploads/2023/10/Transcript-of-earning-Call-19-10-2023.pdf",
+   "ppt_url": null,
+   "recording_url": "https://astralltd.com/wp-content/uploads/2023/10/ICI3420231019149386-version-2.mp3"
+  },
+  {
+   "period_label": "Aug 2023",
+   "transcript_url": "https://astralltd.com/wp-content/uploads/2023/08/Transcript-of-Earning-Call-11.08.2023.pdf",
+   "ppt_url": null,
+   "recording_url": "https://astralltd.com/wp-content/uploads/2023/08/astral.mp3"
+  },
+  {
+   "period_label": "May 2023",
+   "transcript_url": "https://astralltd.com/wp-content/uploads/2023/05/Astral-Analyst-meet-FINAL.pdf",
+   "ppt_url": "https://astralltd.com/wp-content/uploads/2023/05/Astral_2023.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Feb 2023",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1676291321_transcript_-_earning_call_08.02.2023.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Nov 2022",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1668486940_transcript_-_earning_call__-_11.11.2022.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Aug 2022",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1660714645_ambitcap-astralltd-aug12-2022.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "May 2022",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1654423055_astral_analysts_meet_may_2022.pdf",
+   "ppt_url": "https://www.astralpipes.com/uploads/investor_broucher/1653916490_astral_investor_(1",
+   "recording_url": null
+  },
+  {
+   "period_label": "May 2022",
+   "transcript_url": null,
+   "ppt_url": "https://www.astralpipes.com/uploads/investor_broucher/1653916490_astral_investor_(1).pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Feb 2022",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1644328430_ambitcap-astral-feb04-2022_final.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Nov 2021",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1636972102_sparkcap-astraltd-11.11.2021.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Aug 2021",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1628945427_transcript_%E2%80%93_earnings_call-_09.08.2021.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "May 2021",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1621867401_transcript_%E2%80%93_earnings_call-_19.05.2021.pdf",
+   "ppt_url": "https://www.astralpipes.com/uploads/investor_broucher/1621433301_investor_ppt_may_2021-_final.pdf",
+   "recording_url": null
+  },
+  {
+   "period_label": "Feb 2021",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1612859071_transcript_%E2%80%93_earnings_call-_03.02.2021.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Nov 2020",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1605162154_transcript_%E2%80%93_earnings_call-_06.11.2020.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Aug 2020",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1597047178_transcript_%E2%80%93_earnings_call-_05.08.2020.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Feb 2020",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1582000578_transcript_-_earnings_call-_12.02.2020.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Oct 2019",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1572504507_transcript_-_earnings_call-_25.10.2019.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Feb 2019",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1555064378_457_l.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Nov 2018",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1555064263_438_l.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Aug 2018",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1538746499_375_l.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Jul 2018",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1538746515_364_l.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Feb 2018",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1538989229_337_l.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Nov 2017",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1538989336_324_l.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Aug 2017",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1538989415_295_l.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Feb 2017",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1538989616_230_l.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Nov 2016",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1538989687_204_l.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Aug 2016",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1538989726_183_l.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  },
+  {
+   "period_label": "Feb 2016",
+   "transcript_url": "https://www.astralpipes.com/uploads/investor_broucher/1538989828_151_l.pdf",
+   "ppt_url": null,
+   "recording_url": null
+  }
+ ],
+ "annual_reports": [
+  {
+   "year": 2026,
+   "url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/5772a6ee-bd33-47d5-bbd1-85b269bd26c3.pdf"
+  },
+  {
+   "year": 2025,
+   "url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/78a2a99f-5d2e-4692-b054-43192a2fc329.pdf"
+  },
+  {
+   "year": 2024,
+   "url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/455e935e-98ba-4ef9-bd54-c293a46bab7c.pdf"
+  },
+  {
+   "year": 2023,
+   "url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/aa9741a9-f026-474d-9169-5be6f7a1a073.pdf"
+  },
+  {
+   "year": 2022,
+   "url": "https://www.bseindia.com/bseplus/AnnualReport/532830/74164532830.pdf"
+  },
+  {
+   "year": 2021,
+   "url": "https://www.bseindia.com/bseplus/AnnualReport/532830/69371532830.pdf"
+  },
+  {
+   "year": 2020,
+   "url": "https://www.bseindia.com/bseplus/AnnualReport/532830/5328300320.pdf"
+  },
+  {
+   "year": 2019,
+   "url": "https://www.bseindia.com/bseplus/AnnualReport/532830/5328300319.pdf"
+  },
+  {
+   "year": 2018,
+   "url": "https://www.bseindia.com/bseplus/AnnualReport/532830/5328300318.pdf"
+  },
+  {
+   "year": 2017,
+   "url": "https://www.bseindia.com/bseplus/AnnualReport/532830/5328300317.pdf"
+  },
+  {
+   "year": 2016,
+   "url": "https://www.bseindia.com/bseplus/AnnualReport/532830/5328300316.pdf"
+  },
+  {
+   "year": 2015,
+   "url": "https://www.bseindia.com/bseplus/AnnualReport/532830/5328300315.pdf"
+  },
+  {
+   "year": 2014,
+   "url": "https://www.bseindia.com/bseplus/AnnualReport/532830/5328300314.pdf"
+  },
+  {
+   "year": 2013,
+   "url": "https://www.bseindia.com/bseplus/AnnualReport/532830/5328300313.pdf"
+  },
+  {
+   "year": 2013,
+   "url": "https://archives.nseindia.com/annual_reports/AR_388_ASTRAL_2012_2013_08072013113936.zip"
+  }
+ ]
+}
