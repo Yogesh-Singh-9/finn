@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { useOpenSignal } from "./openSignal";
-import { cr, day, dayTime, label, pct, sigma, tone } from "../format";
+import { cr, day, dayTime, label, pct, sigma } from "../format";
 import type { BriefEvent, Move } from "../types";
 import { MgmtCardView } from "./MgmtCardView";
 import { ResultsCardView, cleanHeadline } from "./ResultsCardView";
@@ -179,7 +179,7 @@ export function MovesStrip({ moves, onOpen, rule, windowName }: { moves: Move[];
             </div>
             <div className="mt-1 flex items-end justify-between gap-2">
               <Delta v={m.ret} text={pct(m.ret)} className="text-[17px] font-medium leading-none" />
-              <Spark data={m.spark} w={52} h={18} strokeTone={tone(m.ret)} />
+              <Spark data={m.spark} w={52} h={18} />
             </div>
             <div className="num mt-1 text-[10.5px] text-sub">
               {sigma(m.z)}{m.vol_x != null && m.vol_x >= 1.5 ? ` · vol ${m.vol_x.toFixed(1)}×` : ""}

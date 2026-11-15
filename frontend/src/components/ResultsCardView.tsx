@@ -114,7 +114,7 @@ function YoyStrip({ card }: { card: ResultsCard }) {
     <div className="mt-3 grid grid-cols-4 border-y hair">
       {card.metrics.slice(0, 4).map((m, i) => (
         <div key={m.key} className={`py-1.5 ${i ? "border-l hair pl-2" : ""}`}>
-          <div className="kicker text-faint">{TINY[m.key] ?? m.key}{m.key === "pat" && adjPat ? " rep." : ""}</div>
+          <div className={`kicker whitespace-nowrap text-faint ${m.key === "pat" && adjPat ? "!text-[9px] !tracking-normal" : ""}`}>{TINY[m.key] ?? m.key}{m.key === "pat" && adjPat ? " (reported)" : ""}</div>
           {m.yoy != null ? <Delta v={m.yoy} text={pct(m.yoy)} className="text-[13px]" /> : <span className="num text-[12px] text-faint">n/a</span>}
         </div>
       ))}

@@ -146,7 +146,7 @@ function Row({ row, events, onResearch }: { row: HoldingRow; events: BriefEvent[
           </span>
           <span className="block truncate text-[11px] text-faint">{row.thesis?.watch?.replace("Watch next quarter: ", "Watch: ") ?? row.company}</span>
         </span>
-        <Spark data={spark} w={56} h={20} strokeTone={spark.length > 1 ? (spark[spark.length - 1] >= spark[0] ? "up" : "down") : "flat"} />
+        <Spark data={spark} w={56} h={20} />
         <span className="w-[76px] shrink-0 text-right">
           <span className="num block text-[13px]">{row.close != null ? cr(row.close) : "—"}</span>
           <Delta v={row.day_change} text={pct(row.day_change)} className="block text-[11.5px]" />
@@ -173,14 +173,17 @@ export function Holdings({ brief, onResearch }: { brief: BriefSnapshot | null; o
     return m;
   }, [brief]);
   if (!snap) return <p className="pt-10 text-[13px] text-sub">{err ? `Couldn't load holdings (${err}).` : ""}</p>;
-  const up = snap.rows.filter((r) => (r.day_change ?? 0) > 0).length;
+  // flat = rounds to 0.0% on screen
+  const up = snap.rows.filter((r) => (r.day_change ?? 0) >= 0.0005).length;
+  const down = snap.rows.filter((r) => (r.day_change ?? 0) <= -0.0005).length;
+  const flat = snap.rows.length - up - down;
   return (
     <div className="pt-5">
       <div className="flex items-baseline justify-between">
         <h1 className="text-[30px] font-semibold leading-none tracking-[-0.03em]">Holdings</h1>
         <span className="num text-[11px] text-faint">{snap.prices_as_of ? `${day(snap.prices_as_of)} EOD` : ""}</span>
       </div>
-      <p className="num mt-2 text-[12px] text-sub">{snap.rows.length} holdings · {up} up, {snap.rows.length - up} down or flat · tap a row for its thesis</p>
+      <p className="num mt-2 text-[12px] text-sub">{snap.rows.length} holdings · <span className="text-up">{up} up</span> · <span className="text-down">{down} down</span> · {flat} flat · tap a row for its thesis</p>
 
       <section className="mt-4 border-y border-ink">
         <button onClick={() => setAlertsOpen((o) => !o)} aria-expanded={alertsOpen} className="flex w-full items-baseline justify-between py-2.5 text-left">

@@ -66,7 +66,8 @@ export function Spark({ data, w = 64, h = 20, strokeTone }: { data: number[]; w?
   if (data.length < 2) return null;
   const lo = Math.min(...data), hi = Math.max(...data), span = hi - lo || 1;
   const pts = data.map((v, i) => `${((i / (data.length - 1)) * w).toFixed(1)},${(h - ((v - lo) / span) * (h - 2) - 1).toFixed(1)}`).join(" ");
-  const stroke = strokeTone === "up" ? "rgb(var(--up))" : strokeTone === "down" ? "rgb(var(--down))" : "rgb(var(--sub))";
+  // ink by default: the day move carries the colour, the line just shows the shape
+  const stroke = strokeTone === "up" ? "rgb(var(--up))" : strokeTone === "down" ? "rgb(var(--down))" : strokeTone === "flat" ? "rgb(var(--sub))" : "rgb(var(--ink))";
   return (
     <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} aria-hidden className="block overflow-visible">
       <polyline points={pts} fill="none" stroke={stroke} strokeWidth="1.25" strokeLinejoin="round" strokeLinecap="round" />
