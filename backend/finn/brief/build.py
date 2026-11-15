@@ -166,7 +166,9 @@ def build(use_llm: bool = True) -> BriefSnapshot:
     # still order by how much evidence each has.
     events.sort(key=lambda e: (TIER_ORDER[e.tier], -sum(p.points for p in e.breakdown), -e.occurred_at.timestamp()))
 
-    # Unusual moves in the last 5 sessions, whether or not a filing explains them.
+    # Candidate moves over the last ~month (the 30d window), whether or not a filing explains
+    # them, at the loosest alert setting the app offers (±1% or 1.5x volume). Today filters
+    # them by the user's own thresholds (Holdings > Alert settings), client-side.
     owners = {(e.symbol, e.reaction.session): e.id for e in events if e.reaction and
               any(p.part == "reaction" and p.points for p in e.breakdown)}
     moves: list[Move] = []
@@ -174,11 +176,11 @@ def build(use_llm: bool = True) -> BriefSnapshot:
         ps = series.get(sym)
         if not ps or len(ps.close) < 70:
             continue
-        for i in range(len(ps.close) - 5, len(ps.close)):
+        for i in range(len(ps.close) - MOVE_SESSIONS, len(ps.close)):
             r, _ = reaction(ps, nifty, datetime.combine(ps.dates[i], datetime.min.time()))
             if not r or r.session != ps.dates[i]:
                 continue
-            if (r.z is not None and abs(r.z) >= 2) or (r.vol_x or 0) >= 2.5:
+            if abs(r.ret) >= MOVE_MIN_RET or (r.vol_x or 0) >= MOVE_MIN_VOL_X or (r.z is not None and abs(r.z) >= 2):
                 moves.append(Move(symbol=sym, session=r.session, close=round(ps.close[i], 2), ret=r.ret,
                                   abn_ret=r.abn_ret, z=r.z, vol_x=r.vol_x, event_id=owners.get((sym, r.session)),
                                   spark=[round(c, 2) for c in ps.close[max(0, i - 29):i + 1]]))
@@ -206,6 +208,11 @@ def build(use_llm: bool = True) -> BriefSnapshot:
                **{f"thesis_{k}": v for k, v in tstats.items()}},
         llm_usage=llm.USAGE.line(), moves=moves,
     )
+
+
+MOVE_SESSIONS = 22      # ~a month of sessions: covers the 30d window
+MOVE_MIN_RET = 0.01     # the loosest settings on the alert sliders
+MOVE_MIN_VOL_X = 1.5
 
 
 def write(snapshot: BriefSnapshot) -> Path:

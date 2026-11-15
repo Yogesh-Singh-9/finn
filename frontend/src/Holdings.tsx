@@ -3,32 +3,9 @@ import { CATEGORY } from "./components/Feed";
 import { Delta, Kicker, SourceChip, Spark } from "./components/ui";
 import { cr, day, pct } from "./format";
 import type { BriefEvent, BriefSnapshot, HoldingRow, HoldingsSnapshot } from "./types";
+import { ALERT_CATS, ALERTS_KEY, type Alerts, read, readAlerts, trips, write } from "./alerts";
 
-/* ---------------------------------------------------------------- local storage (per viewer) */
-function read<T>(key: string, fallback: T): T {
-  try {
-    const v = localStorage.getItem(key);
-    return v ? (JSON.parse(v) as T) : fallback;
-  } catch {
-    return fallback;
-  }
-}
-function write(key: string, v: unknown) {
-  try {
-    localStorage.setItem(key, JSON.stringify(v));
-  } catch {
-    /* private mode: settings just won't persist */
-  }
-}
-
-/* ---------------------------------------------------------------- alerts */
-export type Alerts = { price: number; volume: number; cats: string[] };
-const DEFAULT_ALERTS: Alerts = {
-  price: 3, volume: 2.5,
-  cats: ["results", "management_change", "M&A", "fund_raise", "credit_rating", "litigation", "pledging", "capex"],
-};
-const ALERT_CATS = ["results", "management_change", "M&A", "fund_raise", "credit_rating", "litigation", "pledging", "capex",
-  "dividend", "bonus_split", "insider_trading", "investor_meetings", "earnings_call", "press_release", "agm_egm", "postal_ballot"];
+/* ---------------------------------------------------------------- alerts (shared with Today) */
 
 /** Back-test the thresholds on the last year of EOD data, client-side. */
 function estimate(rows: HoldingRow[], a: Alerts, counts: Record<string, number>) {
@@ -41,7 +18,7 @@ function estimate(rows: HoldingRow[], a: Alerts, counts: Record<string, number>)
       let avg = 0;
       for (let k = i - 20; k < i; k++) avg += v[k];
       avg /= 20;
-      if (Math.abs(ret) * 100 >= a.price || (avg > 0 && v[i] / avg >= a.volume)) hits++;
+      if (trips(ret, avg > 0 ? v[i] / avg : null, a)) hits++;
     }
   }
   const weeks = sessions / 5 || 1;
@@ -51,8 +28,8 @@ function estimate(rows: HoldingRow[], a: Alerts, counts: Record<string, number>)
 }
 
 function AlertSettings({ rows, counts }: { rows: HoldingRow[]; counts: Record<string, number> }) {
-  const [a, setA] = useState<Alerts>(() => read("finn-alerts", DEFAULT_ALERTS));
-  useEffect(() => write("finn-alerts", a), [a]);
+  const [a, setA] = useState<Alerts>(readAlerts);
+  useEffect(() => write(ALERTS_KEY, a), [a]);
   const est = useMemo(() => estimate(rows, a, counts), [rows, a, counts]);
   return (
     <div className="space-y-4 pb-1">
@@ -82,7 +59,7 @@ function AlertSettings({ rows, counts }: { rows: HoldingRow[]; counts: Record<st
         At this setting you’d get <span className="font-semibold">~{est.total < 10 ? est.total.toFixed(1) : Math.round(est.total)} alerts/week</span>
         <span className="text-sub"> ({est.pv.toFixed(1)} price/volume over the last {est.weeks} weeks, {est.filings.toFixed(1)} from filings at the last 30 days’ rate, which was results season, so high)</span>
       </p>
-      <p className="text-[11px] text-faint">Saved on this device. Back-tested on EOD closes and volumes for your 18 holdings.</p>
+      <p className="text-[11px] text-faint">Saved on this device. The price and volume thresholds also decide what Today’s unusual-moves strip shows. Back-tested on EOD closes and volumes for your 18 holdings.</p>
     </div>
   );
 }

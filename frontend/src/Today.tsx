@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from "react";
 import { EventCard, GlanceRow, MovesStrip, SetAside } from "./components/Feed";
 import { MorningCallButton, MorningCallPlayer, useMorningCall } from "./components/MorningCall";
+import { readAlerts, trips } from "./alerts";
 import { Kicker, Sheet, WhyContext } from "./components/ui";
 import { cleanHeadline } from "./components/ResultsCardView";
 import { cr, day, dayTime, label, wall } from "./format";
@@ -66,7 +67,9 @@ export function Today({ brief }: { brief: BriefSnapshot }) {
   const filings = shown.reduce((n, e) => n + e.filings.length, 0);
   const saved = filings * MIN_PER_FILING - needs.length * MIN_PER_NEEDS - glance.length * MIN_PER_GLANCE;
   const effName = effective === "custom" ? `${day(custom.from)} – ${day(custom.to)}` : WINDOWS.find((w) => w.key === effective)!.name;
-  const moves = brief.moves.filter((m) => inRange(`${m.session}T15:30:00`, effective));
+  // your alert thresholds (Holdings → Alert settings) decide which moves make the strip
+  const alerts = useMemo(readAlerts, []);
+  const moves = brief.moves.filter((m) => inRange(`${m.session}T15:30:00`, effective) && trips(m.ret, m.vol_x, alerts));
   const latestFiling = brief.events.reduce((a, e) => (e.occurred_at > a ? e.occurred_at : a), "");
 
   const openEvent = (id: string) => {
@@ -134,7 +137,7 @@ export function Today({ brief }: { brief: BriefSnapshot }) {
         <MorningCallPlayer call={call} stale={call.brief_generated_at !== brief.generated_at} onOpen={openEvent} onClose={() => setOnAir(false)} />
       )}
 
-      <MovesStrip moves={moves} onOpen={openEvent} />
+      <MovesStrip moves={moves} onOpen={openEvent} rule={`±${alerts.price}% or ${alerts.volume}× vol`} windowName={effName} />
 
       {/* needs you */}
       <section className="mt-6">

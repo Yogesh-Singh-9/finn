@@ -148,14 +148,24 @@ export function SetAside({ events }: { events: BriefEvent[] }) {
   );
 }
 
-export function MovesStrip({ moves, onOpen }: { moves: Move[]; onOpen: (eventId: string) => void }) {
-  if (!moves.length) return null;
+export function MovesStrip({ moves, onOpen, rule, windowName }: { moves: Move[]; onOpen: (eventId: string) => void; rule: string; windowName: string }) {
+  const head = (
+    <div className="flex items-baseline justify-between gap-2">
+      <Kicker>Unusual moves · EOD</Kicker>
+      <span className="num truncate text-[11px] text-faint">your alerts: {rule}</span>
+    </div>
+  );
+  if (!moves.length) {
+    return (
+      <section className="mt-6">
+        {head}
+        <p className="mt-1.5 text-[12px] text-sub">No holding moved {rule} in the {windowName}. Change the thresholds in Holdings → Alert settings.</p>
+      </section>
+    );
+  }
   return (
     <section className="mt-6">
-      <div className="flex items-baseline justify-between">
-        <Kicker>Unusual moves · EOD</Kicker>
-        <span className="text-[11px] text-faint">vs NIFTY, σ of 60 sessions</span>
-      </div>
+      {head}
       <div className="no-scrollbar -mx-4 mt-2 flex gap-0 overflow-x-auto px-4">
         {moves.map((m) => (
           <button
