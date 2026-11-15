@@ -37,3 +37,6 @@ USER_AGENT = (
     "(KHTML, like Gecko) Chrome/130.0 Safari/537.36"
 )
 MIN_INTERVAL_PER_HOST_S = 1.0
+
+# Research demo order (config only, never logic): INFY leads, it has the guidance revision chain.
+RESEARCH_DEMO_ORDER = ["INFY", "TITAN", "POLYCAB"]

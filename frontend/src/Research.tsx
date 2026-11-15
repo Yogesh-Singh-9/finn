@@ -4,6 +4,8 @@ import { cr, day, pct } from "./format";
 import type { Cite, Grade, LedgerPromise, Point, ResearchSnapshot, Section } from "./types";
 
 const BASE = import.meta.env.BASE_URL;
+// The deployed prototype is static: live builds for never-seen tickers run only locally.
+export const LIVE_BUILD = import.meta.env.DEV || import.meta.env.VITE_LIVE_BUILD === "1";
 
 /* ---------------------------------------------------------------- loading */
 type Load =
@@ -35,10 +37,13 @@ function useResearch(symbol: string | null): Load {
       const snap = await getJSON<ResearchSnapshot>(`${BASE}data/research/${symbol}.json`);
       if (cancelled) return;
       if (snap) return setLoad({ state: "ready", snap, live: false });
-      // 2. a ticker FINN has never seen: live build with staged progress
+      // 2. a ticker FINN has never seen: live build with staged progress (local only)
+      if (!LIVE_BUILD) {
+        return setLoad({ state: "error", message: `${symbol} isn’t precomputed. The live build for a new ticker runs locally in this prototype (FastAPI + free-tier models); the deployed version ships INFY, TITAN and POLYCAB.` });
+      }
       const start = await fetch(`/api/research/${symbol}/build`, { method: "POST" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
       if (!start?.job_id) {
-        return setLoad({ state: "error", message: `No precomputed dossier for ${symbol}, and the research backend isn't reachable. Precomputed: TITAN, POLYCAB, INFY.` });
+        return setLoad({ state: "error", message: `No precomputed dossier for ${symbol}, and the local research backend isn’t running (uvicorn finn.api:app --app-dir backend --port 8000).` });
       }
       for (;;) {
         await new Promise((r) => setTimeout(r, 1500));
@@ -115,6 +120,12 @@ function Fold({ title, conclusion, defaultOpen = false, children }: { title: str
 /* ---------------------------------------------------------------- ledger */
 type Filter = "all" | "graded" | "pending" | "revised";
 
+function badge(p: LedgerPromise) {
+  if (p.grade === "pending" && p.progress_flag === "on_track") return { text: "On track", cls: "text-sub" };
+  if (p.grade === "pending" && p.progress_flag === "behind") return { text: "Behind", cls: "text-down" };
+  return GRADE[p.grade];
+}
+
 function PromiseRow({ p }: { p: LedgerPromise }) {
   const [open, setOpen] = useState(false);
   const seg = p.segment && !p.metric.toLowerCase().includes(p.segment.toLowerCase()) ? ` · ${p.segment}` : "";
@@ -123,7 +134,7 @@ function PromiseRow({ p }: { p: LedgerPromise }) {
       <button onClick={() => setOpen((o) => !o)} aria-expanded={open} className="block w-full py-2.5 text-left">
         <div className="flex items-baseline gap-2">
           <span className="min-w-0 flex-1 text-[13px] font-medium leading-snug">{p.metric[0].toUpperCase() + p.metric.slice(1)}<span className="font-normal text-sub">{seg}</span></span>
-          <span className={`kicker shrink-0 ${GRADE[p.grade].cls}`}>{GRADE[p.grade].text}</span>
+          <span className={`kicker shrink-0 ${badge(p).cls}`}>{badge(p).text}</span>
         </div>
         <div className="num mt-0.5 flex flex-wrap gap-x-1.5 text-[12px] leading-snug">
           {p.target_text ? <span>{p.target_text}</span> : <span className="italic text-sub">qualitative</span>}
@@ -478,7 +489,7 @@ export function Research({ holdings }: { holdings: string[] }) {
             </button>
           ))}
         </div>
-        <p className="mt-2 text-[11px] text-faint">Outlined: precomputed. Others build live (needs the backend running).</p>
+        <p className="mt-2 text-[11px] text-faint">{LIVE_BUILD ? "Outlined: precomputed. Others build live from the local backend." : "Outlined: precomputed. The live build for other tickers runs locally in this prototype."}</p>
       </section>
     </div>
   );

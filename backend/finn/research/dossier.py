@@ -344,4 +344,6 @@ def write(snap: ResearchSnapshot) -> None:
     idx = [x for x in idx if x.get("symbol") != snap.symbol]
     idx.append({"symbol": snap.symbol, "company": snap.company, "built_at": data["built_at"],
                 "promises": len(snap.ledger.promises)})
-    idx_path.write_text(json.dumps(sorted(idx, key=lambda x: x["symbol"]), ensure_ascii=True), encoding="utf-8")
+    order = {s: i for i, s in enumerate(config.RESEARCH_DEMO_ORDER)}
+    idx.sort(key=lambda x: (order.get(x["symbol"], len(order)), x["symbol"]))
+    idx_path.write_text(json.dumps(idx, ensure_ascii=True), encoding="utf-8")

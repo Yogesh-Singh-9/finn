@@ -661,6 +661,31 @@ def _evidence(p: Promise, later: list[Transcript], per_call: int = 2) -> str:
     return "\n".join(out)
 
 
+_TOWARDS = re.compile(r"\b(towards?|approach\w*|inch\w*|gravitat\w*|mov(e|ing) (up )?to|get(ting)? to|path to|journey to|trajectory)\b", re.I)
+
+
+def _reached(promise: str, evidence: str) -> bool | None:
+    """Did the later call's number reach the level the promise was moving towards?
+    True / False when both sides carry a comparable % level, None when it can't tell."""
+    target = None
+    for pat, lo, _hi, _q in _PHRASES:
+        if re.search(pat, promise, re.I):
+            target = lo
+            break
+    if target is None:
+        m = re.search(r"(?:towards?|to|approach\w*)\s+(\d+(?:\.\d+)?)\s*%", promise, re.I)
+        target = float(m.group(1)) if m else None
+    got = re.findall(r"(\d+(?:\.\d+)?)\s*%", evidence)
+    if target is None or not got:
+        return None
+    vals = [float(x) for x in got]
+    if all(v >= target for v in vals):
+        return True
+    if all(v < target for v in vals):
+        return False
+    return None   # mixed numbers in the evidence: can't tell which is the level
+
+
 def judge_qualitative(promises: list[Promise], transcripts: list[Transcript], use_llm: bool = True) -> str | None:
     by_label = {t.call_label: t for t in transcripts}
     todo = []
@@ -706,6 +731,15 @@ def judge_qualitative(promises: list[Promise], transcripts: list[Transcript], us
             continue
         p.grade = j.grade  # type: ignore[assignment]
         p.grade_note = j.reason
+        if j.grade == "met" and _TOWARDS.search(p.source.quote or ""):
+            # "inching towards / approaching X" is met only once X is actually reached
+            reached = _reached(p.source.quote or "", j.evidence_quote or "")
+            if reached is not True:
+                p.grade, p.progress_flag = "pending", "on_track"
+                p.grade_note = ("on track, not yet met: the promise was to move towards a level, and the later call "
+                                "shows progress short of it" if reached is False else
+                                "on track at best: 'towards' promises count as met only when the level is reached, "
+                                "and the later call doesn't show that") + f". {j.reason}"
         if page and t:
             p.actual_text = "per later call"
             p.actual_source = _cite(t, page, j.evidence_quote)
