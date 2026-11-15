@@ -18,7 +18,7 @@ from pydantic import BaseModel
 from .. import config, llm
 from ..http import FetchError, Fetcher
 from ..models import Cite, Ledger, Point, ResearchSnapshot, Section
-from . import financials, ledger as L, transcripts as T
+from . import business, financials, ledger as L, transcripts as T
 
 log = logging.getLogger("finn.dossier")
 PROMPT_VERSION = "dossier-v1"
@@ -296,6 +296,10 @@ def build(symbol: str, f: Fetcher | None, fund: dict, use_llm: bool = True, prog
     if ar_note:
         notes.append(ar_note)
 
+    progress("Reading the annual report's segment note for the business snapshot…")
+    biz, _, bnotes = business.build(f, fund, use_llm)
+    notes += bnotes
+
     progress("Weighing bull vs bear and drafting questions…")
     bull, bear, qs, _by = bull_bear(facts, sections, led, tr, ar, ar_cite, url, fund.get("company", symbol), use_llm)
     if not bull and use_llm:
@@ -309,7 +313,7 @@ def build(symbol: str, f: Fetcher | None, fund: dict, use_llm: bool = True, prog
         symbol=symbol, company=fund.get("company", symbol), built_at=datetime.now().replace(microsecond=0),
         price=price["close"] if price else None, price_date=date.fromisoformat(price["date"][:10]) if price else None,
         day_change=price.get("chg") if price else None, vitals=vitals, verdict=verdict(facts, led, vitals, url),
-        sections=[ledger_sec] + sections, ledger=led, bull=bull, bear=bear, questions=qs, sources=sources,
+        sections=([biz] if biz else []) + [ledger_sec] + sections, ledger=led, bull=bull, bear=bear, questions=qs, sources=sources,
         cost_line=cost, notes=notes)
     return snap
 

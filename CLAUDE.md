@@ -127,6 +127,10 @@ Two tiers, each an ordered fallback chain set in `backend/.env` (swap models wit
   - **Qualitative:** strong chain, ≤8 per dossier, evidence passages from later calls picked by Python. A met/missed whose evidence quote isn't found verbatim becomes `not_comparable`.
   - `card_rows()` is the push side: the latest pre-results guidance per metric vs the quarter just reported (≤3 rows). The `guidance` score part: missed +15, behind +8.
 - `financials.py`: vitals and sections from screener annual tables. Thresholds are constants at the top (growth <8%, margin >200 bps below 5y avg, CFO/PAT <0.7, ROE <12%, D/E >1). Chips are coloured (signal) only when off. Every section has a code-built one-line conclusion.
+- `business.py` (business snapshot, first fold):
+  - Rules pick ≤2 overview pages (front 40) and ≤3 segment-note pages, scored by numbers plus a segment-table heading. flash-lite extracts the description (with quote) and each segment's revenue as printed.
+  - Python checks each number and quote on its page, reads the unit from the page (pypdf renders ₹ as "`" or "H"), converts to crore, computes the mix and checks the total against screener's revenue for that FY.
+  - All 5 demos tie to screener within 0.3%.
 - `dossier.py`: verdict strip (code), AR MD&A risk/outlook pages (≤3), bull/bear/3 questions (one strong call; points cite item ids F/L/E only; an uncited point is dropped; a number not found in its cites is `flagged`). Questions come from Python-ranked divergences; without a model they fall back to templates. Writes `data/snapshots/research/<SYM>.json` + `index.json`, with a cost line (calls, cached, tokens, $).
 - `scripts/build_research.py SYM ... [--refresh]` precomputes. `finn/api.py` (`uvicorn finn.api:app --app-dir backend --port 8000`) builds a never-seen ticker live in a thread with stages; the frontend reads the static snapshot first and Vite proxies `/api`.
 

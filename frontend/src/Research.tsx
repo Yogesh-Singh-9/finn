@@ -367,6 +367,45 @@ function SectionBody({ s, url }: { s: Section; url: string }) {
   return null;
 }
 
+/** What the company does + segment mix, from the annual report. One series, ink bars:
+ *  share of the segments' total, computed in Python; every row cites its page. */
+function BusinessBody({ s }: { s: Section }) {
+  const what = s.series[0] as Cite | undefined;
+  return (
+    <div className="space-y-3">
+      {what && (
+        <p className="text-[13px] leading-snug">
+          {s.conclusion.split(". ")[0]}. <SourceChip label={what.label} quote={what.quote} href={what.doc_id} />
+        </p>
+      )}
+      {s.rows.length > 0 && (
+        <div>
+          <div className="flex justify-between border-b hair pb-1 text-[10.5px] font-semibold uppercase tracking-[0.08em] text-faint">
+            <span>Segment revenue</span><span>₹ cr · share</span>
+          </div>
+          <ul>
+            {s.rows.map((r) => (
+              <li key={r.segment} className="border-b hair py-1.5">
+                <div className="flex items-baseline gap-2 text-[12.5px]">
+                  <span className="min-w-0 flex-1 truncate">{r.segment}</span>
+                  <span className="num text-sub">{cr(r.value_cr)}</span>
+                  <span className="num w-10 text-right font-medium">{r.share != null ? `${Math.round(r.share * 100)}%` : "—"}</span>
+                  <SourceChip label={`p.${r.page}`} quote={r.source?.quote} href={r.source?.doc_id}
+                    note={r.unit !== "crore" ? `Printed in ₹ ${r.unit}; converted to crore in code.` : null} />
+                </div>
+                <div className="mt-1 h-[3px] w-full bg-wash">
+                  <div className="h-full bg-ink" style={{ width: `${Math.max(1, (r.share ?? 0) * 100)}%` }} />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {s.notes.length > 0 && <p className="text-[11px] leading-snug text-faint">{s.notes.join(" ")}</p>}
+    </div>
+  );
+}
+
 /* ---------------------------------------------------------------- dossier */
 function Dossier({ snap, live, onBack }: { snap: ResearchSnapshot; live: boolean; onBack: () => void }) {
   const [vital, setVital] = useState<string | null>(null);
@@ -403,6 +442,11 @@ function Dossier({ snap, live, onBack }: { snap: ResearchSnapshot; live: boolean
       </section>
 
       <div className="mt-4 border-b border-ink">
+        {byKey.business && (
+          <Fold title="Business snapshot" conclusion={byKey.business.conclusion}>
+            <BusinessBody s={byKey.business} />
+          </Fold>
+        )}
         {byKey.ledger && (
           <Fold title="Promise ledger" conclusion={byKey.ledger.conclusion} defaultOpen>
             <LedgerView snap={snap} />
