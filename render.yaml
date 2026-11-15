@@ -1,0 +1,27 @@
+# Render blueprint: the research API, so the static Vercel frontend can live-build any NSE ticker.
+# Free plan: the service sleeps after ~15 min idle; the first request wakes it (~50s).
+services:
+  - type: web
+    name: finn-api
+    runtime: python
+    plan: free
+    region: singapore
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn finn.api:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: GEMINI_API_KEY
+        sync: false            # paste in the Render dashboard; never committed
+      - key: GROQ_API_KEY
+        sync: false
+      - key: FINN_LLM_CHEAP
+        value: gemini-3.5-flash-lite,groq:llama-3.3-70b-versatile
+      - key: FINN_LLM_STRONG
+        value: gemini-3.6-flash,gemini-3.5-flash,gemini-3.8-flash,groq:llama-3.3-70b-versatile   # 3.8 often times out: last for live builds
+      - key: FINN_LLM_TIMEOUT_S
+        value: "40"
+      - key: FINN_CORS_ORIGINS
+        value: https://finn-three-hazel.vercel.app,http://localhost:5173

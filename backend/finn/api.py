@@ -9,6 +9,7 @@ reports stages, so the UI can say "reading 4 transcripts..." instead of spinning
 from __future__ import annotations
 
 import json
+import os
 import re
 import threading
 import time
@@ -18,13 +19,19 @@ from typing import Any
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-from . import config
+from . import config, llm
 from .http import Fetcher
 from .research import dossier
 from .sources.screener import fetch_fundamentals
 
 app = FastAPI(title="FINN", docs_url=None, redoc_url=None)
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["GET", "POST"], allow_headers=["*"])
+_ORIGINS = [o.strip() for o in os.getenv("FINN_CORS_ORIGINS", "*").split(",") if o.strip()]
+app.add_middleware(CORSMiddleware, allow_origins=_ORIGINS, allow_methods=["GET", "POST"], allow_headers=["*"])
+# Live builds must finish: these are wall-clock budgets from the start of the build. Once a
+# tier's budget is spent its remaining live calls are skipped and the dossier ships without
+# them (e.g. no bull/bear), saying so in its notes.
+CHEAP_BUDGET_S = float(os.getenv("FINN_LIVE_CHEAP_BUDGET_S", "150"))
+STRONG_BUDGET_S = float(os.getenv("FINN_LIVE_STRONG_BUDGET_S", "210"))
 
 _SYM = re.compile(r"^[A-Z0-9&\-]{1,20}$")
 _jobs: dict[str, dict[str, Any]] = {}
@@ -40,7 +47,7 @@ def _sym(s: str) -> str:
 
 @app.get("/api/health")
 def health() -> dict:
-    return {"ok": True}
+    return {"ok": True, "models": {"cheap": llm.available("cheap"), "strong": llm.available("strong")}}
 
 
 @app.get("/api/research/{symbol}")
@@ -59,6 +66,9 @@ def _run(job_id: str, sym: str) -> None:
         job["stage"] = s
 
     with _lock:
+        llm.reset_breakers()
+        llm.set_deadline("cheap", CHEAP_BUDGET_S)
+        llm.set_deadline("strong", STRONG_BUDGET_S)
         try:
             with Fetcher() as f:
                 stage("Fetching screener's tables…")
@@ -78,6 +88,9 @@ def _run(job_id: str, sym: str) -> None:
             job.update(status="done", stage="Done")
         except Exception as e:  # noqa: BLE001 - report, never crash the server
             job.update(status="error", error=f"{type(e).__name__}: {str(e)[:200]}")
+        finally:
+            llm.set_deadline("cheap", None)
+            llm.set_deadline("strong", None)
 
 
 @app.post("/api/research/{symbol}/build")

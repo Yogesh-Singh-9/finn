@@ -4,8 +4,11 @@ import { cr, day, pct } from "./format";
 import type { Cite, Grade, LedgerPromise, Point, ResearchSnapshot, Section } from "./types";
 
 const BASE = import.meta.env.BASE_URL;
-// The deployed prototype is static: live builds for never-seen tickers run only locally.
-export const LIVE_BUILD = import.meta.env.DEV || import.meta.env.VITE_LIVE_BUILD === "1";
+// Live builds for never-seen tickers go to the research API: the Vite proxy in dev, the
+// Render service (VITE_API_BASE) when deployed. Precomputed dossiers never touch it.
+const API = (import.meta.env.VITE_API_BASE ?? "").replace(/\/$/, "");
+export const LIVE_BUILD = import.meta.env.DEV || !!API || import.meta.env.VITE_LIVE_BUILD === "1";
+const REMOTE = !!API && !import.meta.env.DEV;
 
 /* ---------------------------------------------------------------- loading */
 type Load =
@@ -41,21 +44,35 @@ function useResearch(symbol: string | null): Load {
       if (!LIVE_BUILD) {
         return setLoad({ state: "error", message: `${symbol} isn’t precomputed. The live build for a new ticker runs locally in this prototype (FastAPI + free-tier models); the deployed version ships INFY, TITAN and POLYCAB.` });
       }
-      const start = await fetch(`/api/research/${symbol}/build`, { method: "POST" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
-      if (!start?.job_id) {
-        return setLoad({ state: "error", message: `No precomputed dossier for ${symbol}, and the local research backend isn’t running (uvicorn finn.api:app --app-dir backend --port 8000).` });
+      // a free-tier server sleeps when idle: wake it first, and say why it's slow
+      const t0 = Date.now();
+      setLoad({ state: "loading", stages: [REMOTE ? "Waking the research server (free tier: the first request can take ~50s)…" : "Contacting the local research backend…"], live: true });
+      let awake = false;
+      while (!awake && Date.now() - t0 < 100_000) {
+        awake = !!(await getJSON<{ ok: boolean }>(`${API}/api/health`));
+        if (cancelled) return;
+        if (!awake) await new Promise((r) => setTimeout(r, 3000));
       }
+      if (!awake) {
+        return setLoad({ state: "error", message: REMOTE
+          ? `No precomputed dossier for ${symbol}, and the research server didn’t wake within 100s. Try again in a minute.`
+          : `No precomputed dossier for ${symbol}, and the local research backend isn’t running (uvicorn finn.api:app --app-dir backend --port 8000).` });
+      }
+      const woke = Math.round((Date.now() - t0) / 1000);
+      const start = await fetch(`${API}/api/research/${symbol}/build`, { method: "POST" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+      if (!start?.job_id) return setLoad({ state: "error", message: `The research server refused ${symbol} (is it an NSE symbol?).` });
+      const pre = woke > 5 ? [`Research server awake (${woke}s)`] : [];
       for (;;) {
         await new Promise((r) => setTimeout(r, 1500));
         if (cancelled) return;
-        const j = await getJSON<{ status: string; stages: string[]; error?: string }>(`/api/jobs/${start.job_id}`);
+        const j = await getJSON<{ status: string; stages: string[]; error?: string }>(`${API}/api/jobs/${start.job_id}`);
         if (!j) return setLoad({ state: "error", message: "Lost the research backend mid-build." });
         if (j.status === "error") return setLoad({ state: "error", message: j.error ?? "Build failed." });
         if (j.status === "done") {
-          const s = await getJSON<ResearchSnapshot>(`/api/research/${symbol}`);
+          const s = await getJSON<ResearchSnapshot>(`${API}/api/research/${symbol}`);
           return setLoad(s ? { state: "ready", snap: s, live: true } : { state: "error", message: "Build finished but the dossier is missing." });
         }
-        setLoad({ state: "loading", stages: j.stages.length ? j.stages : ["Queued…"], live: true });
+        setLoad({ state: "loading", stages: [...pre, ...(j.stages.length ? j.stages : ["Queued (one build at a time on the free tier)…"])], live: true });
       }
     })();
     return () => { cancelled = true; };
@@ -490,7 +507,7 @@ export function Research({ holdings, start }: { holdings: string[]; start?: { s:
             </button>
           ))}
         </div>
-        <p className="mt-2 text-[11px] text-faint">{LIVE_BUILD ? "Outlined: precomputed. Others build live from the local backend." : "Outlined: precomputed. The live build for other tickers runs locally in this prototype."}</p>
+        <p className="mt-2 text-[11px] text-faint">{REMOTE ? "Outlined: precomputed, instant. Any other NSE ticker builds live (1–3 min; the first request wakes the free server)." : LIVE_BUILD ? "Outlined: precomputed. Others build live from the local backend." : "Outlined: precomputed. The live build for other tickers runs locally in this prototype."}</p>
       </section>
     </div>
   );

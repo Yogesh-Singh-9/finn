@@ -142,7 +142,15 @@ Two tiers, each an ordered fallback chain set in `backend/.env` (swap models wit
 - Frontend (`components/MorningCall.tsx`): browser speechSynthesis, one utterance per sentence (highlighted), a chapter tap seeks there and opens the card (`openSignal.ts`), 1.25× restarts the current sentence. If the browser has no voice, the script is shown instead.
 
 ## Deploy
-Static on Vercel: root `frontend/`, and `vercel.json` runs `npm run build` (which first syncs `data/snapshots` into `public/data`). No backend and no env vars are needed. The live never-seen-ticker build runs only in dev or with `VITE_LIVE_BUILD=1`; otherwise the UI says "live build runs locally in this prototype".
+- **Frontend: Vercel, static.** Root is `frontend/`, and `vercel.json` runs `npm run build` (which first syncs `data/snapshots` into `public/data`). Precomputed dossiers and the brief never touch a backend.
+- **Research API: Render free tier** (`render.yaml` blueprint, region singapore, `rootDir: backend`). Keys are set in the Render dashboard (`sync: false`), never in git. The Vercel env var `VITE_API_BASE=https://<service>.onrender.com` turns on live builds in the deployed UI. Without it the UI says "live build runs locally in this prototype".
+- **Live builds must finish.**
+  - A wall-clock budget per tier from the build's start (`FINN_LIVE_CHEAP_BUDGET_S` 150, `FINN_LIVE_STRONG_BUDGET_S` 210). After that, live calls are skipped, and the dossier ships without bull/bear and says so.
+  - `_post` enforces `FINN_LLM_TIMEOUT_S` as a hard wall clock, because httpx's timeout is per read (a 175s flash-lite call was seen).
+  - The 4 transcript extractions run in parallel.
+  - The breaker resets per build.
+  - Render's strong chain puts 3.6-flash first, because 3.8 often times out.
+- The free service sleeps after ~15 min idle. The UI pings `/api/health` first and says the first request can take ~50s. One build runs at a time (others queue). Built dossiers live on Render's ephemeral disk until a restart.
 
 ## Running the data refresh
 From `backend/`: `.venv/Scripts/python scripts/refresh.py` (all sources, ~1 min). Add `--only nse|prices|screener` or `--symbols A,B` for partial runs. A partial run merges into the existing files, and a source that fails keeps the last good data. Output goes to `data/processed/` (filings.json, prices.json, calendar.json, results/<SYM>.json, fundamentals/<SYM>.json, manifest.json with every source status and any redirect seen).

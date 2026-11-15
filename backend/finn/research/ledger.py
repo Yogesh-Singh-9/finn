@@ -753,8 +753,11 @@ def build(symbol: str, fund: dict, transcripts: list[Transcript], adjusted: dict
     actuals: list[CompanyActual] = []
     stats: dict[str, int] = {}
     models: set[str] = set()
-    for t in transcripts:  # newest first, so actuals from the latest call win
-        ps, acts, st, by = extract(t, use_llm)
+    # the calls are independent: extract in parallel (a live build waits on the slowest, not the sum)
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=4) as ex:
+        results = list(ex.map(lambda t: extract(t, use_llm), transcripts))
+    for ps, acts, st, by in results:  # newest first, so actuals from the latest call win
         promises += ps
         actuals += acts
         for k, v in st.items():

@@ -27,6 +27,7 @@ import hashlib
 import json
 import logging
 import os
+import threading
 import time
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -121,6 +122,23 @@ USAGE = Usage()
 _fails: dict[str, int] = {}
 
 
+# A live (API) build sets a wall-clock deadline per tier: once it passes, live calls on
+# that tier are skipped (cache still read) so the build returns without them. Fail soft.
+DEADLINES: dict[str, float] = {}
+
+
+def set_deadline(tier: str, seconds: float | None) -> None:
+    if seconds is None:
+        DEADLINES.pop(tier, None)
+    else:
+        DEADLINES[tier] = time.monotonic() + seconds
+
+
+def reset_breakers() -> None:
+    """A long-running server starts every build with a clean circuit breaker."""
+    _fails.clear()
+
+
 def reset_usage() -> None:
     global USAGE
     USAGE = Usage()
@@ -150,10 +168,25 @@ def _cost(model: str, tin: int, tout: int) -> float:
 
 # ---------------------------------------------------------------- providers
 def _post(url: str, headers: dict, body: dict) -> dict:
-    try:
-        r = httpx.post(url, headers=headers, json=body, timeout=TIMEOUT_S)
-    except httpx.TimeoutException as e:
-        raise RuntimeError(f"timeout after {TIMEOUT_S:.0f}s") from e
+    # httpx's timeout is per read, so a server trickling bytes can hold a call for minutes
+    # (seen: 175s on flash-lite). The wall-clock limit is enforced here, on a daemon thread
+    # so an abandoned request never blocks the process from exiting.
+    box: dict[str, Any] = {}
+
+    def run() -> None:
+        try:
+            box["r"] = httpx.post(url, headers=headers, json=body, timeout=TIMEOUT_S)
+        except Exception as e:  # noqa: BLE001 - re-raised below
+            box["e"] = e
+
+    th = threading.Thread(target=run, daemon=True)
+    th.start()
+    th.join(TIMEOUT_S)
+    if th.is_alive() or isinstance(box.get("e"), httpx.TimeoutException):
+        raise RuntimeError(f"timeout after {TIMEOUT_S:.0f}s")
+    if "e" in box:
+        raise box["e"]
+    r = box["r"]
     if r.status_code in (429, 500, 502, 503, 504):
         raise _Retryable(f"{r.status_code}: {r.text[:160]}")
     if r.status_code != 200:
@@ -238,6 +271,10 @@ def json_call_meta(*, tier: Tier, purpose: str, prompt_version: str, system: str
 
         if _fails.get(link.name, 0) >= BREAKER_FAILS:
             skipped.append(f"{link.name} (breaker open)")
+            continue
+        if tier in DEADLINES and time.monotonic() > DEADLINES[tier]:
+            skipped.append(f"{link.name} (time budget spent)")
+            errors.append(f"{link.name}: {tier} time budget spent")
             continue
         t0 = time.monotonic()
         try:

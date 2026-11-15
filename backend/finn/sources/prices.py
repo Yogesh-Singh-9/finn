@@ -26,7 +26,9 @@ def fetch_prices(symbols: list[str], period: str = "1y") -> tuple[list[PriceSeri
     for sym in symbols:
         t = yahoo_ticker(sym)
         try:
-            sub = df[t] if len(symbols) > 1 else df
+            # newer yfinance returns (ticker, field) columns even for a single ticker
+            multi = getattr(df.columns, "nlevels", 1) > 1
+            sub = df[t] if (len(symbols) > 1 or (multi and t in df.columns.get_level_values(0))) else df
             sub = sub[["Close", "Volume"]].dropna(subset=["Close"])
             if sub.empty:
                 raise ValueError("no rows")

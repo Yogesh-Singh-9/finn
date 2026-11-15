@@ -299,7 +299,7 @@ def build(symbol: str, f: Fetcher | None, fund: dict, use_llm: bool = True, prog
     progress("Weighing bull vs bear and drafting questions…")
     bull, bear, qs, _by = bull_bear(facts, sections, led, tr, ar, ar_cite, url, fund.get("company", symbol), use_llm)
     if not bull and use_llm:
-        notes.append("bull/bear unavailable (strong model chain failed); questions built from the ledger by rules")
+        notes.append("bull/bear unavailable (strong models timed out or hit the live time budget); questions built from the ledger by rules")
 
     ledger_sec = Section(key="ledger", title="Promise ledger", conclusion=_ledger_conclusion(led))
     u = llm.USAGE
