@@ -42,7 +42,7 @@ function useResearch(symbol: string | null): Load {
       if (snap) return setLoad({ state: "ready", snap, live: false });
       // 2. a ticker FINN has never seen: live build with staged progress (local only)
       if (!LIVE_BUILD) {
-        return setLoad({ state: "error", message: `${symbol} isn’t precomputed. The live build for a new ticker runs locally in this prototype (FastAPI + free-tier models); the deployed version ships INFY, TITAN and POLYCAB.` });
+        return setLoad({ state: "error", message: `${symbol} isn’t precomputed. The live build for a new ticker runs locally in this prototype (FastAPI + free-tier models); this build ships 5 precomputed dossiers.` });
       }
       // a free-tier server sleeps when idle: wake it first, and say why it's slow
       const t0 = Date.now();

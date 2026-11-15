@@ -157,7 +157,7 @@ From `backend/`: `.venv/Scripts/python scripts/refresh.py` (all sources, ~1 min)
 
 ## Portfolio
 - Holdings (18): RELIANCE, HDFCBANK, BAJFINANCE, INFY, PERSISTENT, TRENT, TITAN, DMART, DIXON, KAYNES, POLYCAB, LT, HAL, SUNPHARMA, PIDILITIND, TATAPOWER, ETERNAL, CDSL
-- Ad-hoc research demo: KPITTECH, ASTRAL, DEEPAKNTR, CAMS
+- Ad-hoc research demo: KPITTECH, ASTRAL (precomputed, outside the portfolio), DEEPAKNTR, CAMS
 - **Promise Ledger demo:** TITAN and POLYCAB (primary, both held), INFY third. TRENT has **no concall transcripts**, so it isn't a ledger or research demo. It's the **management-change card demo** (29 Oct 2026: chairman Noel Tata's retirement plus director changes, all filed at 16:32).
 - The research engine must generalise to **any** NSE ticker. Never hard-code demo symbols into logic, only into config.
 

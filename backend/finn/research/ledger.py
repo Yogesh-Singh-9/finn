@@ -431,8 +431,9 @@ def grade_all(promises: list[Promise], fund: dict, actuals: list[CompanyActual],
             p.grade, p.grade_note = "not_comparable", "no number to grade against"
             continue
         pu = unit_class(p.unit, p.target_text)
-        if pu == "x":
-            p.grade, p.grade_note = "not_comparable", "relative target (a multiple of industry or market growth); FINN has no industry figure"
+        if pu == "x" or re.search(r"\b(industry|market)\b", f"{p.metric} {p.target_text or ''}", re.I) \
+                or re.search(r"\b(than|versus|vs\.?|over|above) (the )?(industry|market)\b|\bgap\b", p.source.quote or "", re.I):
+            p.grade, p.grade_note = "not_comparable", "relative to industry or market growth; FINN has no industry figure"
             continue
         nat = NATURAL.get(p.metric_key)
         if nat and pu != nat:
@@ -580,8 +581,9 @@ def extract(t: Transcript, use_llm: bool = True) -> tuple[list[Promise], list[Co
             stats["dropped_quote"] += 1
             continue
         stats["page_fixed"] += int(page != g.page)
-        if re.match(r"^\s*(we|it|revenue|sales|margin)\b.{0,60}\b(grew|was|were|declined|delivered|came in)\b", g.quote, re.I) \
-                and not re.search(r"\b(will|expect|should|would|guid|target|aim|plan)\w*", g.quote, re.I):
+        # a reported result, not a promise ("the EBITDA was at 17.2%"): past tense anywhere, no forward cue
+        if re.search(r"\b(grew|was|were|declined|delivered|came in|stood|reported|clocked|achieved)\b", g.quote, re.I) \
+                and not re.search(r"\b(will|expect|should|would|guid|target|aim|plan|going to|hope|confident|aspir|next|coming|ahead|trajector|achieving|by fiscal|by fy|by 20)\w*", g.quote, re.I):
             stats["backward"] += 1
             continue
         kind, lo, hi, qual = g.kind, None, None, "qualitative"

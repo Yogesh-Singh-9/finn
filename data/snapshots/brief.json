@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-15T16:32:10",
+ "generated_at": "2026-11-15T21:12:13",
  "window_from": "2026-10-16",
  "window_to": "2026-11-15",
  "prices_as_of": "2026-11-13",
@@ -15173,7 +15173,7 @@
   "thesis_challenges": 1,
   "thesis_untouched": 59
  },
- "llm_usage": "31 calls, 26 cached, 0 via fallback, $0.0026 est.",
+ "llm_usage": "31 calls, 31 cached, 0 via fallback, $0.0000 est.",
  "moves": [
   {
    "symbol": "PIDILITIND",
