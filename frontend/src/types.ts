@@ -345,3 +345,23 @@ export interface HoldingsSnapshot {
   category_counts_30d: Record<string, number>;
   llm_usage: string | null;
 }
+
+// ---------------------------------------------------------------- morning call
+export interface CallChapter {
+  event_id: string | null;
+  symbol: string | null;
+  title: string;
+  sentences: string[];
+}
+
+export interface MorningCall {
+  brief_generated_at: string;
+  generated_at: string;
+  window: string;
+  chapters: CallChapter[];
+  words: number;
+  est_seconds: number;
+  by: string;
+  dropped: string[];
+  llm_usage: string;
+}

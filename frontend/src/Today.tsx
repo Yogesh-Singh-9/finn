@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 import { EventCard, GlanceRow, MovesStrip, SetAside } from "./components/Feed";
+import { MorningCallButton, MorningCallPlayer, useMorningCall } from "./components/MorningCall";
 import { Kicker, Sheet, WhyContext } from "./components/ui";
 import { cleanHeadline } from "./components/ResultsCardView";
 import { cr, day, dayTime, label, wall } from "./format";
@@ -32,6 +33,8 @@ export function Today({ brief }: { brief: BriefSnapshot }) {
   const [custom, setCustom] = useState<{ from: string; to: string }>({ from: brief.window_from, to: brief.window_to });
   const [why, setWhy] = useState<BriefEvent | null>(null);
   const [ladder, setLadder] = useState(false);
+  const call = useMorningCall();
+  const [onAir, setOnAir] = useState(false);
   const ref = wall(brief.generated_at);
 
   const inRange = useCallback(
@@ -94,6 +97,8 @@ export function Today({ brief }: { brief: BriefSnapshot }) {
           <p className="mt-0.5 text-[11px] text-faint underline decoration-rule underline-offset-[3px]">How FINN got here</p>
         </button>
 
+        {call && call.chapters.length > 2 && !onAir && <MorningCallButton call={call} onPlay={() => setOnAir(true)} />}
+
         <div className="mt-4 flex gap-1.5" role="tablist" aria-label="Window">
           {[...WINDOWS.map((w) => w.key), "custom" as const].map((k) => (
             <button
@@ -124,6 +129,10 @@ export function Today({ brief }: { brief: BriefSnapshot }) {
           </p>
         )}
       </header>
+
+      {onAir && call && (
+        <MorningCallPlayer call={call} stale={call.brief_generated_at !== brief.generated_at} onOpen={openEvent} onClose={() => setOnAir(false)} />
+      )}
 
       <MovesStrip moves={moves} onOpen={openEvent} />
 
@@ -239,6 +248,7 @@ export function Today({ brief }: { brief: BriefSnapshot }) {
           <span className="hidden">{cr(0)}</span>
         </div>
       </Sheet>
+      {onAir && <div aria-hidden className="h-36" />}
     </WhyContext.Provider>
   );
 }

@@ -525,3 +525,23 @@ class HoldingsSnapshot(BaseModel):
     rows: list[HoldingRow]
     category_counts_30d: dict[str, int] = Field(default_factory=dict)   # for the alert estimator
     llm_usage: str | None = None
+
+
+# ---------------------------------------------------------------- morning call (optional)
+class CallChapter(BaseModel):
+    event_id: str | None          # None for intro / outro
+    symbol: str | None
+    title: str                    # "TATAPOWER · Q2 FY27 results"
+    sentences: list[str]
+
+
+class MorningCall(BaseModel):
+    brief_generated_at: datetime
+    generated_at: datetime
+    window: str                   # "last 7 days to 15 Nov"
+    chapters: list[CallChapter]
+    words: int
+    est_seconds: int              # at 150 words a minute
+    by: str                       # model that wrote it, or "template (no model)"
+    dropped: list[str] = Field(default_factory=list)   # sentences with a number not in their facts
+    llm_usage: str = ""

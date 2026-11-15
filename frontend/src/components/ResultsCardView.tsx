@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { useOpenSignal } from "./openSignal";
 import { bps, cr, day, pct } from "../format";
 import type { BriefEvent, GuidedDelivered, Metric, ResultsCard } from "../types";
 import { Delta, FilingLink, Kicker, NeedsDot, SourceChip, WhyButton } from "./ui";
@@ -123,6 +124,7 @@ function YoyStrip({ card }: { card: ResultsCard }) {
 
 export function ResultsCardView({ event, card }: { event: BriefEvent; card: ResultsCard; compact?: boolean }) {
   const [open, setOpen] = useState(false);
+  useOpenSignal(event.id, useCallback(() => setOpen(true), []));
   const top = lead(card);
   const adj = card.adjusted.filter((a) => a.yoy != null);
   const pat = card.metrics.find((m) => m.key === "pat");

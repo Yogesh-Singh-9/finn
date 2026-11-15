@@ -1,0 +1,59 @@
+{
+ "brief_generated_at": "2026-11-15T16:32:10",
+ "generated_at": "2026-11-15T16:44:03.536539",
+ "window": "last 7 days to 15 Nov",
+ "chapters": [
+  {
+   "event_id": null,
+   "symbol": null,
+   "title": "Intro",
+   "sentences": [
+    "Good morning.",
+    "Here is your portfolio briefing for the period ending 15 Nov, covering 3 items that need your attention."
+   ]
+  },
+  {
+   "event_id": "TATAPOWER-202611111720-106855371",
+   "symbol": "TATAPOWER",
+   "title": "TATAPOWER \u00b7 Q2 FY27 results",
+   "sentences": [
+    "Tata Power announced Q2 FY27 results with revenue up 26% year on year and EBITDA margin down 257 basis points.",
+    "Adjusted profit after tax rose 22%, excluding a 119 crore rupees one-off gain, while reported profit after tax increased 33%.",
+    "The stock fell 0.8% in the next session, down 1.0% versus the NIFTY."
+   ]
+  },
+  {
+   "event_id": "KAYNES-202611142342-106861437",
+   "symbol": "KAYNES",
+   "title": "KAYNES \u00b7 Q2 FY27 results",
+   "sentences": [
+    "This update challenges your EMS business growth driver for Kaynes Technology.",
+    "The company reported Q2 FY27 results with profit after tax down 67% as profit after tax dropped heavily.",
+    "Meanwhile, revenue rose 5.1% year on year during the quarter."
+   ]
+  },
+  {
+   "event_id": "HAL-202611121330-106856505",
+   "symbol": "HAL",
+   "title": "HAL \u00b7 Q2 FY27 results",
+   "sentences": [
+    "Hindustan Aeronautics delivered Q2 FY27 results, showing revenue up 15% year on year alongside profit after tax up 16%.",
+    "However, the company's EBITDA margin was down 66 basis points for the period.",
+    "In the next session, the stock fell 2.1%, which was down 2.3% versus the NIFTY."
+   ]
+  },
+  {
+   "event_id": null,
+   "symbol": null,
+   "title": "Close",
+   "sentences": [
+    "You also have 9 more items worth a glance in your full report."
+   ]
+  }
+ ],
+ "words": 172,
+ "est_seconds": 69,
+ "by": "gemini:gemini-3.6-flash",
+ "dropped": [],
+ "llm_usage": "1 calls, 1 cached, 1 via fallback, $0.0000 est."
+}

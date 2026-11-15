@@ -134,7 +134,12 @@ Two tiers, each an ordered fallback chain set in `backend/.env` (swap models wit
 - `scripts/build_holdings.py` seeds a thesis per holding (`data/processed/theses.json`): flash-lite reads the latest 2 calls and names 3 drivers, each with a quote verified on its page (else dropped). The "watch next quarter" line is the ledger's latest pending numeric target when there is one, else the model's pick, accepted only from the latest call. It writes `data/snapshots/holdings.json` (250 sessions of closes/volumes, thesis, research flag, 30-day category counts).
 - Event tagging (`thesis.tag`, prompt `thesis-tag-v2`) is strict: only results can be evidence for a metric driver, and a deal or press release touches a driver only if it is about that exact business. Tags are made against the **seeded** drivers. User edits live in localStorage (`finn-thesis-SYM`) and the UI says so.
 - Alert settings (price ±X%, volume N× its 20-day average, categories) are stored in localStorage (`finn-alerts`). The alerts/week estimate is back-tested client-side on the price history, plus filings at the 30-day rate.
-- **Full rebuild order:** build_research → build_holdings → build_brief → build_holdings (refreshes category counts) → `node frontend/scripts/sync-data.mjs`.
+- **Full rebuild order:** build_research → build_holdings → build_brief → build_holdings (refreshes category counts) → build_morning → `node frontend/scripts/sync-data.mjs`.
+
+## Morning Call (optional): `finn/brief/morning.py`
+- `scripts/build_morning.py` writes `data/snapshots/morning.json` once per brief: the last 7 days' needs_you events (≤5) by score. Python writes each item's facts in spoken form (`spoken()`: up/down, basis points, crore rupees; digits unchanged). The strong chain (then cheap) only turns the facts into prose (`morning-v3`).
+- Each sentence is checked: a digit not in that chapter's facts, or a spelled-out number, drops the sentence. A chapter with nothing left keeps the template line. With no model, a template from the same facts is used.
+- Frontend (`components/MorningCall.tsx`): browser speechSynthesis, one utterance per sentence (highlighted), a chapter tap seeks there and opens the card (`openSignal.ts`), 1.25× restarts the current sentence. If the browser has no voice, the script is shown instead.
 
 ## Deploy
 Static on Vercel: root `frontend/`, and `vercel.json` runs `npm run build` (which first syncs `data/snapshots` into `public/data`). No backend and no env vars are needed. The live never-seen-ticker build runs only in dev or with `VITE_LIVE_BUILD=1`; otherwise the UI says "live build runs locally in this prototype".

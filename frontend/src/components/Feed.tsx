@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { useOpenSignal } from "./openSignal";
 import { cr, day, dayTime, label, pct, sigma, tone } from "../format";
 import type { BriefEvent, Move } from "../types";
 import { MgmtCardView } from "./MgmtCardView";
@@ -75,6 +76,7 @@ export function EventCard({ event }: { event: BriefEvent }) {
 /** Worth a glance: one dense line; tap to open the full card in place. */
 export function GlanceRow({ event }: { event: BriefEvent }) {
   const [open, setOpen] = useState(false);
+  useOpenSignal(event.id, useCallback(() => setOpen(true), []));
   return (
     <li className="border-t hair">
       <button onClick={() => setOpen((o) => !o)} aria-expanded={open} className="flex w-full items-baseline gap-2.5 py-[9px] text-left">
