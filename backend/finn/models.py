@@ -324,6 +324,7 @@ class Event(BaseModel):
     summary_by: str | None = None
     results_card: ResultsCard | None = None
     mgmt_card: MgmtCard | None = None
+    thesis_tag: ThesisTag | None = None
 
 
 class LadderStats(BaseModel):
@@ -348,6 +349,15 @@ class Move(BaseModel):
     vol_x: float | None
     event_id: str | None = None   # the filing event that owns this session, if any
     spark: list[float] = Field(default_factory=list)   # last 30 closes
+
+
+class ThesisTag(BaseModel):
+    """Which thesis driver an event touches, and whether it supports or challenges it."""
+    driver: int | None            # index into the holding's seeded drivers; None = touches none
+    driver_text: str | None = None
+    stance: Literal["supports", "challenges", "neutral"] = "neutral"
+    reason: str = ""
+    by: str = ""
 
 
 class BriefSnapshot(BaseModel):
@@ -477,3 +487,41 @@ class ResearchSnapshot(BaseModel):
     sources: list[Cite] = Field(default_factory=list)
     cost_line: str | None = None
     notes: list[str] = Field(default_factory=list)
+
+
+# ============================================================== phase 5+7: holdings
+class Driver(BaseModel):
+    text: str                     # "Jewellery share gains from unorganised players"
+    why: str | None = None
+    source: Cite
+
+
+class Thesis(BaseModel):
+    symbol: str
+    drivers: list[Driver]
+    line: str                     # one line built in code from the drivers
+    seeded_by: str | None = None
+    seeded_from: str | None = None   # "Q2 FY27 call"
+    watch: str | None = None      # "Watch next quarter: ..."
+    watch_source: Cite | None = None
+    notes: list[str] = Field(default_factory=list)
+
+
+class HoldingRow(BaseModel):
+    symbol: str
+    company: str
+    close: float | None = None
+    day_change: float | None = None
+    dates: list[date] = Field(default_factory=list)      # last ~250 sessions
+    closes: list[float] = Field(default_factory=list)
+    volumes: list[float] = Field(default_factory=list)
+    thesis: Thesis | None = None
+    research: bool = False        # a precomputed dossier exists
+
+
+class HoldingsSnapshot(BaseModel):
+    generated_at: datetime
+    prices_as_of: date | None
+    rows: list[HoldingRow]
+    category_counts_30d: dict[str, int] = Field(default_factory=dict)   # for the alert estimator
+    llm_usage: str | None = None

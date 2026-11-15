@@ -137,7 +137,10 @@ def load(f: Fetcher | None, symbol: str, fund: dict, n: int = N_CALLS) -> tuple[
         cd = _call_date(pages, c["period_label"])
         out.append(Transcript(symbol, c["period_label"], url, cd.isoformat(), results_quarter(cd), pages))
     out.sort(key=lambda t: t.call_date, reverse=True)
-    path.write_text(json.dumps([t.__dict__ for t in out], ensure_ascii=True), encoding="utf-8")
+    keep = {t.url: t.__dict__ for t in out}
+    for url, d in stored.items():   # a 1-call read must not wipe the 4 calls already stored
+        keep.setdefault(url, d)
+    path.write_text(json.dumps(sorted(keep.values(), key=lambda d: d["call_date"], reverse=True), ensure_ascii=True), encoding="utf-8")
     return out, notes
 
 

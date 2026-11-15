@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Holdings } from "./Holdings";
 import { Research } from "./Research";
 import { Today } from "./Today";
 import type { BriefSnapshot } from "./types";
@@ -18,20 +19,13 @@ function useTheme(): [boolean, () => void] {
   return [dark, () => setDark((d) => !d)];
 }
 
-function Placeholder({ title, line }: { title: string; line: string }) {
-  return (
-    <div className="pt-5">
-      <h1 className="text-[30px] font-semibold leading-none tracking-[-0.03em]">{title}</h1>
-      <p className="mt-3 max-w-[32ch] text-[13px] leading-relaxed text-sub">{line}</p>
-    </div>
-  );
-}
-
 export default function App() {
   const [tab, setTab] = useState<Tab>("today");
   const [brief, setBrief] = useState<BriefSnapshot | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [dark, toggle] = useTheme();
+  const [researchSym, setResearchSym] = useState<{ s: string; n: number } | null>(null);
+  const openResearch = (s: string) => { setResearchSym({ s, n: Date.now() }); setTab("research"); window.scrollTo({ top: 0 }); };
 
   useEffect(() => {
     // Static snapshot shipped with the bundle: no backend call for Today.
@@ -56,8 +50,8 @@ export default function App() {
           ) : (
             <p className="pt-10 text-[13px] text-sub">{error ? `Couldn't load the brief (${error}).` : ""}</p>
           ))}
-        {tab === "holdings" && <Placeholder title="Holdings" line="Your 18 holdings, each with its thesis and a “watch next quarter” line from the latest guidance. Next phase." />}
-        {tab === "research" && <Research holdings={brief?.symbols ?? []} />}
+        {tab === "holdings" && <Holdings brief={brief} onResearch={openResearch} />}
+        {tab === "research" && <Research holdings={brief?.symbols ?? []} start={researchSym} />}
       </main>
       <nav className="fixed bottom-0 left-1/2 z-40 w-full max-w-[440px] -translate-x-1/2 border-t hair bg-paper/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-sm">
         <div className="grid grid-cols-3">

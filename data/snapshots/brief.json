@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-15T16:21:55",
+ "generated_at": "2026-11-15T16:32:10",
  "window_from": "2026-10-16",
  "window_to": "2026-11-15",
  "prices_as_of": "2026-11-13",
@@ -109,7 +109,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "needs_you",
@@ -234,7 +234,14 @@
     "reported_headline": "Revenue +30% YoY, EBITDA margin \u221290 bps, PAT +34%",
     "one_offs_by": "gemini:gemini-3.5-flash-lite"
    },
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Revenue and profit growth results.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "DIXON-202610301607-106836523",
@@ -301,7 +308,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "needs_you",
@@ -416,7 +423,14 @@
     "reported_headline": null,
     "one_offs_by": null
    },
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "PAT and EBITDA margin declined despite revenue growth.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "LT-202610271713-106830479",
@@ -493,7 +507,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "needs_you",
@@ -608,7 +622,14 @@
     "reported_headline": null,
     "one_offs_by": null
    },
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "EBITDA margin dropped while drivers are pipeline and order book.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "TATAPOWER-202611111720-106855371",
@@ -695,7 +716,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "needs_you",
@@ -831,7 +852,190 @@
     "reported_headline": "Revenue +26% YoY, EBITDA margin \u2212257 bps, PAT +33%",
     "one_offs_by": "gemini:gemini-3.5-flash-lite"
    },
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Adjusted PAT growth reported at 22%.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
+  },
+  {
+   "id": "KAYNES-202611142342-106861437",
+   "symbol": "KAYNES",
+   "company": "Kaynes Technology India Limited",
+   "category": "results",
+   "subtype": "outcome",
+   "title": "Q2 FY27 results",
+   "occurred_at": "2026-11-14T23:42:28",
+   "filings": [
+    {
+     "id": "106861437",
+     "nse_subject": "Outcome of Board Meeting",
+     "title": "The financial results for the period ended September 30, 2026",
+     "category": "results",
+     "subtype": "outcome",
+     "classified_by": "regex",
+     "filed_at": "2026-11-14T23:42:28",
+     "url": "https://nsearchives.nseindia.in/corporate/KAYNESTECH_14112026234020_SEBI_Q2_2027_Final.pdf"
+    }
+   ],
+   "people": [],
+   "amount_cr": null,
+   "reaction": null,
+   "reaction_pending": true,
+   "results_ref": {
+    "period_key": "FY27Q2",
+    "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1758865_15112026120908_WEB.xml",
+    "consolidated": true
+   },
+   "score": 93.0,
+   "breakdown": [
+    {
+     "part": "category",
+     "points": 60.0,
+     "note": "results"
+    },
+    {
+     "part": "subtype",
+     "points": 0.0,
+     "note": "outcome"
+    },
+    {
+     "part": "numbers",
+     "points": 18.0,
+     "note": "Revenue +5.1% YoY vs its usual +40% over the last 8 quarters (-2.5\u03c3, sets the points); PAT \u221267% vs usual +37% (-2.4\u03c3)"
+    },
+    {
+     "part": "guidance",
+     "points": 0.0,
+     "note": "no gradeable guidance on record from the last call"
+    },
+    {
+     "part": "reaction",
+     "points": 0.0,
+     "note": "next session not traded yet"
+    },
+    {
+     "part": "thesis",
+     "points": 15.0,
+     "note": "challenges 'EMS business growth': PAT dropped heavily, challenging EMS business growth driver."
+    }
+   ],
+   "tier": "needs_you",
+   "summary": null,
+   "summary_by": null,
+   "results_card": {
+    "symbol": "KAYNES",
+    "period_key": "FY27Q2",
+    "period_label": "Q2 FY27",
+    "basis": "consolidated",
+    "layout": "standard",
+    "source": "NSE XBRL",
+    "source_note": "screener not updated for Q2 FY27 yet; current quarter from NSE XBRL (consolidated), prior quarters from screener (consolidated)",
+    "headline": "Revenue +5.1% YoY, PAT \u221267%",
+    "metrics": [
+     {
+      "key": "revenue",
+      "label": "Revenue",
+      "value": 952.515,
+      "prev_q": 946.0,
+      "prev_y": 906.0,
+      "qoq": 0.00689,
+      "yoy": 0.05134,
+      "source": "NSE XBRL",
+      "note": "current from NSE XBRL, bases from screener"
+     },
+     {
+      "key": "ebitda",
+      "label": "EBITDA (XBRL: revenue \u2212 operating costs)",
+      "value": 125.57699999999988,
+      "prev_q": 148.0,
+      "prev_y": 148.0,
+      "qoq": null,
+      "yoy": null,
+      "source": "NSE XBRL",
+      "note": "defined differently from EBITDA (screener): no QoQ/YoY"
+     },
+     {
+      "key": "pbt",
+      "label": "PBT (before share of associates/JVs)",
+      "value": 70.733,
+      "prev_q": 88.0,
+      "prev_y": 152.0,
+      "qoq": null,
+      "yoy": null,
+      "source": "NSE XBRL",
+      "note": "XBRL PBT excludes associates/JVs, screener's includes them: no QoQ/YoY"
+     },
+     {
+      "key": "pat",
+      "label": "PAT",
+      "value": 39.8,
+      "prev_q": 56.0,
+      "prev_y": 121.0,
+      "qoq": -0.28929,
+      "yoy": -0.67107,
+      "source": "NSE XBRL",
+      "note": "current from NSE XBRL, bases from screener"
+     }
+    ],
+    "margins": [
+     {
+      "key": "ebitda_margin",
+      "label": "EBITDA margin (XBRL)",
+      "value": 0.13184,
+      "prev_q": null,
+      "prev_y": null,
+      "qoq_bps": null,
+      "yoy_bps": null
+     },
+     {
+      "key": "pat_margin",
+      "label": "PAT margin",
+      "value": 0.04178,
+      "prev_q": 0.0592,
+      "prev_y": 0.13355,
+      "qoq_bps": null,
+      "yoy_bps": null
+     }
+    ],
+    "checks": [
+     {
+      "name": "income \u2212 expenses + exceptional = PBT",
+      "expected": 70.73,
+      "actual": 70.73,
+      "tolerance": 2.0,
+      "ok": true
+     },
+     {
+      "name": "PBT \u2212 tax + associates/JVs + discontinued = PAT",
+      "expected": 39.8,
+      "actual": 39.8,
+      "tolerance": 2.0,
+      "ok": true
+     }
+    ],
+    "verified": true,
+    "status": "verified",
+    "filing_url": "https://nsearchives.nseindia.in/corporate/KAYNESTECH_14112026234020_SEBI_Q2_2027_Final.pdf",
+    "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1758865_15112026120908_WEB.xml",
+    "guidance": [],
+    "guidance_note": "no promise ledger built for this company yet",
+    "one_offs": [],
+    "adjusted": [],
+    "reported_headline": null,
+    "one_offs_by": null
+   },
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": 0,
+    "driver_text": "EMS business growth",
+    "stance": "challenges",
+    "reason": "PAT dropped heavily, challenging EMS business growth driver.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "SUNPHARMA-202610301415-106836275",
@@ -898,7 +1102,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "needs_you",
@@ -1023,7 +1227,14 @@
     "reported_headline": "Revenue +12% YoY, EBITDA margin \u2212198 bps, PAT \u221236%",
     "one_offs_by": null
    },
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "PAT declined sharply due to one-off charge.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "PIDILITIND-202610281854-106832949",
@@ -1100,7 +1311,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "needs_you",
@@ -1215,7 +1426,14 @@
     "reported_headline": null,
     "one_offs_by": null
    },
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "EBITDA margin declined significantly against volume drivers.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "TRENT-202610291608-106834418",
@@ -1417,38 +1635,65 @@
     "reported_headline": null,
     "one_offs_by": null
    },
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
-   "id": "KAYNES-202611142342-106861437",
-   "symbol": "KAYNES",
-   "company": "Kaynes Technology India Limited",
+   "id": "BAJFINANCE-202610191720-106822125",
+   "symbol": "BAJFINANCE",
+   "company": "Bajaj Finance Limited",
    "category": "results",
    "subtype": "outcome",
-   "title": "Q2 FY27 results",
-   "occurred_at": "2026-11-14T23:42:28",
+   "title": "Q2 FY27 results \u00b7 with deck",
+   "occurred_at": "2026-10-19T17:20:38",
    "filings": [
     {
-     "id": "106861437",
+     "id": "106822125",
      "nse_subject": "Outcome of Board Meeting",
      "title": "The financial results for the period ended September 30, 2026",
      "category": "results",
      "subtype": "outcome",
      "classified_by": "regex",
-     "filed_at": "2026-11-14T23:42:28",
-     "url": "https://nsearchives.nseindia.in/corporate/KAYNESTECH_14112026234020_SEBI_Q2_2027_Final.pdf"
+     "filed_at": "2026-10-19T17:20:38",
+     "url": "https://nsearchives.nseindia.in/corporate/BAJFINANCE_19102026172017_BMOutcome_19102026.pdf"
+    },
+    {
+     "id": "106822137",
+     "nse_subject": "Investor Presentation",
+     "title": "Investor Presentation for the quarter ended 30 September 2026",
+     "category": "investor_meetings",
+     "subtype": "deck",
+     "classified_by": "pdf",
+     "filed_at": "2026-10-19T17:26:39",
+     "url": "https://nsearchives.nseindia.in/corporate/BAJFINANCE_19102026172612_SEIntimation_InvestorPPT_19102026.pdf"
+    },
+    {
+     "id": "106822444",
+     "nse_subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+     "title": "Update on the Conference Call in respect of financial results for the quarter ended 30 September 2026",
+     "category": "results",
+     "subtype": "outcome",
+     "classified_by": "pdf",
+     "filed_at": "2026-10-19T21:00:04",
+     "url": "https://nsearchives.nseindia.in/corporate/BAJFINANCE_19102026205822_Outcome_of_investor_call_-_Q2FY27.pdf"
     }
    ],
    "people": [],
    "amount_cr": null,
-   "reaction": null,
-   "reaction_pending": true,
+   "reaction": {
+    "session": "2026-10-21",
+    "ret": -0.03275,
+    "abn_ret": -0.02936,
+    "z": -1.67,
+    "vol_x": 2.36
+   },
+   "reaction_pending": false,
    "results_ref": {
     "period_key": "FY27Q2",
-    "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1758865_15112026120908_WEB.xml",
+    "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1742040_19102026075918_WEB.xml",
     "consolidated": true
    },
-   "score": 78.0,
+   "score": 81.0,
    "breakdown": [
     {
      "part": "category",
@@ -1462,8 +1707,8 @@
     },
     {
      "part": "numbers",
-     "points": 18.0,
-     "note": "Revenue +5.1% YoY vs its usual +40% over the last 8 quarters (-2.5\u03c3, sets the points); PAT \u221267% vs usual +37% (-2.4\u03c3)"
+     "points": 5.0,
+     "note": "PAT +29% YoY vs its usual +17% over the last 8 quarters (+1.2\u03c3, sets the points); NII +23% vs usual +21% (+0.4\u03c3)"
     },
     {
      "part": "guidance",
@@ -1472,113 +1717,122 @@
     },
     {
      "part": "reaction",
-     "points": 0.0,
-     "note": "next session not traded yet"
+     "points": 11.0,
+     "note": "21 Oct: -3.3% (-2.9% vs NIFTY, -1.7\u03c3), volume 2.4\u00d7 20-day avg"
     },
     {
      "part": "thesis",
-     "points": 0.0,
-     "note": "thesis hook not set yet"
+     "points": 5.0,
+     "note": "supports 'Deliver 20% to 25% profit growth': Profit growth of 29% beats the profit growth target."
     }
    ],
    "tier": "needs_you",
    "summary": null,
    "summary_by": null,
    "results_card": {
-    "symbol": "KAYNES",
+    "symbol": "BAJFINANCE",
     "period_key": "FY27Q2",
     "period_label": "Q2 FY27",
     "basis": "consolidated",
-    "layout": "standard",
-    "source": "NSE XBRL",
-    "source_note": "screener not updated for Q2 FY27 yet; current quarter from NSE XBRL (consolidated), prior quarters from screener (consolidated)",
-    "headline": "Revenue +5.1% YoY, PAT \u221267%",
+    "layout": "bank",
+    "source": "screener",
+    "source_note": "screener quarterly table (consolidated)",
+    "headline": "NII +23% YoY, PAT / revenue +119 bps, PAT +29%",
     "metrics": [
      {
-      "key": "revenue",
-      "label": "Revenue",
-      "value": 952.515,
-      "prev_q": 946.0,
-      "prev_y": 906.0,
-      "qoq": 0.00689,
-      "yoy": 0.05134,
-      "source": "NSE XBRL",
-      "note": "current from NSE XBRL, bases from screener"
+      "key": "nii",
+      "label": "NII (interest earned \u2212 interest expended)",
+      "value": 15944.0,
+      "prev_q": 15223.0,
+      "prev_y": 12979.0,
+      "qoq": 0.04736,
+      "yoy": 0.22845,
+      "source": "screener",
+      "note": "screener: Revenue \u2212 Interest"
+     },
+     {
+      "key": "ppop",
+      "label": "PPOP",
+      "value": null,
+      "prev_q": null,
+      "prev_y": null,
+      "qoq": null,
+      "yoy": null,
+      "source": null,
+      "note": "n/a: screener folds provisions into expenses and this filing's XBRL has no PPOP line"
      },
      {
       "key": "ebitda",
-      "label": "EBITDA (XBRL: revenue \u2212 operating costs)",
-      "value": 125.57699999999988,
-      "prev_q": 148.0,
-      "prev_y": 148.0,
+      "label": "EBITDA",
+      "value": null,
+      "prev_q": null,
+      "prev_y": null,
       "qoq": null,
       "yoy": null,
-      "source": "NSE XBRL",
-      "note": "defined differently from EBITDA (screener): no QoQ/YoY"
+      "source": null,
+      "note": "n/a for lenders: interest is the cost of goods"
      },
      {
       "key": "pbt",
-      "label": "PBT (before share of associates/JVs)",
-      "value": 70.733,
-      "prev_q": 88.0,
-      "prev_y": 152.0,
-      "qoq": null,
-      "yoy": null,
-      "source": "NSE XBRL",
-      "note": "XBRL PBT excludes associates/JVs, screener's includes them: no QoQ/YoY"
+      "label": "PBT",
+      "value": 8537.0,
+      "prev_q": 8149.0,
+      "prev_y": 6608.0,
+      "qoq": 0.04761,
+      "yoy": 0.29192,
+      "source": "screener",
+      "note": null
      },
      {
       "key": "pat",
       "label": "PAT",
-      "value": 39.8,
-      "prev_q": 56.0,
-      "prev_y": 121.0,
-      "qoq": -0.28929,
-      "yoy": -0.67107,
-      "source": "NSE XBRL",
-      "note": "current from NSE XBRL, bases from screener"
+      "value": 6367.0,
+      "prev_q": 6081.0,
+      "prev_y": 4948.0,
+      "qoq": 0.04703,
+      "yoy": 0.28678,
+      "source": "screener",
+      "note": null
      }
     ],
     "margins": [
      {
-      "key": "ebitda_margin",
-      "label": "EBITDA margin (XBRL)",
-      "value": 0.13184,
-      "prev_q": null,
-      "prev_y": null,
-      "qoq_bps": null,
-      "yoy_bps": null
-     },
-     {
       "key": "pat_margin",
-      "label": "PAT margin",
-      "value": 0.04178,
-      "prev_q": 0.0592,
-      "prev_y": 0.13355,
-      "qoq_bps": null,
-      "yoy_bps": null
+      "label": "PAT / revenue",
+      "value": 0.25939,
+      "prev_q": 0.26251,
+      "prev_y": 0.24752,
+      "qoq_bps": -31.0,
+      "yoy_bps": 119.0
      }
     ],
     "checks": [
      {
-      "name": "income \u2212 expenses + exceptional = PBT",
-      "expected": 70.73,
-      "actual": 70.73,
-      "tolerance": 2.0,
+      "name": "revenue \u2212 interest \u2212 expenses = financing profit",
+      "expected": 8824.0,
+      "actual": 8825.0,
+      "tolerance": 88.25,
       "ok": true
      },
      {
-      "name": "PBT \u2212 tax + associates/JVs + discontinued = PAT",
-      "expected": 39.8,
-      "actual": 39.8,
-      "tolerance": 2.0,
+      "name": "financing profit + other income \u2212 depreciation = PBT",
+      "expected": 8537.0,
+      "actual": 8537.0,
+      "tolerance": 128.06,
+      "ok": true
+     },
+     {
+      "name": "PBT \u00d7 (1 \u2212 tax %) = PAT",
+      "expected": 6402.75,
+      "actual": 6367.0,
+      "tolerance": 210.4,
       "ok": true
      }
     ],
     "verified": true,
     "status": "verified",
-    "filing_url": "https://nsearchives.nseindia.in/corporate/KAYNESTECH_14112026234020_SEBI_Q2_2027_Final.pdf",
-    "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1758865_15112026120908_WEB.xml",
+    "filing_url": "https://nsearchives.nseindia.in/corporate/BAJFINANCE_19102026172017_BMOutcome_19102026.pdf",
+    "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1742040_19102026075918_WEB.xml",
     "guidance": [],
     "guidance_note": "no promise ledger built for this company yet",
     "one_offs": [],
@@ -1586,7 +1840,14 @@
     "reported_headline": null,
     "one_offs_by": null
    },
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": 1,
+    "driver_text": "Deliver 20% to 25% profit growth",
+    "stance": "supports",
+    "reason": "Profit growth of 29% beats the profit growth target.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "CDSL-202610311416-106838015",
@@ -1788,211 +2049,8 @@
     "reported_headline": null,
     "one_offs_by": null
    },
-   "mgmt_card": null
-  },
-  {
-   "id": "BAJFINANCE-202610191720-106822125",
-   "symbol": "BAJFINANCE",
-   "company": "Bajaj Finance Limited",
-   "category": "results",
-   "subtype": "outcome",
-   "title": "Q2 FY27 results \u00b7 with deck",
-   "occurred_at": "2026-10-19T17:20:38",
-   "filings": [
-    {
-     "id": "106822125",
-     "nse_subject": "Outcome of Board Meeting",
-     "title": "The financial results for the period ended September 30, 2026",
-     "category": "results",
-     "subtype": "outcome",
-     "classified_by": "regex",
-     "filed_at": "2026-10-19T17:20:38",
-     "url": "https://nsearchives.nseindia.in/corporate/BAJFINANCE_19102026172017_BMOutcome_19102026.pdf"
-    },
-    {
-     "id": "106822137",
-     "nse_subject": "Investor Presentation",
-     "title": "Investor Presentation for the quarter ended 30 September 2026",
-     "category": "investor_meetings",
-     "subtype": "deck",
-     "classified_by": "pdf",
-     "filed_at": "2026-10-19T17:26:39",
-     "url": "https://nsearchives.nseindia.in/corporate/BAJFINANCE_19102026172612_SEIntimation_InvestorPPT_19102026.pdf"
-    },
-    {
-     "id": "106822444",
-     "nse_subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
-     "title": "Update on the Conference Call in respect of financial results for the quarter ended 30 September 2026",
-     "category": "results",
-     "subtype": "outcome",
-     "classified_by": "pdf",
-     "filed_at": "2026-10-19T21:00:04",
-     "url": "https://nsearchives.nseindia.in/corporate/BAJFINANCE_19102026205822_Outcome_of_investor_call_-_Q2FY27.pdf"
-    }
-   ],
-   "people": [],
-   "amount_cr": null,
-   "reaction": {
-    "session": "2026-10-21",
-    "ret": -0.03275,
-    "abn_ret": -0.02936,
-    "z": -1.67,
-    "vol_x": 2.36
-   },
-   "reaction_pending": false,
-   "results_ref": {
-    "period_key": "FY27Q2",
-    "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1742040_19102026075918_WEB.xml",
-    "consolidated": true
-   },
-   "score": 76.0,
-   "breakdown": [
-    {
-     "part": "category",
-     "points": 60.0,
-     "note": "results"
-    },
-    {
-     "part": "subtype",
-     "points": 0.0,
-     "note": "outcome"
-    },
-    {
-     "part": "numbers",
-     "points": 5.0,
-     "note": "PAT +29% YoY vs its usual +17% over the last 8 quarters (+1.2\u03c3, sets the points); NII +23% vs usual +21% (+0.4\u03c3)"
-    },
-    {
-     "part": "guidance",
-     "points": 0.0,
-     "note": "no gradeable guidance on record from the last call"
-    },
-    {
-     "part": "reaction",
-     "points": 11.0,
-     "note": "21 Oct: -3.3% (-2.9% vs NIFTY, -1.7\u03c3), volume 2.4\u00d7 20-day avg"
-    },
-    {
-     "part": "thesis",
-     "points": 0.0,
-     "note": "thesis hook not set yet"
-    }
-   ],
-   "tier": "needs_you",
-   "summary": null,
-   "summary_by": null,
-   "results_card": {
-    "symbol": "BAJFINANCE",
-    "period_key": "FY27Q2",
-    "period_label": "Q2 FY27",
-    "basis": "consolidated",
-    "layout": "bank",
-    "source": "screener",
-    "source_note": "screener quarterly table (consolidated)",
-    "headline": "NII +23% YoY, PAT / revenue +119 bps, PAT +29%",
-    "metrics": [
-     {
-      "key": "nii",
-      "label": "NII (interest earned \u2212 interest expended)",
-      "value": 15944.0,
-      "prev_q": 15223.0,
-      "prev_y": 12979.0,
-      "qoq": 0.04736,
-      "yoy": 0.22845,
-      "source": "screener",
-      "note": "screener: Revenue \u2212 Interest"
-     },
-     {
-      "key": "ppop",
-      "label": "PPOP",
-      "value": null,
-      "prev_q": null,
-      "prev_y": null,
-      "qoq": null,
-      "yoy": null,
-      "source": null,
-      "note": "n/a: screener folds provisions into expenses and this filing's XBRL has no PPOP line"
-     },
-     {
-      "key": "ebitda",
-      "label": "EBITDA",
-      "value": null,
-      "prev_q": null,
-      "prev_y": null,
-      "qoq": null,
-      "yoy": null,
-      "source": null,
-      "note": "n/a for lenders: interest is the cost of goods"
-     },
-     {
-      "key": "pbt",
-      "label": "PBT",
-      "value": 8537.0,
-      "prev_q": 8149.0,
-      "prev_y": 6608.0,
-      "qoq": 0.04761,
-      "yoy": 0.29192,
-      "source": "screener",
-      "note": null
-     },
-     {
-      "key": "pat",
-      "label": "PAT",
-      "value": 6367.0,
-      "prev_q": 6081.0,
-      "prev_y": 4948.0,
-      "qoq": 0.04703,
-      "yoy": 0.28678,
-      "source": "screener",
-      "note": null
-     }
-    ],
-    "margins": [
-     {
-      "key": "pat_margin",
-      "label": "PAT / revenue",
-      "value": 0.25939,
-      "prev_q": 0.26251,
-      "prev_y": 0.24752,
-      "qoq_bps": -31.0,
-      "yoy_bps": 119.0
-     }
-    ],
-    "checks": [
-     {
-      "name": "revenue \u2212 interest \u2212 expenses = financing profit",
-      "expected": 8824.0,
-      "actual": 8825.0,
-      "tolerance": 88.25,
-      "ok": true
-     },
-     {
-      "name": "financing profit + other income \u2212 depreciation = PBT",
-      "expected": 8537.0,
-      "actual": 8537.0,
-      "tolerance": 128.06,
-      "ok": true
-     },
-     {
-      "name": "PBT \u00d7 (1 \u2212 tax %) = PAT",
-      "expected": 6402.75,
-      "actual": 6367.0,
-      "tolerance": 210.4,
-      "ok": true
-     }
-    ],
-    "verified": true,
-    "status": "verified",
-    "filing_url": "https://nsearchives.nseindia.in/corporate/BAJFINANCE_19102026172017_BMOutcome_19102026.pdf",
-    "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1742040_19102026075918_WEB.xml",
-    "guidance": [],
-    "guidance_note": "no promise ledger built for this company yet",
-    "one_offs": [],
-    "adjusted": [],
-    "reported_headline": null,
-    "one_offs_by": null
-   },
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "HAL-202611121330-106856505",
@@ -2059,7 +2117,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "needs_you",
@@ -2174,7 +2232,14 @@
     "reported_headline": null,
     "one_offs_by": null
    },
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Revenue and PAT growth reported positively.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "TITAN-202611051650-106847532",
@@ -2251,7 +2316,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "needs_you",
@@ -2432,7 +2497,14 @@
     "reported_headline": "Revenue +10% YoY, EBITDA margin +446 bps, PAT +114%",
     "one_offs_by": "gemini:gemini-3.5-flash-lite"
    },
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Jewellery business margin guidance met successfully.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "PERSISTENT-202610161055-106829444",
@@ -2530,14 +2602,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "needs_you",
    "summary": "QIP allotment approved: 7,683,981 Equity Shares",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "QIP allotment is routine corporate financing.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "ETERNAL-202610211522-106823374",
@@ -2584,7 +2663,7 @@
     "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1743410_21102026064843_WEB.xml",
     "consolidated": true
    },
-   "score": 66.0,
+   "score": 71.0,
    "breakdown": [
     {
      "part": "category",
@@ -2613,8 +2692,8 @@
     },
     {
      "part": "thesis",
-     "points": 0.0,
-     "note": "thesis hook not set yet"
+     "points": 5.0,
+     "note": "supports 'Operating leverage': EBITDA margin expansion supports operating leverage driver."
     }
    ],
    "tier": "needs_you",
@@ -2729,7 +2808,14 @@
     "reported_headline": null,
     "one_offs_by": null
    },
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": 0,
+    "driver_text": "Operating leverage",
+    "stance": "supports",
+    "reason": "EBITDA margin expansion supports operating leverage driver.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "TRENT-202610291632-106834505",
@@ -2943,7 +3029,8 @@
      "https://nsearchives.nseindia.in/corporate/TRENT_29102026163044_AppointmentofDirector.pdf",
      "https://nsearchives.nseindia.in/corporate/TRENT_29102026163140_AppointmentofDirector.pdf"
     ]
-   }
+   },
+   "thesis_tag": null
   },
   {
    "id": "INFY-202610231608-106826465",
@@ -2990,7 +3077,7 @@
     "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1745058_23102026082117_WEB.xml",
     "consolidated": true
    },
-   "score": 60.0,
+   "score": 65.0,
    "breakdown": [
     {
      "part": "category",
@@ -3019,8 +3106,8 @@
     },
     {
      "part": "thesis",
-     "points": 0.0,
-     "note": "thesis hook not set yet"
+     "points": 5.0,
+     "note": "supports 'Stable operating margins': Stable operating margin met the ongoing guidance."
     }
    ],
    "tier": "needs_you",
@@ -3187,7 +3274,14 @@
     "reported_headline": null,
     "one_offs_by": null
    },
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": 1,
+    "driver_text": "Stable operating margins",
+    "stance": "supports",
+    "reason": "Stable operating margin met the ongoing guidance.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "HDFCBANK-202610171356-106821066",
@@ -3234,7 +3328,7 @@
     "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_BANKING_1740913_17102026054812_WEB.xml",
     "consolidated": true
    },
-   "score": 60.0,
+   "score": 65.0,
    "breakdown": [
     {
      "part": "category",
@@ -3263,8 +3357,8 @@
     },
     {
      "part": "thesis",
-     "points": 0.0,
-     "note": "thesis hook not set yet"
+     "points": 5.0,
+     "note": "supports 'Capturing market share from legacy banks': Revenue and net profit growth support market share capture."
     }
    ],
    "tier": "needs_you",
@@ -3381,7 +3475,14 @@
     "reported_headline": null,
     "one_offs_by": null
    },
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": 2,
+    "driver_text": "Capturing market share from legacy banks",
+    "stance": "supports",
+    "reason": "Revenue and net profit growth support market share capture.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "BAJFINANCE-202611111713-106855359",
@@ -3414,7 +3515,7 @@
    },
    "reaction_pending": false,
    "results_ref": null,
-   "score": 52.0,
+   "score": 57.0,
    "breakdown": [
     {
      "part": "category",
@@ -3433,15 +3534,89 @@
     },
     {
      "part": "thesis",
-     "points": 0.0,
-     "note": "thesis hook not set yet"
+     "points": 5.0,
+     "note": "supports 'Longer-term growth guidance of 23% to 25%': Opened qualified institutions placement for capital."
     }
    ],
    "tier": "glance",
    "summary": "Qualified institutions placement opened with floor price of \u20b9 992.25 per Equity Share",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": 0,
+    "driver_text": "Longer-term growth guidance of 23% to 25%",
+    "stance": "supports",
+    "reason": "Opened qualified institutions placement for capital.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
+  },
+  {
+   "id": "TATAPOWER-202611111742-106855429",
+   "symbol": "TATAPOWER",
+   "company": "Tata Power Company Limited",
+   "category": "capex",
+   "subtype": null,
+   "title": "The Company's Board of Directors, at its meeting held today, has approved an investment in the 1,800 MW Pumped Storage Project at Shirwata, Maharashtra",
+   "occurred_at": "2026-11-11T17:42:13",
+   "filings": [
+    {
+     "id": "106855429",
+     "nse_subject": "Capacity addition",
+     "title": "The Company's Board of Directors, at its meeting held today, has approved an investment in the 1,800 MW Pumped Storage Project at Shirwata, Maharashtra",
+     "category": "capex",
+     "subtype": null,
+     "classified_by": "pdf",
+     "filed_at": "2026-11-11T17:42:13",
+     "url": "https://nsearchives.nseindia.in/corporate/VPTPCL_11112026174200_Reg_30_Capacity_Addition_Shirwata.pdf"
+    }
+   ],
+   "people": [],
+   "amount_cr": 11871.0,
+   "reaction": {
+    "session": "2026-11-12",
+    "ret": -0.00833,
+    "abn_ret": -0.01009,
+    "z": -0.67,
+    "vol_x": 3.73
+   },
+   "reaction_pending": false,
+   "results_ref": null,
+   "score": 55.0,
+   "breakdown": [
+    {
+     "part": "category",
+     "points": 25.0,
+     "note": "capex"
+    },
+    {
+     "part": "amount",
+     "points": 25.0,
+     "note": "\u20b911,871 cr = 17.6% of TTM revenue \u20b967,536 cr"
+    },
+    {
+     "part": "reaction",
+     "points": 0.0,
+     "note": "12 Nov: -0.8% (-1.0% vs NIFTY, -0.7\u03c3), volume 3.7\u00d7 20-day avg; same session as 'Q2 FY27 results \u00b7 with press release', credited there"
+    },
+    {
+     "part": "thesis",
+     "points": 5.0,
+     "note": "supports 'Pumped hydro and Bhutan hydro projects': Approved investment in 1,800 MW Pumped Storage Project."
+    }
+   ],
+   "tier": "glance",
+   "summary": "Investment approved in 1,800 MW Pumped Storage Project at Shirwata, Maharashtra for \u20b911,871 crore",
+   "summary_by": "gemini:gemini-3.5-flash-lite",
+   "results_card": null,
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": 2,
+    "driver_text": "Pumped hydro and Bhutan hydro projects",
+    "stance": "supports",
+    "reason": "Approved investment in 1,800 MW Pumped Storage Project.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "SUNPHARMA-202611021418-106843482",
@@ -3504,74 +3679,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
    "summary": "Clarification issued regarding news report relating to Assam facility",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
-  },
-  {
-   "id": "TATAPOWER-202611111742-106855429",
-   "symbol": "TATAPOWER",
-   "company": "Tata Power Company Limited",
-   "category": "capex",
-   "subtype": null,
-   "title": "The Company's Board of Directors, at its meeting held today, has approved an investment in the 1,800 MW Pumped Storage Project at Shirwata, Maharashtra",
-   "occurred_at": "2026-11-11T17:42:13",
-   "filings": [
-    {
-     "id": "106855429",
-     "nse_subject": "Capacity addition",
-     "title": "The Company's Board of Directors, at its meeting held today, has approved an investment in the 1,800 MW Pumped Storage Project at Shirwata, Maharashtra",
-     "category": "capex",
-     "subtype": null,
-     "classified_by": "pdf",
-     "filed_at": "2026-11-11T17:42:13",
-     "url": "https://nsearchives.nseindia.in/corporate/VPTPCL_11112026174200_Reg_30_Capacity_Addition_Shirwata.pdf"
-    }
-   ],
-   "people": [],
-   "amount_cr": 11871.0,
-   "reaction": {
-    "session": "2026-11-12",
-    "ret": -0.00833,
-    "abn_ret": -0.01009,
-    "z": -0.67,
-    "vol_x": 3.73
-   },
-   "reaction_pending": false,
-   "results_ref": null,
-   "score": 50.0,
-   "breakdown": [
-    {
-     "part": "category",
-     "points": 25.0,
-     "note": "capex"
-    },
-    {
-     "part": "amount",
-     "points": 25.0,
-     "note": "\u20b911,871 cr = 17.6% of TTM revenue \u20b967,536 cr"
-    },
-    {
-     "part": "reaction",
-     "points": 0.0,
-     "note": "12 Nov: -0.8% (-1.0% vs NIFTY, -0.7\u03c3), volume 3.7\u00d7 20-day avg; same session as 'Q2 FY27 results \u00b7 with press release', credited there"
-    },
-    {
-     "part": "thesis",
-     "points": 0.0,
-     "note": "thesis hook not set yet"
-    }
-   ],
-   "tier": "glance",
-   "summary": "Investment approved in 1,800 MW Pumped Storage Project at Shirwata, Maharashtra for \u20b911,871 crore",
-   "summary_by": "gemini:gemini-3.5-flash-lite",
-   "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Clarification on a news report.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "TITAN-202611051851-106848400",
@@ -3626,7 +3748,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
@@ -3658,6 +3780,13 @@
     "filing_urls": [
      "https://nsearchives.nseindia.in/corporate/TITAN_05112026185140_SENNTata.pdf"
     ]
+   },
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine vice-chairman retirement.",
+    "by": "gemini:gemini-3.5-flash-lite"
    }
   },
   {
@@ -3745,7 +3874,8 @@
     "filing_urls": [
      "https://nsearchives.nseindia.in/corporate/CDSL_28102026180148_Retirement_Ashish_Bhatt_Signed.pdf"
     ]
-   }
+   },
+   "thesis_tag": null
   },
   {
    "id": "RELIANCE-202610242148-106833561",
@@ -3823,14 +3953,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
    "summary": "Voluntary strike off of Hamleys (Franchising) Limited initiated by Registrar of Companies, United Kingdom",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Subsidiary strike off does not touch drivers.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "HDFCBANK-202610171614-106821168",
@@ -3886,7 +4023,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
@@ -3959,6 +4096,80 @@
     "filing_urls": [
      "https://nsearchives.nseindia.in/corporate/HDFCBANK_17102026161248_Stockexchangeintimation_LV_KB.pdf"
     ]
+   },
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine management change event.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
+  },
+  {
+   "id": "KAYNES-202611121923-106857511",
+   "symbol": "KAYNES",
+   "company": "Kaynes Technology India Limited",
+   "category": "M&A",
+   "subtype": "acquisition",
+   "title": "Execution of binding term sheet amongst the Company, Kaynes Semicon Private Limited, the wholly owned subsidiary of the Company, Vishay Intertechnology, Inc. an",
+   "occurred_at": "2026-11-12T19:23:47",
+   "filings": [
+    {
+     "id": "106857511",
+     "nse_subject": "General Updates",
+     "title": "Execution of binding term sheet amongst the Company, Kaynes Semicon Private Limited, the wholly owned subsidiary of the Company, Vishay Intertechnology, Inc. and Ecomal Nederland B.V",
+     "category": "M&A",
+     "subtype": "acquisition",
+     "classified_by": "regex",
+     "filed_at": "2026-11-12T19:23:47",
+     "url": "https://nsearchives.nseindia.in/corporate/KAYNESTECH_12112026192018_KSPLVishay12Nov2026.pdf"
+    }
+   ],
+   "people": [],
+   "amount_cr": null,
+   "reaction": {
+    "session": "2026-11-13",
+    "ret": -0.0155,
+    "abn_ret": -0.00937,
+    "z": -0.38,
+    "vol_x": 0.87
+   },
+   "reaction_pending": false,
+   "results_ref": null,
+   "score": 40.0,
+   "breakdown": [
+    {
+     "part": "category",
+     "points": 30.0,
+     "note": "M&A"
+    },
+    {
+     "part": "subtype",
+     "points": 5.0,
+     "note": "acquisition"
+    },
+    {
+     "part": "reaction",
+     "points": 0.0,
+     "note": "13 Nov: -1.6% (-0.9% vs NIFTY, -0.4\u03c3), volume 0.9\u00d7 20-day avg"
+    },
+    {
+     "part": "thesis",
+     "points": 5.0,
+     "note": "supports 'OSAT and PCB commercial revenue': Executed term sheet for semiconductor back-end services joint venture."
+    }
+   ],
+   "tier": "glance",
+   "summary": "Binding term sheet executed for establishment of a joint venture for semiconductor back-end manufacturing services",
+   "summary_by": "gemini:gemini-3.5-flash-lite",
+   "results_card": null,
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": 1,
+    "driver_text": "OSAT and PCB commercial revenue",
+    "stance": "supports",
+    "reason": "Executed term sheet for semiconductor back-end services joint venture.",
+    "by": "gemini:gemini-3.5-flash-lite"
    }
   },
   {
@@ -4022,14 +4233,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
    "summary": "Allotment of 5,74,25,740 securities pursuant to Preferential Issue",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Allotment of securities pursuant to preferential issue.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "TATAPOWER-202611071840-106852712",
@@ -4082,14 +4300,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
    "summary": "Notice of appeal filed before Singapore Court of Appeal against Singapore International Commercial Court judgment",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Litigation notice unrelated to specific drivers.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "CDSL-202610301913-106837294",
@@ -4154,7 +4379,8 @@
    "summary": "SEBI imposed penalty of \u20b9 1,00,00,000/- following inspection for FY 2023-24",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "DMART-202610271714-106830481",
@@ -4212,14 +4438,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
    "summary": "Penalty of Rs.55.75 lakhs imposed by Gujarat International Finance Tec-City Company Limited",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Litigation penalty penalty is unrelated to store density or private labels.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "PERSISTENT-202610222301-106825617",
@@ -4272,14 +4505,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
    "summary": "ICRA continued issuer rating and assigned credit ratings for proposed non-convertible debentures and commercial paper",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Credit rating continuation and assignment.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "TRENT-202610231948-106826976",
@@ -4344,7 +4584,8 @@
    "summary": "Subsidiary entered into term sheet for proposed divestment of entire shareholding in Netria Property Holdings Limited",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "INFY-202610301850-106837197",
@@ -4392,45 +4633,46 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
    "summary": "Expansion of Pocharam Development Center in Hyderabad announced with new 1.1 million sq. ft. facility",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Capex announcement for facility expansion.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
-   "id": "KAYNES-202611121923-106857511",
+   "id": "KAYNES-202611150015-106861449",
    "symbol": "KAYNES",
    "company": "Kaynes Technology India Limited",
    "category": "M&A",
-   "subtype": "acquisition",
-   "title": "Execution of binding term sheet amongst the Company, Kaynes Semicon Private Limited, the wholly owned subsidiary of the Company, Vishay Intertechnology, Inc. an",
-   "occurred_at": "2026-11-12T19:23:47",
+   "subtype": "jv",
+   "title": "Joint Venture Agreements",
+   "occurred_at": "2026-11-15T00:15:37",
    "filings": [
     {
-     "id": "106857511",
-     "nse_subject": "General Updates",
-     "title": "Execution of binding term sheet amongst the Company, Kaynes Semicon Private Limited, the wholly owned subsidiary of the Company, Vishay Intertechnology, Inc. and Ecomal Nederland B.V",
+     "id": "106861449",
+     "nse_subject": "Agreements",
+     "title": "Joint Venture Agreements",
      "category": "M&A",
-     "subtype": "acquisition",
-     "classified_by": "regex",
-     "filed_at": "2026-11-12T19:23:47",
-     "url": "https://nsearchives.nseindia.in/corporate/KAYNESTECH_12112026192018_KSPLVishay12Nov2026.pdf"
+     "subtype": "jv",
+     "classified_by": "subject+regex",
+     "filed_at": "2026-11-15T00:15:37",
+     "url": "https://nsearchives.nseindia.in/corporate/KAYNESTECH_15112026001518_SEBI_Q2_2027_Final.pdf"
     }
    ],
    "people": [],
    "amount_cr": null,
-   "reaction": {
-    "session": "2026-11-13",
-    "ret": -0.0155,
-    "abn_ret": -0.00937,
-    "z": -0.38,
-    "vol_x": 0.87
-   },
-   "reaction_pending": false,
+   "reaction": null,
+   "reaction_pending": true,
    "results_ref": null,
    "score": 35.0,
    "breakdown": [
@@ -4441,25 +4683,32 @@
     },
     {
      "part": "subtype",
-     "points": 5.0,
-     "note": "acquisition"
+     "points": 0.0,
+     "note": "jv"
     },
     {
      "part": "reaction",
      "points": 0.0,
-     "note": "13 Nov: -1.6% (-0.9% vs NIFTY, -0.4\u03c3), volume 0.9\u00d7 20-day avg"
+     "note": "next session not traded yet"
     },
     {
      "part": "thesis",
-     "points": 0.0,
-     "note": "thesis hook not set yet"
+     "points": 5.0,
+     "note": "supports 'OSAT and PCB commercial revenue': Executed joint venture agreements for semiconductor services."
     }
    ],
    "tier": "glance",
-   "summary": "Binding term sheet executed for establishment of a joint venture for semiconductor back-end manufacturing services",
-   "summary_by": "gemini:gemini-3.5-flash-lite",
+   "summary": null,
+   "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": 1,
+    "driver_text": "OSAT and PCB commercial revenue",
+    "stance": "supports",
+    "reason": "Executed joint venture agreements for semiconductor services.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "TATAPOWER-202611111901-106855625",
@@ -4514,7 +4763,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
@@ -4577,6 +4826,13 @@
     "filing_urls": [
      "https://nsearchives.nseindia.in/corporate/KSTPCL_11112026190124_MD_APPT_-_Reg_30.pdf"
     ]
+   },
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine management appointment.",
+    "by": "gemini:gemini-3.5-flash-lite"
    }
   },
   {
@@ -4630,14 +4886,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
    "summary": "Estimated completion date for business transfer and share purchase agreement revised to March 31, 2027",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "M&A completion date revision is routine administrative update.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "LT-202610191018-106839016",
@@ -4725,14 +4988,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
    "summary": "Residential, Commercial Buildings & Factories business secured multiple orders for two residential developments in Mumbai",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Residential orders do not touch the listed drivers.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "HDFCBANK-202611061521-106850382",
@@ -4787,7 +5057,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
@@ -4825,61 +5095,14 @@
     "filing_urls": [
      "https://nsearchives.nseindia.in/corporate/HDFCBANK3_06112026152141_SE_Intimation-Srivatsan.pdf"
     ]
+   },
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine compliance officer joining.",
+    "by": "gemini:gemini-3.5-flash-lite"
    }
-  },
-  {
-   "id": "KAYNES-202611150015-106861449",
-   "symbol": "KAYNES",
-   "company": "Kaynes Technology India Limited",
-   "category": "M&A",
-   "subtype": "jv",
-   "title": "Joint Venture Agreements",
-   "occurred_at": "2026-11-15T00:15:37",
-   "filings": [
-    {
-     "id": "106861449",
-     "nse_subject": "Agreements",
-     "title": "Joint Venture Agreements",
-     "category": "M&A",
-     "subtype": "jv",
-     "classified_by": "subject+regex",
-     "filed_at": "2026-11-15T00:15:37",
-     "url": "https://nsearchives.nseindia.in/corporate/KAYNESTECH_15112026001518_SEBI_Q2_2027_Final.pdf"
-    }
-   ],
-   "people": [],
-   "amount_cr": null,
-   "reaction": null,
-   "reaction_pending": true,
-   "results_ref": null,
-   "score": 30.0,
-   "breakdown": [
-    {
-     "part": "category",
-     "points": 30.0,
-     "note": "M&A"
-    },
-    {
-     "part": "subtype",
-     "points": 0.0,
-     "note": "jv"
-    },
-    {
-     "part": "reaction",
-     "points": 0.0,
-     "note": "next session not traded yet"
-    },
-    {
-     "part": "thesis",
-     "points": 0.0,
-     "note": "thesis hook not set yet"
-    }
-   ],
-   "tier": "glance",
-   "summary": null,
-   "summary_by": null,
-   "results_card": null,
-   "mgmt_card": null
   },
   {
    "id": "DMART-202611131317-106858492",
@@ -4936,7 +5159,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
@@ -5014,6 +5237,13 @@
     "filing_urls": [
      "https://nsearchives.nseindia.in/corporate/DMART_13112026131650_ChangeinManagement13112026.pdf"
     ]
+   },
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine vice president appointment.",
+    "by": "gemini:gemini-3.5-flash-lite"
    }
   },
   {
@@ -5069,7 +5299,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
@@ -5101,6 +5331,13 @@
     "filing_urls": [
      "https://nsearchives.nseindia.in/corporate/HDFCBANK3_31102026221631_SE_INTIMATION-_Sanjay_Dsouza.pdf"
     ]
+   },
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine group head exit.",
+    "by": "gemini:gemini-3.5-flash-lite"
    }
   },
   {
@@ -5164,14 +5401,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
    "summary": "NCLAT allowed appeal and set aside NCLT Ahmedabad bench order dated October 07, 2026",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Litigation update on an appeal order.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "BAJFINANCE-202610191757-106822208",
@@ -5219,14 +5463,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
    "summary": "Approved issue of 49,00,737 equity shares under Employee Stock Option Scheme, 2009",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Equity shares allotment under employee stock option scheme.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "TRENT-202610191725-106822132",
@@ -5286,7 +5537,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "POLYCAB-202610160940-106819599",
@@ -5334,14 +5586,93 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
    "summary": "NCLAT heard appeal in Asier Metals Private Limited versus Polycab India Limited and reserved for order",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Litigation appeal hearing.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
+  },
+  {
+   "id": "LT-202611091037-106853097",
+   "symbol": "LT",
+   "company": "Larsen & Toubro Limited",
+   "category": "press_release",
+   "subtype": "order_win",
+   "title": "L&T bags ( Significant*) order from Noida Metro for Aqua Line Extension",
+   "occurred_at": "2026-11-09T10:37:33",
+   "filings": [
+    {
+     "id": "106853097",
+     "nse_subject": "Bagging/Receiving of orders/contracts",
+     "title": "L&T bags ( Significant*) order from Noida Metro for Aqua Line Extension",
+     "category": "press_release",
+     "subtype": "order_win",
+     "classified_by": "pdf",
+     "filed_at": "2026-11-09T10:37:33",
+     "url": "https://nsearchives.nseindia.in/corporate/PAM_09112026103717_PressRelease09112026.pdf"
+    }
+   ],
+   "people": [],
+   "amount_cr": 1000.0,
+   "reaction": {
+    "session": "2026-11-09",
+    "ret": 0.01634,
+    "abn_ret": 0.01577,
+    "z": 1.67,
+    "vol_x": 1.41
+   },
+   "reaction_pending": false,
+   "results_ref": null,
+   "score": 29.0,
+   "breakdown": [
+    {
+     "part": "category",
+     "points": 12.0,
+     "note": "press release"
+    },
+    {
+     "part": "subtype",
+     "points": 3.0,
+     "note": "order win"
+    },
+    {
+     "part": "amount",
+     "points": 3.0,
+     "note": "\u20b91,000 cr = 0.3% of TTM revenue \u20b9300,904 cr ('Significant' band (\u20b91,000\u20132,500 cr); lower bound used)"
+    },
+    {
+     "part": "reaction",
+     "points": 6.0,
+     "note": "09 Nov: +1.6% (+1.6% vs NIFTY, +1.7\u03c3), volume 1.4\u00d7 20-day avg"
+    },
+    {
+     "part": "thesis",
+     "points": 5.0,
+     "note": "supports 'Strong order book of Rs. 7.79 trillion': Secured new metro order adding to order book."
+    }
+   ],
+   "tier": "glance",
+   "summary": "Heavy Civil Infrastructure business secured order from Noida Metro Rail Corporation Ltd",
+   "summary_by": "gemini:gemini-3.5-flash-lite",
+   "results_card": null,
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": 2,
+    "driver_text": "Strong order book of Rs. 7.79 trillion",
+    "stance": "supports",
+    "reason": "Secured new metro order adding to order book.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "PIDILITIND-202610271454-106830118",
@@ -5397,7 +5728,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
@@ -5456,6 +5787,13 @@
     "filing_urls": [
      "https://nsearchives.nseindia.in/corporate/Nisha_27102026145342_SEIntimationSMPsignedupload.pdf"
     ]
+   },
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine senior management personnel change.",
+    "by": "gemini:gemini-3.5-flash-lite"
    }
   },
   {
@@ -5509,14 +5847,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
    "summary": "Board meeting scheduled to consider financial results and issuance of non-convertible debentures",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine board meeting schedule for financial results.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "HAL-202611031658-106842119",
@@ -5569,14 +5914,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
    "summary": "Transfer of 3,84,04,205 equity shares approved making HATSOFF Helicopter Training Pvt. Ltd. a wholly-owned subsidiary",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Share transfer making a company a wholly-owned subsidiary.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "DIXON-202610301610-106836531",
@@ -5631,7 +5983,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
@@ -5663,6 +6015,13 @@
     "filing_urls": [
      "https://nsearchives.nseindia.in/corporate/DIXON_30102026160939_Outcome30102026.pdf"
     ]
+   },
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine executive director appointment.",
+    "by": "gemini:gemini-3.5-flash-lite"
    }
   },
   {
@@ -5718,7 +6077,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
@@ -5765,6 +6124,13 @@
     "filing_urls": [
      "https://nsearchives.nseindia.in/corporate/HAL_28102026180358_changeinmanagement_Dops_Signed.pdf"
     ]
+   },
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine director change.",
+    "by": "gemini:gemini-3.5-flash-lite"
    }
   },
   {
@@ -5820,7 +6186,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
@@ -5836,6 +6202,13 @@
     "filing_urls": [
      "https://nsearchives.nseindia.in/corporate/HAL_22102026131032_GeneralUpdates22102026.pdf"
     ]
+   },
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine management position correction paperwork.",
+    "by": "gemini:gemini-3.5-flash-lite"
    }
   },
   {
@@ -5921,72 +6294,8 @@
     "filing_urls": [
      "https://nsearchives.nseindia.in/corporate/TRENT_18102026184315_Intimation_of_Resignation_of_NED.pdf"
     ]
-   }
-  },
-  {
-   "id": "LT-202611091037-106853097",
-   "symbol": "LT",
-   "company": "Larsen & Toubro Limited",
-   "category": "press_release",
-   "subtype": "order_win",
-   "title": "L&T bags ( Significant*) order from Noida Metro for Aqua Line Extension",
-   "occurred_at": "2026-11-09T10:37:33",
-   "filings": [
-    {
-     "id": "106853097",
-     "nse_subject": "Bagging/Receiving of orders/contracts",
-     "title": "L&T bags ( Significant*) order from Noida Metro for Aqua Line Extension",
-     "category": "press_release",
-     "subtype": "order_win",
-     "classified_by": "pdf",
-     "filed_at": "2026-11-09T10:37:33",
-     "url": "https://nsearchives.nseindia.in/corporate/PAM_09112026103717_PressRelease09112026.pdf"
-    }
-   ],
-   "people": [],
-   "amount_cr": 1000.0,
-   "reaction": {
-    "session": "2026-11-09",
-    "ret": 0.01634,
-    "abn_ret": 0.01577,
-    "z": 1.67,
-    "vol_x": 1.41
    },
-   "reaction_pending": false,
-   "results_ref": null,
-   "score": 24.0,
-   "breakdown": [
-    {
-     "part": "category",
-     "points": 12.0,
-     "note": "press release"
-    },
-    {
-     "part": "subtype",
-     "points": 3.0,
-     "note": "order win"
-    },
-    {
-     "part": "amount",
-     "points": 3.0,
-     "note": "\u20b91,000 cr = 0.3% of TTM revenue \u20b9300,904 cr ('Significant' band (\u20b91,000\u20132,500 cr); lower bound used)"
-    },
-    {
-     "part": "reaction",
-     "points": 6.0,
-     "note": "09 Nov: +1.6% (+1.6% vs NIFTY, +1.7\u03c3), volume 1.4\u00d7 20-day avg"
-    },
-    {
-     "part": "thesis",
-     "points": 0.0,
-     "note": "thesis hook not set yet"
-    }
-   ],
-   "tier": "glance",
-   "summary": "Heavy Civil Infrastructure business secured order from Noida Metro Rail Corporation Ltd",
-   "summary_by": "gemini:gemini-3.5-flash-lite",
-   "results_card": null,
-   "mgmt_card": null
+   "thesis_tag": null
   },
   {
    "id": "HAL-202611131417-106858581",
@@ -6041,7 +6350,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
@@ -6073,6 +6382,80 @@
     "filing_urls": [
      "https://nsearchives.nseindia.in/corporate/HAL_13112026141735_ChangeInMngt_13112026.pdf"
     ]
+   },
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine CEO appointment for a helicopter complex.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
+  },
+  {
+   "id": "SUNPHARMA-202610300805-106835654",
+   "symbol": "SUNPHARMA",
+   "company": "Sun Pharmaceutical Industries Limited",
+   "category": "press_release",
+   "subtype": "approval",
+   "title": "A press release dated October 30, 2026, titled \"ILUMYA\u00ae (tildrakizumab-asmn) approved in the U.S. for the Treatment of Adults with Active Psoriatic Arthritis",
+   "occurred_at": "2026-10-30T08:05:47",
+   "filings": [
+    {
+     "id": "106835654",
+     "nse_subject": "Press Release",
+     "title": "A press release dated October 30, 2026, titled \"ILUMYA\u00ae (tildrakizumab-asmn) approved in the U.S. for the Treatment of Adults with Active Psoriatic Arthritis",
+     "category": "press_release",
+     "subtype": "approval",
+     "classified_by": "subject+regex",
+     "filed_at": "2026-10-30T08:05:47",
+     "url": "https://nsearchives.nseindia.in/corporate/SUNSEC_30102026080437_SE_Intimation_of_Press_Release_ILUMYA_PsA_Approval.pdf"
+    }
+   ],
+   "people": [],
+   "amount_cr": null,
+   "reaction": {
+    "session": "2026-10-30",
+    "ret": 0.00948,
+    "abn_ret": 0.00441,
+    "z": 0.41,
+    "vol_x": 3.43
+   },
+   "reaction_pending": false,
+   "results_ref": null,
+   "score": 22.0,
+   "breakdown": [
+    {
+     "part": "category",
+     "points": 12.0,
+     "note": "press release"
+    },
+    {
+     "part": "subtype",
+     "points": 5.0,
+     "note": "approval"
+    },
+    {
+     "part": "reaction",
+     "points": 0.0,
+     "note": "30 Oct: +0.9% (+0.4% vs NIFTY, +0.4\u03c3), volume 3.4\u00d7 20-day avg; same session as 'Q2 FY27 results', credited there"
+    },
+    {
+     "part": "thesis",
+     "points": 5.0,
+     "note": "supports 'Growing innovative medicines and specialty portfolio': New specialty drug approval in the U.S."
+    }
+   ],
+   "tier": "glance",
+   "summary": null,
+   "summary_by": null,
+   "results_card": null,
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": 1,
+    "driver_text": "Growing innovative medicines and specialty portfolio",
+    "stance": "supports",
+    "reason": "New specialty drug approval in the U.S.",
+    "by": "gemini:gemini-3.5-flash-lite"
    }
   },
   {
@@ -6126,7 +6509,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
@@ -6158,6 +6541,13 @@
     "filing_urls": [
      "https://nsearchives.nseindia.in/corporate/BAJFINANCE_19102026175648_Change_in_SMT_Prashant_Verma_CISO_signed.pdf"
     ]
+   },
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine personnel reappointment event.",
+    "by": "gemini:gemini-3.5-flash-lite"
    }
   },
   {
@@ -6211,14 +6601,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine announcement of upcoming financial results.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "SUNPHARMA-202611022058-106840669",
@@ -6271,14 +6668,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
    "summary": "Clarified that news report regarding Assam facility relates to August 2026 developments",
    "summary_by": "gemini:gemini-3.5-flash-lite",
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Clarification on a news report.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "RELIANCE-202610212244-106823997",
@@ -6331,14 +6735,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "glance",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "General media statement.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "POLYCAB-202610191639-106822047",
@@ -6391,14 +6802,83 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Earnings call transcript submission.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
+  },
+  {
+   "id": "TATAPOWER-202611051034-106846325",
+   "symbol": "TATAPOWER",
+   "company": "Tata Power Company Limited",
+   "category": "press_release",
+   "subtype": null,
+   "title": "A press release dated November 05, 2026, titled \"Tata Power Renewables Commissions 300 MW Project for SECI in Karnataka",
+   "occurred_at": "2026-11-05T10:34:26",
+   "filings": [
+    {
+     "id": "106846325",
+     "nse_subject": "Press Release",
+     "title": "A press release dated November 05, 2026, titled \"Tata Power Renewables Commissions 300 MW Project for SECI in Karnataka",
+     "category": "press_release",
+     "subtype": null,
+     "classified_by": "subject",
+     "filed_at": "2026-11-05T10:34:26",
+     "url": "https://nsearchives.nseindia.in/corporate/KSTPCL_05112026103413_PR.pdf"
+    }
+   ],
+   "people": [],
+   "amount_cr": null,
+   "reaction": {
+    "session": "2026-11-05",
+    "ret": 0.01264,
+    "abn_ret": -0.0114,
+    "z": -0.86,
+    "vol_x": 0.92
+   },
+   "reaction_pending": false,
+   "results_ref": null,
+   "score": 17.0,
+   "breakdown": [
+    {
+     "part": "category",
+     "points": 12.0,
+     "note": "press release"
+    },
+    {
+     "part": "reaction",
+     "points": 0.0,
+     "note": "05 Nov: +1.3% (-1.1% vs NIFTY, -0.9\u03c3), volume 0.9\u00d7 20-day avg"
+    },
+    {
+     "part": "thesis",
+     "points": 5.0,
+     "note": "supports 'Renewable capacity addition and rooftop business': Commissioned 300 MW renewable energy project."
+    }
+   ],
+   "tier": "set_aside",
+   "summary": null,
+   "summary_by": null,
+   "results_card": null,
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": 1,
+    "driver_text": "Renewable capacity addition and rooftop business",
+    "stance": "supports",
+    "reason": "Commissioned 300 MW renewable energy project.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "SUNPHARMA-202611041915-106845480",
@@ -6451,74 +6931,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
-  },
-  {
-   "id": "SUNPHARMA-202610300805-106835654",
-   "symbol": "SUNPHARMA",
-   "company": "Sun Pharmaceutical Industries Limited",
-   "category": "press_release",
-   "subtype": "approval",
-   "title": "A press release dated October 30, 2026, titled \"ILUMYA\u00ae (tildrakizumab-asmn) approved in the U.S. for the Treatment of Adults with Active Psoriatic Arthritis",
-   "occurred_at": "2026-10-30T08:05:47",
-   "filings": [
-    {
-     "id": "106835654",
-     "nse_subject": "Press Release",
-     "title": "A press release dated October 30, 2026, titled \"ILUMYA\u00ae (tildrakizumab-asmn) approved in the U.S. for the Treatment of Adults with Active Psoriatic Arthritis",
-     "category": "press_release",
-     "subtype": "approval",
-     "classified_by": "subject+regex",
-     "filed_at": "2026-10-30T08:05:47",
-     "url": "https://nsearchives.nseindia.in/corporate/SUNSEC_30102026080437_SE_Intimation_of_Press_Release_ILUMYA_PsA_Approval.pdf"
-    }
-   ],
-   "people": [],
-   "amount_cr": null,
-   "reaction": {
-    "session": "2026-10-30",
-    "ret": 0.00948,
-    "abn_ret": 0.00441,
-    "z": 0.41,
-    "vol_x": 3.43
-   },
-   "reaction_pending": false,
-   "results_ref": null,
-   "score": 17.0,
-   "breakdown": [
-    {
-     "part": "category",
-     "points": 12.0,
-     "note": "press release"
-    },
-    {
-     "part": "subtype",
-     "points": 5.0,
-     "note": "approval"
-    },
-    {
-     "part": "reaction",
-     "points": 0.0,
-     "note": "30 Oct: +0.9% (+0.4% vs NIFTY, +0.4\u03c3), volume 3.4\u00d7 20-day avg; same session as 'Q2 FY27 results', credited there"
-    },
-    {
-     "part": "thesis",
-     "points": 0.0,
-     "note": "thesis hook not set yet"
-    }
-   ],
-   "tier": "set_aside",
-   "summary": null,
-   "summary_by": null,
-   "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine earnings call transcript.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "PERSISTENT-202610212052-106823942",
@@ -6571,14 +6998,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Credit rating assignment.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "RELIANCE-202610212043-106823937",
@@ -6631,14 +7065,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Credit rating intimation.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "HDFCBANK-202611131635-106858944",
@@ -6687,7 +7128,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
@@ -6735,6 +7176,13 @@
     "filing_urls": [
      "https://nsearchives.nseindia.in/corporate/HDFCBANK3_13112026163422_SE_Intimation-_VSR.pdf"
     ]
+   },
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine executive director re-appointment.",
+    "by": "gemini:gemini-3.5-flash-lite"
    }
   },
   {
@@ -6790,7 +7238,7 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
@@ -6822,6 +7270,13 @@
     "filing_urls": [
      "https://nsearchives.nseindia.in/corporate/HDFCBANK3_12112026173223_SE_Intimation-_VSR.pdf"
     ]
+   },
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine executive director re-appointment.",
+    "by": "gemini:gemini-3.5-flash-lite"
    }
   },
   {
@@ -6875,14 +7330,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine earnings call transcript.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "PIDILITIND-202611051727-106847798",
@@ -6935,14 +7397,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine earnings call transcript.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "CDSL-202611051651-106847538",
@@ -7002,7 +7471,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "DIXON-202611051636-106847469",
@@ -7055,69 +7525,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
-  },
-  {
-   "id": "TATAPOWER-202611051034-106846325",
-   "symbol": "TATAPOWER",
-   "company": "Tata Power Company Limited",
-   "category": "press_release",
-   "subtype": null,
-   "title": "A press release dated November 05, 2026, titled \"Tata Power Renewables Commissions 300 MW Project for SECI in Karnataka",
-   "occurred_at": "2026-11-05T10:34:26",
-   "filings": [
-    {
-     "id": "106846325",
-     "nse_subject": "Press Release",
-     "title": "A press release dated November 05, 2026, titled \"Tata Power Renewables Commissions 300 MW Project for SECI in Karnataka",
-     "category": "press_release",
-     "subtype": null,
-     "classified_by": "subject",
-     "filed_at": "2026-11-05T10:34:26",
-     "url": "https://nsearchives.nseindia.in/corporate/KSTPCL_05112026103413_PR.pdf"
-    }
-   ],
-   "people": [],
-   "amount_cr": null,
-   "reaction": {
-    "session": "2026-11-05",
-    "ret": 0.01264,
-    "abn_ret": -0.0114,
-    "z": -0.86,
-    "vol_x": 0.92
-   },
-   "reaction_pending": false,
-   "results_ref": null,
-   "score": 12.0,
-   "breakdown": [
-    {
-     "part": "category",
-     "points": 12.0,
-     "note": "press release"
-    },
-    {
-     "part": "reaction",
-     "points": 0.0,
-     "note": "05 Nov: +1.3% (-1.1% vs NIFTY, -0.9\u03c3), volume 0.9\u00d7 20-day avg"
-    },
-    {
-     "part": "thesis",
-     "points": 0.0,
-     "note": "thesis hook not set yet"
-    }
-   ],
-   "tier": "set_aside",
-   "summary": null,
-   "summary_by": null,
-   "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine earnings call transcript.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "LT-202611021756-106840137",
@@ -7170,14 +7592,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine earnings call transcript.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "RELIANCE-202611012309-106838897",
@@ -7230,14 +7659,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine earnings discussion transcript.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "PIDILITIND-202610281908-106832992",
@@ -7285,14 +7721,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "General press release.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "INFY-202610281738-106832593",
@@ -7345,14 +7788,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine earnings call transcript.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "INFY-202610281731-106832566",
@@ -7405,14 +7855,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Press release about a specific bank client win touches no specific driver.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "ETERNAL-202610271652-106830405",
@@ -7465,14 +7922,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine earnings conference call transcript.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "HDFCBANK-202610232250-106827180",
@@ -7525,14 +7989,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine earnings call transcript release.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "PERSISTENT-202610232043-106827050",
@@ -7585,14 +8056,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Earnings call transcript.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "SUNPHARMA-202610231801-106826784",
@@ -7640,14 +8118,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "General press release.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "BAJFINANCE-202610231453-106826278",
@@ -7700,14 +8185,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Financial results conference call transcript.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "SUNPHARMA-202610201735-106822793",
@@ -7755,14 +8247,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "General press release.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "HAL-202611111533-106855146",
@@ -7815,14 +8314,21 @@
     {
      "part": "thesis",
      "points": 0.0,
-     "note": "thesis hook not set yet"
+     "note": "touches no thesis driver"
     }
    ],
    "tier": "set_aside",
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": {
+    "driver": null,
+    "driver_text": null,
+    "stance": "neutral",
+    "reason": "Routine credit rating withdrawal.",
+    "by": "gemini:gemini-3.5-flash-lite"
+   }
   },
   {
    "id": "INFY-202610271638-106830354",
@@ -7882,7 +8388,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TATAPOWER-202610271219-106829852",
@@ -7942,7 +8449,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "INFY-202610191534-106821932",
@@ -8002,7 +8510,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "RELIANCE-202611042047-106845760",
@@ -8062,7 +8571,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TITAN-202611121845-106857341",
@@ -8122,7 +8632,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "DMART-202611091656-106853499",
@@ -8182,7 +8693,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TITAN-202611091506-106853387",
@@ -8242,7 +8754,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "BAJFINANCE-202611071641-106852542",
@@ -8302,7 +8815,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "HDFCBANK-202611062227-106851783",
@@ -8357,7 +8871,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "PERSISTENT-202611052330-106849153",
@@ -8417,7 +8932,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TITAN-202611051823-106848217",
@@ -8477,7 +8993,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "BAJFINANCE-202611041529-106844300",
@@ -8532,7 +9049,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "PERSISTENT-202611041504-106844210",
@@ -8592,7 +9110,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "KAYNES-202611022037-106840638",
@@ -8652,7 +9171,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "BAJFINANCE-202611021931-106840525",
@@ -8707,7 +9227,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "SUNPHARMA-202610312014-106838574",
@@ -8762,7 +9283,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "BAJFINANCE-202610301453-106836343",
@@ -8822,7 +9344,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "DMART-202610291740-106834762",
@@ -8882,7 +9405,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TITAN-202610281349-106831940",
@@ -8942,7 +9466,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "SUNPHARMA-202610261230-106828196",
@@ -9002,7 +9527,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "BAJFINANCE-202610211229-106823197",
@@ -9062,7 +9588,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "HDFCBANK-202610211152-106823131",
@@ -9117,7 +9644,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TITAN-202610191611-106822009",
@@ -9177,7 +9705,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "KAYNES-202611111812-106855503",
@@ -9237,7 +9766,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TATAPOWER-202611021712-106839928",
@@ -9297,7 +9827,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "DMART-202610301803-106842251",
@@ -9367,7 +9898,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "CDSL-202610271732-106830528",
@@ -9427,7 +9959,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TITAN-202610231958-106826990",
@@ -9487,7 +10020,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "DIXON-202610231810-106826802",
@@ -9547,7 +10081,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "LT-202610161709-106820326",
@@ -9607,7 +10142,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "DIXON-202610301619-106836561",
@@ -9662,7 +10198,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TATAPOWER-202611121430-106856607",
@@ -9722,7 +10259,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TATAPOWER-202611112035-106855738",
@@ -9782,7 +10320,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TITAN-202611061656-106850807",
@@ -9842,7 +10381,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TITAN-202611052033-106848795",
@@ -9902,7 +10442,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "CDSL-202611021754-106840127",
@@ -9962,7 +10503,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TRENT-202611021326-106839393",
@@ -10022,7 +10564,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "CDSL-202611011440-106838788",
@@ -10082,7 +10625,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "DIXON-202610311932-106838529",
@@ -10142,7 +10686,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "RELIANCE-202610311734-106838338",
@@ -10202,7 +10747,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "DIXON-202610302032-106837485",
@@ -10262,7 +10808,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "SUNPHARMA-202610302013-106837454",
@@ -10322,7 +10869,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "PIDILITIND-202610301412-106836266",
@@ -10382,7 +10930,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "PIDILITIND-202610291850-106835068",
@@ -10442,7 +10991,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "LT-202610281947-106833097",
@@ -10502,7 +11052,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "HDFCBANK-202610172209-106821374",
@@ -10562,7 +11113,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "PERSISTENT-202610162233-106820776",
@@ -10622,7 +11174,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "RELIANCE-202611131825-106859406",
@@ -10676,7 +11229,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TRENT-202611131124-106858223",
@@ -10736,7 +11290,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "RELIANCE-202611122023-106857662",
@@ -10796,7 +11351,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TITAN-202611121530-106856694",
@@ -10856,7 +11412,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "KAYNES-202611121450-106856636",
@@ -10916,7 +11473,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "HDFCBANK-202611121427-106856600",
@@ -10976,7 +11534,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "INFY-202611121119-106856189",
@@ -11036,7 +11595,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TATAPOWER-202611111922-106855670",
@@ -11096,7 +11656,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "PIDILITIND-202611111719-106855369",
@@ -11156,7 +11717,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "KAYNES-202611111630-106855248",
@@ -11216,7 +11778,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "KAYNES-202611111608-106855202",
@@ -11276,7 +11839,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TATAPOWER-202611111345-106855021",
@@ -11336,7 +11900,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TATAPOWER-202611110957-106854653",
@@ -11396,7 +11961,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "CDSL-202611091808-106853622",
@@ -11456,7 +12022,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "CDSL-202611091805-106853618",
@@ -11516,7 +12083,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "CDSL-202611091803-106853616",
@@ -11576,7 +12144,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "CDSL-202611091800-106853610",
@@ -11636,7 +12205,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TITAN-202611091458-106853374",
@@ -11696,7 +12266,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TRENT-202611091300-106853294",
@@ -11756,7 +12327,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "POLYCAB-202611062203-106851763",
@@ -11816,7 +12388,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "RELIANCE-202611061910-106851483",
@@ -11876,7 +12449,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "LT-202611061536-106850438",
@@ -11936,7 +12510,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TRENT-202611061035-106849393",
@@ -11996,7 +12571,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "DMART-202611051851-106848395",
@@ -12056,7 +12632,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TITAN-202611051836-106848291",
@@ -12116,7 +12693,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TITAN-202611051802-106848049",
@@ -12176,7 +12754,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "DIXON-202611051716-106847697",
@@ -12236,7 +12815,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "SUNPHARMA-202611051554-106847279",
@@ -12296,7 +12876,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "INFY-202611042101-106845792",
@@ -12356,7 +12937,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "LT-202611041851-106845341",
@@ -12416,7 +12998,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "DIXON-202611031730-106842234",
@@ -12476,7 +13059,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "POLYCAB-202611031601-106841885",
@@ -12536,7 +13120,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "CDSL-202611031533-106841813",
@@ -12596,7 +13181,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "CDSL-202611031259-106841496",
@@ -12656,7 +13242,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "DIXON-202611031124-106841276",
@@ -12716,7 +13303,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "SUNPHARMA-202610311732-106838334",
@@ -12776,7 +13364,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "SUNPHARMA-202610301518-106836401",
@@ -12836,7 +13425,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "HDFCBANK-202610301324-106836184",
@@ -12896,7 +13486,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "INFY-202610291515-106834249",
@@ -12956,7 +13547,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "INFY-202610291505-106834219",
@@ -13016,7 +13608,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "POLYCAB-202610281743-106832611",
@@ -13076,7 +13669,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TITAN-202610281726-106832541",
@@ -13136,7 +13730,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "INFY-202610272253-106831187",
@@ -13196,7 +13791,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "POLYCAB-202610271904-106830897",
@@ -13256,7 +13852,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "POLYCAB-202610271842-106830830",
@@ -13316,7 +13913,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TATAPOWER-202610271640-106830365",
@@ -13376,7 +13974,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TATAPOWER-202610271500-106830136",
@@ -13436,7 +14035,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "PIDILITIND-202610271446-106830107",
@@ -13496,7 +14096,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "LT-202610271329-106829991",
@@ -13556,7 +14157,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "HDFCBANK-202610270802-106829496",
@@ -13616,7 +14218,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "BAJFINANCE-202610261926-106829096",
@@ -13676,7 +14279,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "HDFCBANK-202610242227-106827787",
@@ -13736,7 +14340,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "INFY-202610241943-106827749",
@@ -13796,7 +14401,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TRENT-202610231634-106826524",
@@ -13856,7 +14462,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "POLYCAB-202610231434-106826247",
@@ -13916,7 +14523,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "HDFCBANK-202610221357-106824670",
@@ -13976,7 +14584,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "HDFCBANK-202610221155-106824495",
@@ -14036,7 +14645,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "DIXON-202610211841-106823800",
@@ -14096,7 +14706,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "ETERNAL-202610211735-106823642",
@@ -14156,7 +14767,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "POLYCAB-202610191623-106822031",
@@ -14216,7 +14828,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "TRENT-202610191100-106821609",
@@ -14276,7 +14889,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "RELIANCE-202610171932-106821332",
@@ -14336,7 +14950,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "RELIANCE-202610162058-106820709",
@@ -14396,7 +15011,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "HDFCBANK-202610161635-106820256",
@@ -14456,7 +15072,8 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   },
   {
    "id": "BAJFINANCE-202610161606-106820188",
@@ -14516,13 +15133,14 @@
    "summary": null,
    "summary_by": null,
    "results_card": null,
-   "mgmt_card": null
+   "mgmt_card": null,
+   "thesis_tag": null
   }
  ],
  "tiers": {
   "needs_you": 17,
-  "glance": 39,
-  "set_aside": 136
+  "glance": 40,
+  "set_aside": 135
  },
  "ladder": {
   "filings": 233,
@@ -14549,9 +15167,13 @@
   "summaries_eligible": 22,
   "summaries_summarised": 22,
   "summaries_rejected": 0,
-  "summaries_failed": 0
+  "summaries_failed": 0,
+  "thesis_tagged": 71,
+  "thesis_supports": 11,
+  "thesis_challenges": 1,
+  "thesis_untouched": 59
  },
- "llm_usage": "26 calls, 26 cached, 0 via fallback, $0.0000 est.",
+ "llm_usage": "31 calls, 26 cached, 0 via fallback, $0.0026 est.",
  "moves": [
   {
    "symbol": "PIDILITIND",

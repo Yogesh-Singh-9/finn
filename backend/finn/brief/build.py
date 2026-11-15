@@ -153,6 +153,15 @@ def build(use_llm: bool = True) -> BriefSnapshot:
                     e.summary, e.summary_by = e.mgmt_card.headline, f"mgmt card ({e.mgmt_card.extracted_by})"
         sstats = summarise(events, f, use_llm=use_llm)
 
+    # Thesis: which driver of the holding's thesis each event touches (supports/challenges).
+    # The thesis part is a fixed table; the score and tier are recomputed from the parts.
+    from ..holdings.thesis import load_theses, tag as tag_thesis
+    tstats = tag_thesis(events, load_theses(), use_llm=use_llm)
+    for e in events:
+        total = sum(p.points for p in e.breakdown)
+        e.score = round(max(0.0, min(100.0, total)), 1)
+        e.tier = tier_for(e.score)  # type: ignore[assignment]
+
     # Displayed score caps at 100; ranking uses the uncapped sum so two capped events
     # still order by how much evidence each has.
     events.sort(key=lambda e: (TIER_ORDER[e.tier], -sum(p.points for p in e.breakdown), -e.occurred_at.timestamp()))
@@ -193,7 +202,8 @@ def build(use_llm: bool = True) -> BriefSnapshot:
                "results_one_offs": sum(1 for e in events if e.results_card and e.results_card.one_offs),
                "mgmt": sum(1 for e in events if e.mgmt_card),
                "mgmt_llm": sum(1 for e in events if e.mgmt_card and e.mgmt_card.extracted_by.startswith(("gemini", "groq"))),
-               **{f"summaries_{k}": v for k, v in sstats.items()}},
+               **{f"summaries_{k}": v for k, v in sstats.items()},
+               **{f"thesis_{k}": v for k, v in tstats.items()}},
         llm_usage=llm.USAGE.line(), moves=moves,
     )
 

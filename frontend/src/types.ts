@@ -163,6 +163,7 @@ export interface BriefEvent {
   summary_by: string | null;
   results_card: ResultsCard | null;
   mgmt_card: MgmtCard | null;
+  thesis_tag?: ThesisTag | null;
 }
 
 export interface Move {
@@ -297,4 +298,50 @@ export interface ResearchSnapshot {
   sources: Cite[];
   cost_line: string | null;
   notes: string[];
+}
+
+/* ---------------- holdings + thesis ---------------- */
+export interface ThesisTag {
+  driver: number | null;
+  driver_text: string | null;
+  stance: "supports" | "challenges" | "neutral";
+  reason: string;
+  by: string;
+}
+
+export interface Driver {
+  text: string;
+  why: string | null;
+  source: Cite;
+}
+
+export interface Thesis {
+  symbol: string;
+  drivers: Driver[];
+  line: string;
+  seeded_by: string | null;
+  seeded_from: string | null;
+  watch: string | null;
+  watch_source: Cite | null;
+  notes: string[];
+}
+
+export interface HoldingRow {
+  symbol: string;
+  company: string;
+  close: number | null;
+  day_change: number | null;
+  dates: string[];
+  closes: number[];
+  volumes: number[];
+  thesis: Thesis | null;
+  research: boolean;
+}
+
+export interface HoldingsSnapshot {
+  generated_at: string;
+  prices_as_of: string | null;
+  rows: HoldingRow[];
+  category_counts_30d: Record<string, number>;
+  llm_usage: string | null;
 }

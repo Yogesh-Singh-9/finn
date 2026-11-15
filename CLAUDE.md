@@ -85,7 +85,7 @@ Two tiers, each an ordered fallback chain set in `backend/.env` (swap models wit
   - **numbers** (results only): YoY revenue/NII and PAT growth vs the company's own last 8 YoY growths, in σ (σ floored at 5pp). ≥3σ +25, ≥2σ +18, ≥1.5σ +10, ≥1σ +5. A PAT fall of ≥20% gets at least +18, and a swing to a loss gets +25.
   - **guidance** (results only): from the promise ledger. A miss vs the last call's guidance is +15; a full-year target behind is +8
   - next-session reaction: abnormal return vs NIFTY in σ of 60 sessions, plus volume vs the 20-day average
-  - thesis hook (0 until phase 7)
+  - thesis: challenges a driver +15, supports +5 (`holdings/thesis.py`, set after summaries; score and tier recomputed)
 - **Score rules:**
   - **One price move, one owner:** when events share a reaction session, results own it, otherwise the most material event does, and the others carry a note.
   - The reaction isn't credited to routine paperwork.
@@ -129,6 +129,15 @@ Two tiers, each an ordered fallback chain set in `backend/.env` (swap models wit
 - `financials.py`: vitals and sections from screener annual tables. Thresholds are constants at the top (growth <8%, margin >200 bps below 5y avg, CFO/PAT <0.7, ROE <12%, D/E >1). Chips are coloured (signal) only when off. Every section has a code-built one-line conclusion.
 - `dossier.py`: verdict strip (code), AR MD&A risk/outlook pages (≤3), bull/bear/3 questions (one strong call; points cite item ids F/L/E only; an uncited point is dropped; a number not found in its cites is `flagged`). Questions come from Python-ranked divergences; without a model they fall back to templates. Writes `data/snapshots/research/<SYM>.json` + `index.json`, with a cost line (calls, cached, tokens, $).
 - `scripts/build_research.py SYM ... [--refresh]` precomputes. `finn/api.py` (`uvicorn finn.api:app --app-dir backend --port 8000`) builds a never-seen ticker live in a thread with stages; the frontend reads the static snapshot first and Vite proxies `/api`.
+
+## Holdings + thesis (phases 5+7): `finn/holdings/`
+- `scripts/build_holdings.py` seeds a thesis per holding (`data/processed/theses.json`): flash-lite reads the latest 2 calls and names 3 drivers, each with a quote verified on its page (else dropped). The "watch next quarter" line is the ledger's latest pending numeric target when there is one, else the model's pick, accepted only from the latest call. It writes `data/snapshots/holdings.json` (250 sessions of closes/volumes, thesis, research flag, 30-day category counts).
+- Event tagging (`thesis.tag`, prompt `thesis-tag-v2`) is strict: only results can be evidence for a metric driver, and a deal or press release touches a driver only if it is about that exact business. Tags are made against the **seeded** drivers. User edits live in localStorage (`finn-thesis-SYM`) and the UI says so.
+- Alert settings (price ±X%, volume N× its 20-day average, categories) are stored in localStorage (`finn-alerts`). The alerts/week estimate is back-tested client-side on the price history, plus filings at the 30-day rate.
+- **Full rebuild order:** build_research → build_holdings → build_brief → build_holdings (refreshes category counts) → `node frontend/scripts/sync-data.mjs`.
+
+## Deploy
+Static on Vercel: root `frontend/`, and `vercel.json` runs `npm run build` (which first syncs `data/snapshots` into `public/data`). No backend and no env vars are needed. The live never-seen-ticker build runs only in dev or with `VITE_LIVE_BUILD=1`; otherwise the UI says "live build runs locally in this prototype".
 
 ## Running the data refresh
 From `backend/`: `.venv/Scripts/python scripts/refresh.py` (all sources, ~1 min). Add `--only nse|prices|screener` or `--symbols A,B` for partial runs. A partial run merges into the existing files, and a source that fails keeps the last good data. Output goes to `data/processed/` (filings.json, prices.json, calendar.json, results/<SYM>.json, fundamentals/<SYM>.json, manifest.json with every source status and any redirect seen).

@@ -425,8 +425,9 @@ function Dossier({ snap, live, onBack }: { snap: ResearchSnapshot; live: boolean
 /* ---------------------------------------------------------------- home */
 type Idx = { symbol: string; company: string; built_at: string; promises: number }[];
 
-export function Research({ holdings }: { holdings: string[] }) {
-  const [symbol, setSymbol] = useState<string | null>(null);
+export function Research({ holdings, start }: { holdings: string[]; start?: { s: string; n: number } | null }) {
+  const [symbol, setSymbol] = useState<string | null>(start?.s ?? null);
+  useEffect(() => { if (start) setSymbol(start.s); }, [start]);
   const [q, setQ] = useState("");
   const [idx, setIdx] = useState<Idx>([]);
   const load = useResearch(symbol);

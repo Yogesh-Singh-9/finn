@@ -50,10 +50,26 @@ export function GenericCard({ event }: { event: BriefEvent }) {
   );
 }
 
+/** "Challenges your thesis: driver: reason". Only when the event touches a driver. */
+export function ThesisLine({ event }: { event: BriefEvent }) {
+  const t = event.thesis_tag;
+  if (!t || t.stance === "neutral" || !t.driver_text) return null;
+  const ch = t.stance === "challenges";
+  return (
+    <p className="mt-1.5 text-[12px] leading-snug">
+      <span className={`kicker ${ch ? "text-signal" : "text-sub"}`}>{ch ? "Challenges your thesis" : "Supports your thesis"}</span>{" "}
+      <span className="font-medium">{t.driver_text}</span>
+      {t.reason && <span className="text-sub">: {t.reason}</span>}
+    </p>
+  );
+}
+
 export function EventCard({ event }: { event: BriefEvent }) {
-  if (event.results_card) return <ResultsCardView event={event} card={event.results_card} />;
-  if (event.mgmt_card) return <MgmtCardView event={event} card={event.mgmt_card} />;
-  return <GenericCard event={event} />;
+  const body = event.results_card ? <ResultsCardView event={event} card={event.results_card} />
+    : event.mgmt_card ? <MgmtCardView event={event} card={event.mgmt_card} />
+    : <GenericCard event={event} />;
+  if (!event.thesis_tag || event.thesis_tag.stance === "neutral") return body;
+  return <div>{body}<div className="-mt-2 pb-3"><ThesisLine event={event} /></div></div>;
 }
 
 /** Worth a glance: one dense line; tap to open the full card in place. */
