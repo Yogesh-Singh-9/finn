@@ -33,5 +33,4 @@ Those corrections are in the commit history.
 
 ## Files
 
-- `planning-and-competitive-analysis.md`: the planning and competitive-analysis conversation
 - `FINN-AI-build-history.md`: the build conversation with a reading guide (`build.md` is the same export without the guide)
