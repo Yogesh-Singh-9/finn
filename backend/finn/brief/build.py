@@ -24,6 +24,27 @@ log = logging.getLogger("finn.brief")
 TIER_ORDER = {"needs_you": 0, "glance": 1, "set_aside": 2}
 
 
+
+def attach_guidance(card, fund: dict | None, results_date):
+    """Push and pull share one promise store: data/processed/promises/<SYM>.json, written
+    by the research build. The card gets last call's guidance vs this quarter."""
+    from ..models import Ledger
+    from ..research.ledger import card_rows
+    path = config.PROCESSED_DIR / "promises" / f"{card.symbol}.json"
+    if not path.exists() or not fund:
+        card.guidance_note = "no promise ledger built for this company yet"
+        return card
+    try:
+        led = Ledger.model_validate_json(path.read_text(encoding="utf-8"))
+    except ValueError:
+        card.guidance_note = "promise ledger unreadable"
+        return card
+    adjusted = {card.period_key: {a.key: a.model_dump() for a in card.adjusted}} if card.adjusted else {}
+    card.guidance = card_rows(led, fund, card.period_key, results_date, adjusted)
+    card.guidance_note = (f"{len(card.guidance)} guided item(s) from calls before these results"
+                          if card.guidance else "no gradeable guidance from calls before these results")
+    return card
+
 def _load(path: Path):
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -72,13 +93,14 @@ def build(use_llm: bool = True) -> BriefSnapshot:
                         {m.key: m.value for m in c.metrics}, {m.key: m.prev_y for m in c.metrics}, f,
                         use_llm=use_llm)
                 c = apply_one_offs(c, o, adj, by)
+                c = attach_guidance(c, fund.get(d.symbol), d.occurred_at.date())
             cards[i] = c
     scored = []
     for i, d in enumerate(drafts):
         extra = None
         if (d.category, d.subtype) == ("results", "outcome"):
             c = cards.get(i)
-            extra = [numbers_part(c, surprise(c, fund.get(d.symbol)) if c else []), guidance_part()]
+            extra = [numbers_part(c, surprise(c, fund.get(d.symbol)) if c else []), guidance_part(c)]
         scored.append((d, *score(d, revenue.get(d.symbol), series.get(d.symbol), nifty, results_parts=extra)))
 
     # One price move, one owner: when several events of a symbol share a reaction

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Research } from "./Research";
 import { Today } from "./Today";
 import type { BriefSnapshot } from "./types";
 
@@ -56,7 +57,7 @@ export default function App() {
             <p className="pt-10 text-[13px] text-sub">{error ? `Couldn't load the brief (${error}).` : ""}</p>
           ))}
         {tab === "holdings" && <Placeholder title="Holdings" line="Your 18 holdings, each with its thesis and a “watch next quarter” line from the latest guidance. Next phase." />}
-        {tab === "research" && <Placeholder title="Research" line="Any NSE ticker, from annual reports and concall transcripts only, with the Promise Ledger. Next phase." />}
+        {tab === "research" && <Research holdings={brief?.symbols ?? []} />}
       </main>
       <nav className="fixed bottom-0 left-1/2 z-40 w-full max-w-[440px] -translate-x-1/2 border-t hair bg-paper/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-sm">
         <div className="grid grid-cols-3">

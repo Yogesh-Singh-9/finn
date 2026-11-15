@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-15T02:57:11",
+ "generated_at": "2026-11-15T03:29:55",
  "window_from": "2026-10-16",
  "window_to": "2026-11-15",
  "prices_as_of": "2026-11-13",
@@ -99,7 +99,7 @@
     {
      "part": "guidance",
      "points": 0.0,
-     "note": "miss vs guidance from the last call: phase 6"
+     "note": "no gradeable guidance on record from the last call"
     },
     {
      "part": "reaction",
@@ -218,7 +218,7 @@
     "filing_url": "https://nsearchives.nseindia.in/corporate/kavinavora_30102026193935_SE_30102026_Results.pdf",
     "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1750537_30102026093254_WEB.xml",
     "guidance": [],
-    "guidance_note": "guided vs delivered from the last call: phase 6",
+    "guidance_note": "no promise ledger built for this company yet",
     "one_offs": [
      {
       "description": "One-time impairment charge",
@@ -291,7 +291,7 @@
     {
      "part": "guidance",
      "points": 0.0,
-     "note": "miss vs guidance from the last call: phase 6"
+     "note": "no gradeable guidance on record from the last call"
     },
     {
      "part": "reaction",
@@ -410,7 +410,7 @@
     "filing_url": "https://nsearchives.nseindia.in/corporate/DIXON_30102026160547_Outcome30102026.pdf",
     "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1750473_30102026082202_WEB.xml",
     "guidance": [],
-    "guidance_note": "guided vs delivered from the last call: phase 6",
+    "guidance_note": "no promise ledger built for this company yet",
     "one_offs": [],
     "adjusted": [],
     "reported_headline": null,
@@ -483,7 +483,7 @@
     {
      "part": "guidance",
      "points": 0.0,
-     "note": "miss vs guidance from the last call: phase 6"
+     "note": "no gradeable guidance on record from the last call"
     },
     {
      "part": "reaction",
@@ -602,7 +602,7 @@
     "filing_url": "https://nsearchives.nseindia.in/corporate/PAM_27102026171156_LTSep2026.pdf",
     "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1747229_27102026081332_WEB.xml",
     "guidance": [],
-    "guidance_note": "guided vs delivered from the last call: phase 6",
+    "guidance_note": "no promise ledger built for this company yet",
     "one_offs": [],
     "adjusted": [],
     "reported_headline": null,
@@ -685,7 +685,7 @@
     {
      "part": "guidance",
      "points": 0.0,
-     "note": "miss vs guidance from the last call: phase 6"
+     "note": "no gradeable guidance on record from the last call"
     },
     {
      "part": "reaction",
@@ -804,7 +804,7 @@
     "filing_url": "https://nsearchives.nseindia.in/corporate/VPTPCL_11112026172001_outcome_final.pdf",
     "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1756234_11112026070341_WEB.xml",
     "guidance": [],
-    "guidance_note": "guided vs delivered from the last call: phase 6",
+    "guidance_note": "no promise ledger built for this company yet",
     "one_offs": [
      {
       "description": "Exceptional items (statement line)",
@@ -888,7 +888,7 @@
     {
      "part": "guidance",
      "points": 0.0,
-     "note": "miss vs guidance from the last call: phase 6"
+     "note": "no gradeable guidance on record from the last call"
     },
     {
      "part": "reaction",
@@ -1007,7 +1007,7 @@
     "filing_url": "https://nsearchives.nseindia.in/corporate/SUNSEC_30102026141321_BMOutcomeFinancialoct26signed.pdf",
     "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1750394_30102026073426_WEB.xml",
     "guidance": [],
-    "guidance_note": "guided vs delivered from the last call: phase 6",
+    "guidance_note": "no promise ledger built for this company yet",
     "one_offs": [
      {
       "description": "Exceptional items (statement line)",
@@ -1090,7 +1090,7 @@
     {
      "part": "guidance",
      "points": 0.0,
-     "note": "miss vs guidance from the last call: phase 6"
+     "note": "no gradeable guidance on record from the last call"
     },
     {
      "part": "reaction",
@@ -1209,7 +1209,7 @@
     "filing_url": "https://nsearchives.nseindia.in/corporate/Nisha_28102026185331_SEIntimationUFRfinalsigned.pdf",
     "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1748241_28102026081451_WEB.xml",
     "guidance": [],
-    "guidance_note": "guided vs delivered from the last call: phase 6",
+    "guidance_note": "no promise ledger built for this company yet",
     "one_offs": [],
     "adjusted": [],
     "reported_headline": null,
@@ -1292,7 +1292,7 @@
     {
      "part": "guidance",
      "points": 0.0,
-     "note": "miss vs guidance from the last call: phase 6"
+     "note": "no gradeable guidance on record from the last call"
     },
     {
      "part": "reaction",
@@ -1411,7 +1411,7 @@
     "filing_url": "https://nsearchives.nseindia.in/corporate/TRENT_29102026160446_DraftOutcomeofBM.pdf",
     "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1749321_29102026074823_WEB.xml",
     "guidance": [],
-    "guidance_note": "guided vs delivered from the last call: phase 6",
+    "guidance_note": "no promise ledger built for this company yet",
     "one_offs": [],
     "adjusted": [],
     "reported_headline": null,
@@ -1468,7 +1468,7 @@
     {
      "part": "guidance",
      "points": 0.0,
-     "note": "miss vs guidance from the last call: phase 6"
+     "note": "no gradeable guidance on record from the last call"
     },
     {
      "part": "reaction",
@@ -1580,7 +1580,7 @@
     "filing_url": "https://nsearchives.nseindia.in/corporate/KAYNESTECH_14112026234020_SEBI_Q2_2027_Final.pdf",
     "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1758865_15112026120908_WEB.xml",
     "guidance": [],
-    "guidance_note": "guided vs delivered from the last call: phase 6",
+    "guidance_note": "no promise ledger built for this company yet",
     "one_offs": [],
     "adjusted": [],
     "reported_headline": null,
@@ -1663,7 +1663,7 @@
     {
      "part": "guidance",
      "points": 0.0,
-     "note": "miss vs guidance from the last call: phase 6"
+     "note": "no gradeable guidance on record from the last call"
     },
     {
      "part": "reaction",
@@ -1782,7 +1782,7 @@
     "filing_url": "https://nsearchives.nseindia.in/corporate/CDSL_31102026141138_OutcomeBM31102026_Signed.pdf",
     "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1750643_31102026034333_WEB.xml",
     "guidance": [],
-    "guidance_note": "guided vs delivered from the last call: phase 6",
+    "guidance_note": "no promise ledger built for this company yet",
     "one_offs": [],
     "adjusted": [],
     "reported_headline": null,
@@ -1865,7 +1865,7 @@
     {
      "part": "guidance",
      "points": 0.0,
-     "note": "miss vs guidance from the last call: phase 6"
+     "note": "no gradeable guidance on record from the last call"
     },
     {
      "part": "reaction",
@@ -1986,7 +1986,7 @@
     "filing_url": "https://nsearchives.nseindia.in/corporate/BAJFINANCE_19102026172017_BMOutcome_19102026.pdf",
     "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1742040_19102026075918_WEB.xml",
     "guidance": [],
-    "guidance_note": "guided vs delivered from the last call: phase 6",
+    "guidance_note": "no promise ledger built for this company yet",
     "one_offs": [],
     "adjusted": [],
     "reported_headline": null,
@@ -2049,7 +2049,7 @@
     {
      "part": "guidance",
      "points": 0.0,
-     "note": "miss vs guidance from the last call: phase 6"
+     "note": "no gradeable guidance on record from the last call"
     },
     {
      "part": "reaction",
@@ -2168,7 +2168,7 @@
     "filing_url": "https://nsearchives.nseindia.in/corporate/HAL_12112026132915_IntegratedFinancial_30092026.pdf",
     "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1756516_12112026033817_WEB.xml",
     "guidance": [],
-    "guidance_note": "guided vs delivered from the last call: phase 6",
+    "guidance_note": "no promise ledger built for this company yet",
     "one_offs": [],
     "adjusted": [],
     "reported_headline": null,
@@ -2241,7 +2241,7 @@
     {
      "part": "guidance",
      "points": 0.0,
-     "note": "miss vs guidance from the last call: phase 6"
+     "note": "Jewellery business margin: met; Growth: met"
     },
     {
      "part": "reaction",
@@ -2359,8 +2359,43 @@
     "status": "verified",
     "filing_url": "https://nsearchives.nseindia.in/corporate/TITAN_05112026165028_SEoutcomeQ227.pdf",
     "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1754035_05112026071123_WEB.xml",
-    "guidance": [],
-    "guidance_note": "guided vs delivered from the last call: phase 6",
+    "guidance": [
+     {
+      "metric": "Jewellery business margin",
+      "guided": "11% (ongoing)",
+      "delivered": "11.1% in Q2",
+      "grade": "met",
+      "source": {
+       "label": "Q1 FY27",
+       "doc_id": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f70a0a33-43cf-40b6-a753-67b06123e8de.pdf#page=5",
+       "quote": "In the Investor Day and prior, we have said that more of 11% being the center of gravity for jewellery business margin, we would be around that plus/minus something can happen.",
+       "section": "p.5",
+       "note": "Delivered: Q2 FY27 call p.3"
+      },
+      "call_label": "Q1 FY27 call",
+      "promise_id": "TITAN-FY27Q1-0",
+      "progress_flag": null,
+      "note": null
+     },
+     {
+      "metric": "Growth",
+      "guided": "double-digit (ongoing)",
+      "delivered": "+10.1% YoY in Q2",
+      "grade": "met",
+      "source": {
+       "label": "Q1 FY27",
+       "doc_id": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f70a0a33-43cf-40b6-a753-67b06123e8de.pdf#page=10",
+       "quote": "If I may add, if you're looking for what is that we are targeting, we are targeting, as always, a double-digit aggressive growth, and that's something which we shared even in the Investor Day.",
+       "section": "p.10",
+       "note": "Delivered: screener FY27Q2"
+      },
+      "call_label": "Q1 FY27 call",
+      "promise_id": "TITAN-FY27Q1-2",
+      "progress_flag": null,
+      "note": null
+     }
+    ],
+    "guidance_note": "2 guided item(s) from calls before these results",
     "one_offs": [
      {
       "description": "non-operational Ind-AS credit",
@@ -2569,7 +2604,7 @@
     {
      "part": "guidance",
      "points": 0.0,
-     "note": "miss vs guidance from the last call: phase 6"
+     "note": "no gradeable guidance on record from the last call"
     },
     {
      "part": "reaction",
@@ -2688,7 +2723,7 @@
     "filing_url": "https://nsearchives.nseindia.in/corporate/ZOMATO_21102026152051_OutcomeSIGNED.pdf",
     "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1743410_21102026064843_WEB.xml",
     "guidance": [],
-    "guidance_note": "guided vs delivered from the last call: phase 6",
+    "guidance_note": "no promise ledger built for this company yet",
     "one_offs": [],
     "adjusted": [],
     "reported_headline": null,
@@ -2975,7 +3010,7 @@
     {
      "part": "guidance",
      "points": 0.0,
-     "note": "miss vs guidance from the last call: phase 6"
+     "note": "Operating margin: met; Revenue growth (cc): pending (on track); Effective tax rate: pending (on track)"
     },
     {
      "part": "reaction",
@@ -3093,8 +3128,60 @@
     "status": "verified",
     "filing_url": "https://nsearchives.nseindia.in/corporate/Infosys_23102026160704_BM_Outcome_Oct232026_1.pdf",
     "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_INDAS_1745058_23102026082117_WEB.xml",
-    "guidance": [],
-    "guidance_note": "guided vs delivered from the last call: phase 6",
+    "guidance": [
+     {
+      "metric": "Operating margin",
+      "guided": "20% to 22% (ongoing)",
+      "delivered": "21% in Q2",
+      "grade": "met",
+      "source": {
+       "label": "Q1 FY27",
+       "doc_id": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=95f8af86-dc92-49dc-a7cf-ecce287f8cce.pdf#page=6",
+       "quote": "Our operating margin guidance remains the same at 20% to 22% operating margin.",
+       "section": "p.6",
+       "note": "Delivered: Q2 FY27 call p.4"
+      },
+      "call_label": "Q1 FY27 call",
+      "promise_id": "INFY-FY27Q1-1",
+      "progress_flag": null,
+      "note": null
+     },
+     {
+      "metric": "Revenue growth (cc)",
+      "guided": "1.5% to 3% for FY27",
+      "delivered": "1.9% so far (H1)",
+      "grade": "pending",
+      "source": {
+       "label": "Q1 FY27",
+       "doc_id": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=95f8af86-dc92-49dc-a7cf-ecce287f8cce.pdf#page=6",
+       "quote": "With our Q1 results and a view for the rest of the financial year, we are changing our revenue growth guidance to 1.5% to 3% Y-on-Y growth in constant currency terms.",
+       "section": "p.6",
+       "note": "Delivered: Q2 FY27 call p.27"
+      },
+      "call_label": "Q1 FY27 call",
+      "promise_id": "INFY-FY27Q1-0",
+      "progress_flag": "on_track",
+      "note": "revised: 1.5% to 3.5% (Q4 FY26 call) \u2192 1.5% to 3%"
+     },
+     {
+      "metric": "Effective tax rate",
+      "guided": "29% to 30% for FY27",
+      "delivered": "29.3% so far (H1)",
+      "grade": "pending",
+      "source": {
+       "label": "Q1 FY27",
+       "doc_id": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=95f8af86-dc92-49dc-a7cf-ecce287f8cce.pdf#page=31",
+       "quote": "We expect effective tax rate for the year to be in the range of 29% to 30%.",
+       "section": "p.31",
+       "note": "Delivered: screener FY27H1"
+      },
+      "call_label": "Q1 FY27 call",
+      "promise_id": "INFY-FY27Q1-3",
+      "progress_flag": "on_track",
+      "note": null
+     }
+    ],
+    "guidance_note": "3 guided item(s) from calls before these results",
     "one_offs": [],
     "adjusted": [],
     "reported_headline": null,
@@ -3167,7 +3254,7 @@
     {
      "part": "guidance",
      "points": 0.0,
-     "note": "miss vs guidance from the last call: phase 6"
+     "note": "no gradeable guidance on record from the last call"
     },
     {
      "part": "reaction",
@@ -3288,7 +3375,7 @@
     "filing_url": "https://nsearchives.nseindia.in/corporate/HDFCBANK_17102026135520_OutcomeofBMResults_17oct2026.pdf",
     "xbrl_url": "https://nsearchives.nseindia.in/corporate/xbrl/INTEGRATED_FILING_BANKING_1740913_17102026054812_WEB.xml",
     "guidance": [],
-    "guidance_note": "guided vs delivered from the last call: phase 6",
+    "guidance_note": "no promise ledger built for this company yet",
     "one_offs": [],
     "adjusted": [],
     "reported_headline": null,

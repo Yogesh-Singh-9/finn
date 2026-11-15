@@ -41,7 +41,14 @@ const GRADE: Record<GuidedDelivered["grade"], { text: string; cls: string }> = {
   missed: { text: "Missed", cls: "text-down" },
   revised: { text: "Revised", cls: "text-sub" },
   pending: { text: "Pending", cls: "text-faint" },
+  not_comparable: { text: "Can’t grade", cls: "text-faint" },
 };
+
+function gradeOf(g: GuidedDelivered) {
+  if (g.grade === "pending" && g.progress_flag === "behind") return { text: "Behind", cls: "text-down" };
+  if (g.grade === "pending" && g.progress_flag === "on_track") return { text: "On track", cls: "text-sub" };
+  return GRADE[g.grade];
+}
 
 /** The signature row: what management guided on the last call vs what just landed. */
 export function GuidedRows({ items }: { items: GuidedDelivered[] }) {
@@ -50,22 +57,23 @@ export function GuidedRows({ items }: { items: GuidedDelivered[] }) {
     <div className="mt-3 border-y border-ink/80">
       <div className="flex items-baseline justify-between pt-1.5">
         <Kicker className="text-ink">Guided → delivered</Kicker>
-        <span className="text-[10.5px] text-faint">from the last concall</span>
+        <span className="text-[10.5px] text-faint">guidance from calls before these results</span>
       </div>
       <ul>
         {items.map((g, i) => (
           <li key={i} className={`py-2 ${i ? "border-t hair" : ""}`}>
             <div className="flex items-baseline gap-2">
               <span className="min-w-0 flex-1 text-[12.5px] font-medium leading-snug">{g.metric}</span>
-              <span className={`kicker shrink-0 ${GRADE[g.grade].cls}`}>{GRADE[g.grade].text}</span>
+              <span className={`kicker shrink-0 ${gradeOf(g).cls}`}>{gradeOf(g).text}</span>
             </div>
             <div className="num mt-0.5 flex flex-wrap items-baseline gap-x-1.5 text-[12px] leading-snug">
               <span className="text-sub">guided</span> <span>{g.guided}</span>
               <span className="text-faint">→</span>
               <span className="text-sub">delivered</span> <span className="font-semibold">{g.delivered}</span>
               <SourceChip label={g.source.label ?? "call"} quote={g.source.quote} href={g.source.doc_id}
-                note={[g.source.section, g.source.note].filter(Boolean).join(" · ") || null} />
+                note={[g.call_label && `${g.call_label}, ${g.source.section ?? ""}`, g.source.note].filter(Boolean).join(" · ") || null} />
             </div>
+            {g.note && <div className="num mt-0.5 text-[11px] text-sub">{g.note}</div>}
           </li>
         ))}
       </ul>

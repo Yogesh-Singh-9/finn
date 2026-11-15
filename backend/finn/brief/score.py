@@ -96,8 +96,21 @@ def numbers_part(card: ResultsCard | None, surprises: list[tuple[str, float, flo
     return ScorePart(part="numbers", points=pts, note=note)
 
 
-def guidance_part() -> ScorePart:
-    return ScorePart(part="guidance", points=0, note="miss vs guidance from the last call: phase 6")
+def guidance_part(card: ResultsCard | None) -> ScorePart:
+    """A miss against what management guided on the last call is news on its own; so is a
+    full-year target falling behind. Grades come from the promise ledger (Python)."""
+    rows = card.guidance if card else []
+    if not rows:
+        return ScorePart(part="guidance", points=0, note="no gradeable guidance on record from the last call")
+    miss = [g for g in rows if g.grade == "missed"]
+    behind = [g for g in rows if g.progress_flag == "behind"]
+    if miss:
+        g = miss[0]
+        return ScorePart(part="guidance", points=15, note=f"missed: {g.metric} guided {g.guided} on the {g.call_label}, delivered {g.delivered}")
+    if behind:
+        g = behind[0]
+        return ScorePart(part="guidance", points=8, note=f"behind: {g.metric} guided {g.guided}, {g.delivered}")
+    return ScorePart(part="guidance", points=0, note="; ".join(f"{g.metric}: {g.grade.replace('_', ' ')}" + (f" ({g.progress_flag.replace('_', ' ')})" if g.progress_flag else "") for g in rows))
 
 
 def _session_index(ps: PriceSeries, filed: datetime) -> int | None:

@@ -83,7 +83,7 @@ Two tiers, each an ordered fallback chain set in `backend/.env` (swap models wit
   - uncertain +25
   - ₹ amount ÷ TTM revenue (screener)
   - **numbers** (results only): YoY revenue/NII and PAT growth vs the company's own last 8 YoY growths, in σ (σ floored at 5pp). ≥3σ +25, ≥2σ +18, ≥1.5σ +10, ≥1σ +5. A PAT fall of ≥20% gets at least +18, and a swing to a loss gets +25.
-  - **guidance** (results only): 0 until phase 6 (miss vs last call's guidance)
+  - **guidance** (results only): from the promise ledger. A miss vs the last call's guidance is +15; a full-year target behind is +8
   - next-session reaction: abnormal return vs NIFTY in σ of 60 sessions, plus volume vs the 20-day average
   - thesis hook (0 until phase 7)
 - **Score rules:**
@@ -99,7 +99,7 @@ Two tiers, each an ordered fallback chain set in `backend/.env` (swap models wit
   - Screener when it has the quarter. NSE XBRL fills the current column only when screener lags; then EBITDA/PBT carry no growth (definitions differ), and revenue/PAT growth is labelled "current from NSE XBRL, bases from screener".
   - Checks: sales − expenses = EBITDA; EBITDA + OI − interest − dep = PBT; PBT × (1 − tax%) = PAT (XBRL: income − expenses = PBT; PBT − tax + JV + discontinued = PAT). Any failure → status "unverified, open filing".
   - Banks/NBFCs: NII = interest earned − interest expended. PPOP comes only from the bank XBRL (current quarter, no base), else n/a with the reason. EBITDA is n/a.
-  - The headline is built in code ("Revenue +10% YoY, EBITDA margin +446 bps, PAT +114%"). `guidance` stays empty until phase 6.
+  - The headline is built in code ("Revenue +10% YoY, EBITDA margin +446 bps, PAT +114%"). `guidance` holds the guided → delivered rows from the promise store (phase 6); the frontend hides the slot when it is empty.
 - **One-offs** (`oneoffs.py`), on every results card:
   - Sources: the XBRL `ExceptionalItemsBeforeTax` line, plus "excluding / non-operational / one-time … ₹X crore" passages in the outcome PDF, press release and deck.
   - Rules pick out the passages and flash-lite names each one-off (amount, gain/charge, quote). Python checks the quote and amount verbatim (OCR-tolerant) and drops duty, price and tax effects.
@@ -114,6 +114,21 @@ Two tiers, each an ordered fallback chain set in `backend/.env` (swap models wit
   - LinkedIn people-search link only.
 - **Summaries** (`summaries.py`): one line, flash-lite, batched 20, for needs_you/glance events whose title is a raw cover-letter line. Results and management are excluded; management uses the card headline. A summary carrying a number not found in its source is rejected.
 - Snapshots are written as UTF-8 **and** ASCII-escaped, so they load under any reader encoding. Every file read/write passes `encoding="utf-8"`, and scripts reconfigure stdout.
+
+## Research + Promise Ledger (phase 6): `finn/research/`
+- **One promise store** `data/processed/promises/<SYM>.json` (a `Ledger`), written by the research build and read by `build_brief.py` for the results card's guided → delivered rows. Build research first, then the brief.
+- `transcripts.py`: the last 4 transcripts screener links (BSE PDFs), pages stored in `data/processed/transcripts/<SYM>.json`. The call date comes from the cover and the quarter discussed is the last quarter ending ≥10 days before it. Rules keep only management sentences with a forward cue or a metric + number + past tense, tagged `[p.N]`.
+- `ledger.py`:
+  - flash-lite extracts guidance plus company-stated actuals (segments, cc growth, EBIT margin, store adds) with quote and page. A quote not found on its page (or the next page's start) is **dropped**. Horizon words must appear on that page.
+  - Python parses targets (ranges, at least / at most / around, "double digit" → ≥10%) and resolves horizons relative to the call date (FY / quarter / half / multi-year / unspecified).
+  - **Units:** INR billion/million → crore. "1.5x industry" can't be graded. A target whose unit doesn't match the metric's natural unit isn't graded. The `other` metric key never matches actuals.
+  - **Grading:** company-level metrics are graded against screener; segment / cc / EBIT targets against a later call's stated figure. PAT uses the results card's company-adjusted figure (one-offs). Ongoing targets are graded on the latest quarter after the call; full-year targets show H1 progress (on track / behind); multi-year % targets are tracked against the latest quarter.
+  - **Revisions:** same metric + segment + horizon + unit on a later call → the older promise is `revised` (with direction), or `reiterated` when unchanged.
+  - **Qualitative:** strong chain, ≤8 per dossier, evidence passages from later calls picked by Python. A met/missed whose evidence quote isn't found verbatim becomes `not_comparable`.
+  - `card_rows()` is the push side: the latest pre-results guidance per metric vs the quarter just reported (≤3 rows). The `guidance` score part: missed +15, behind +8.
+- `financials.py`: vitals and sections from screener annual tables. Thresholds are constants at the top (growth <8%, margin >200 bps below 5y avg, CFO/PAT <0.7, ROE <12%, D/E >1). Chips are coloured (signal) only when off. Every section has a code-built one-line conclusion.
+- `dossier.py`: verdict strip (code), AR MD&A risk/outlook pages (≤3), bull/bear/3 questions (one strong call; points cite item ids F/L/E only; an uncited point is dropped; a number not found in its cites is `flagged`). Questions come from Python-ranked divergences; without a model they fall back to templates. Writes `data/snapshots/research/<SYM>.json` + `index.json`, with a cost line (calls, cached, tokens, $).
+- `scripts/build_research.py SYM ... [--refresh]` precomputes. `finn/api.py` (`uvicorn finn.api:app --app-dir backend --port 8000`) builds a never-seen ticker live in a thread with stages; the frontend reads the static snapshot first and Vite proxies `/api`.
 
 ## Running the data refresh
 From `backend/`: `.venv/Scripts/python scripts/refresh.py` (all sources, ~1 min). Add `--only nse|prices|screener` or `--symbols A,B` for partial runs. A partial run merges into the existing files, and a source that fails keeps the last good data. Output goes to `data/processed/` (filings.json, prices.json, calendar.json, results/<SYM>.json, fundamentals/<SYM>.json, manifest.json with every source status and any redirect seen).

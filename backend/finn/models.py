@@ -6,7 +6,7 @@ Units: money in INR crore (float); percentages as fractions (0.142).
 from __future__ import annotations
 
 from datetime import date, datetime
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
@@ -220,8 +220,12 @@ class GuidedDelivered(BaseModel):
     metric: str
     guided: str                   # as said on the call
     delivered: str
-    grade: Literal["exceeded", "met", "missed", "revised", "pending"]
-    source: dict[str, str] = Field(default_factory=dict)   # doc_id, page|section, quote
+    grade: Literal["exceeded", "met", "missed", "revised", "pending", "not_comparable"]
+    source: dict[str, str] = Field(default_factory=dict)   # label, doc_id, section (page), quote, note
+    call_label: str | None = None       # "Q1 FY27 call"
+    promise_id: str | None = None       # the promise in the ledger (pull side) this row came from
+    progress_flag: Literal["on_track", "behind"] | None = None   # full-year target, year to date
+    note: str | None = None             # revision history
 
 
 class OneOff(BaseModel):
@@ -358,3 +362,118 @@ class BriefSnapshot(BaseModel):
     cards: dict[str, int] = Field(default_factory=dict)   # results / mgmt cards, summaries
     llm_usage: str | None = None                          # "6 calls, 4 cached, ... $0.00x est."
     moves: list[Move] = Field(default_factory=list)       # unusual sessions, last 5, newest first
+
+
+# ============================================================== phase 6: promise store
+Grade = Literal["exceeded", "met", "missed", "pending", "revised", "not_comparable"]
+
+
+class Cite(BaseModel):
+    """Where a claim comes from: a transcript page, a screener table, or a filing."""
+    label: str                    # "Q1 FY27 call p.5", "screener FY26", "AR FY26 p.112"
+    doc_id: str | None = None     # URL (PDFs get #page=N)
+    page: int | None = None
+    quote: str | None = None
+
+
+class Promise(BaseModel):
+    """One forward-looking statement from a concall, graded in Python (numeric) or by the
+    strong model citing both calls (qualitative)."""
+    id: str
+    symbol: str
+    call_quarter: str             # results quarter the call discussed, FY27Q1
+    call_date: date
+    call_label: str               # "Q1 FY27 call"
+    speaker: str | None = None
+    kind: Literal["numeric", "qualitative"]
+    metric: str                   # as said, short: "Jewellery EBIT margin"
+    metric_key: str               # revenue_growth, ebitda_margin, ebit_margin, ... other
+    segment: str | None = None
+    target_text: str | None = None   # "11-13%", "around 11%", "at least 20%"
+    low: float | None = None
+    high: float | None = None
+    unit: str | None = None       # %, cr, count, bps, x
+    qualifier: Literal["range", "at_least", "at_most", "around", "exact", "qualitative"] = "qualitative"
+    horizon_text: str | None = None
+    horizon: str | None = None    # FY27, FY27Q3, FY27H2, FY29 (multi-year end), None = unspecified
+    horizon_kind: Literal["quarter", "half", "year", "multi_year", "unspecified"] = "unspecified"
+    source: Cite
+    grade: Grade = "pending"
+    grade_note: str = ""
+    actual: float | None = None
+    actual_text: str | None = None
+    actual_source: Cite | None = None
+    progress: str | None = None   # "H1 FY27 +18% vs guided 11-13%"
+    progress_flag: Literal["on_track", "behind"] | None = None
+    revised_from: list[str] = Field(default_factory=list)   # earlier targets, oldest first: "10-12% (Q4 FY26 call)"
+    revised_by: str | None = None  # id of the later promise that replaced this one
+    revision_dir: Literal["up", "down", "same"] | None = None
+    judged_by: str = "python"
+
+
+class CompanyActual(BaseModel):
+    """A number management stated as delivered (segment growth, store adds, cc growth),
+    used to grade guidance screener can't see. Verbatim-checked like promises."""
+    metric: str
+    metric_key: str
+    segment: str | None = None
+    value: float
+    unit: str
+    period: str | None            # resolved: FY27Q2, FY27H1, FY26
+    source: Cite
+
+
+class Ledger(BaseModel):
+    symbol: str
+    built_at: datetime
+    calls: list[Cite]             # the transcripts read, newest first
+    promises: list[Promise]
+    actuals: list[CompanyActual] = Field(default_factory=list)
+    stats: dict[str, int] = Field(default_factory=dict)   # graded/met/missed/... + dropped (quote not found)
+    notes: list[str] = Field(default_factory=list)
+    llm: str | None = None
+
+
+# ============================================================== phase 6: research dossier
+class Vital(BaseModel):
+    key: str                      # growth, margin, cash, roe, de, valuation
+    label: str
+    value: str                    # formatted at build time for the chip
+    raw: float | None = None
+    off: bool = False             # coloured only when something's off
+    note: str                     # what it is, the threshold, and the source
+    source: Cite
+
+
+class Point(BaseModel):
+    text: str
+    cites: list[Cite]
+    flagged: bool = False         # a number in the text not found in its cites
+
+
+class Section(BaseModel):
+    key: str
+    title: str
+    conclusion: str               # shown when the section is closed
+    rows: list[dict[str, Any]] = Field(default_factory=list)
+    series: list[dict[str, Any]] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
+
+
+class ResearchSnapshot(BaseModel):
+    symbol: str
+    company: str
+    built_at: datetime
+    price: float | None = None
+    price_date: date | None = None
+    day_change: float | None = None
+    vitals: list[Vital]
+    verdict: list[Point]
+    sections: list[Section]
+    ledger: Ledger
+    bull: list[Point] = Field(default_factory=list)
+    bear: list[Point] = Field(default_factory=list)
+    questions: list[Point] = Field(default_factory=list)
+    sources: list[Cite] = Field(default_factory=list)
+    cost_line: str | None = None
+    notes: list[str] = Field(default_factory=list)
